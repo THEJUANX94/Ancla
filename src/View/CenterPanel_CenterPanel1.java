@@ -15,12 +15,12 @@ public class CenterPanel_CenterPanel1 extends JPanel{
 
     private void initComponents(ActionListener listener) {
 
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setEditable(true);
 		comboBox.setBounds(10, 11, 168, 22);
 		add(comboBox);
 		
-		JComboBox comboBox_1 = new JComboBox();
+		JComboBox<String> comboBox_1 = new JComboBox<String>();
 		comboBox_1.setBounds(281, 11, 54, 22);
 		add(comboBox_1);
 		
