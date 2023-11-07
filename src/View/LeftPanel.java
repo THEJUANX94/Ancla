@@ -78,7 +78,7 @@ public class LeftPanel extends JPanel{
 		gbl_LeftPanel.gridx = 0;
 		gbl_LeftPanel.gridy = 11;
 		add(saleButton, gbl_LeftPanel);
-		saleButton.setActionCommand("Ventas");
+		saleButton.setActionCommand("Boton_Facturacion");
 		saleButton.addActionListener(listener);
 		
 		editButton = new JButton();
@@ -91,7 +91,7 @@ public class LeftPanel extends JPanel{
         editButton.setIcon(editImage2);
 		gbl_LeftPanel.gridy = 12;
 		add(editButton, gbl_LeftPanel);
-		editButton.setActionCommand("Gestionar");
+		editButton.setActionCommand("Boton_Gestionar");
 		editButton.addActionListener(listener);
 
 		gbl_LeftPanel.gridy = 0;

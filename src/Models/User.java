@@ -1,10 +1,10 @@
 package Models;
 
-public class Login {
+public class User {
     private String username;
     private String password;
 
-    public Login(String username, String password) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
@@ -16,11 +16,11 @@ public class Login {
         return false;
     }
 
-    public Object getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public Object getPassword() {
+    public String getPassword() {
         return password;
     }
 }
