@@ -9,13 +9,29 @@ public class Inventario {
 	private ArrayList<Marca> marcas;
 	private ArrayList<Factura>facturas;
 	
-	public Inventario(ArrayList<Producto> productos, ArrayList<Tipo> tipos, ArrayList<Marca> marcas, ArrayList<Factura> facturas) {
-		this.productos = productos;
-		this.tipos = tipos;
-		this.marcas = marcas;
-		this.facturas = facturas;
+	public Inventario() {
+		productos = new ArrayList<Producto>();
+		tipos = new ArrayList<Tipo>();
+		marcas = new ArrayList<Marca>();
+		facturas = new ArrayList<Factura>();
 	}
 	
+	public ArrayList<Producto> getProductos() {
+		return productos;
+	}
+
+	public ArrayList<Tipo> getTipos() {
+		return tipos;
+	}
+
+	public ArrayList<Marca> getMarcas() {
+		return marcas;
+	}
+
+	public ArrayList<Factura> getFacturas() {
+		return facturas;
+	}
+
 	public void agregarProducto() {
 
 	}
