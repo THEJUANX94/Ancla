@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 public class Data {
 
-    public String url = "jdbc:sqlite:AnclaDB";
+    public String url = "jdbc:sqlite:data/DataBase/AnclaDB.sqlite";
     public Connection connect;
     private ResultSet dataFacturas;
     private ResultSet dataItem;
@@ -25,20 +25,25 @@ public class Data {
     private ResultSet dataTipo;
 
     public Data() throws SQLException {
+        try {
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         connect = DriverManager.getConnection(url);
     }
 
     public void loadData(ArrayList<Producto> productos, ArrayList<Tipo> tipos, ArrayList<Marca> marcas, ArrayList<Factura> facturas){
         try {
-            PreparedStatement stFactura = connect.prepareStatement("SELECT * FROM Factura");
+            PreparedStatement stFactura = connect.prepareStatement("SELECT * FROM facturas");
             dataFacturas = stFactura.executeQuery();
             PreparedStatement stItem = connect.prepareStatement("SELECT * FROM facturas_ventas_producto");
             dataItem = stItem.executeQuery();
-            PreparedStatement stMarca = connect.prepareStatement("SELECT * FROM Marca");
+            PreparedStatement stMarca = connect.prepareStatement("SELECT * FROM marcas");
             dataMarca = stMarca.executeQuery();
-            PreparedStatement stProductos = connect.prepareStatement("SELECT * FROM Producto");
+            PreparedStatement stProductos = connect.prepareStatement("SELECT * FROM productos");
             dataProductos = stProductos.executeQuery();
-            PreparedStatement stTipo = connect.prepareStatement("SELECT * FROM Tipo");
+            PreparedStatement stTipo = connect.prepareStatement("SELECT * FROM tipos_producto");
             dataTipo = stTipo.executeQuery();
 
             loadFacturas(facturas);
