@@ -16,15 +16,19 @@ public class Controller implements ActionListener{
 
     private Views views;
     private User login;
+    private Inventario inventario;
+    private Data data;
 
-    public Controller(User user) {
+    public Controller(User user) throws SQLException {
         views = new Views(this);
         this.login = user;
+        data = new Data();
+        inventario = new Inventario();
     }
 
-    /*public void run(){
+    public void run(){
         data.loadData(inventario.getProductos(), inventario.getTipos(), inventario.getMarcas(), inventario.getFacturas());
-    }*/
+    }
 
     public boolean login(String user, String password) {
         boolean confirm = login.authenticate(user, password);
@@ -68,7 +72,7 @@ public class Controller implements ActionListener{
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         User user = new User("admin", "123");
         new Controller(user);
     }
