@@ -1,7 +1,6 @@
 package Controller;
 
 import java.sql.SQLException;
-
 import Models.Inventario;
 import data.Data;
 import java.awt.event.ActionEvent;
