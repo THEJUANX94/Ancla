@@ -73,7 +73,7 @@ public class LeftPanel extends JPanel{
 		saleButton.setFocusable(false);
 		saleButton.setBorderPainted(false);
         Image saleImg = new ImageIcon("Images/logoSale.png").getImage();
-        ImageIcon saleImage2 = new ImageIcon(saleImg.getScaledInstance(70, 70, Image.SCALE_SMOOTH));
+        ImageIcon saleImage2 = new ImageIcon(saleImg.getScaledInstance(75, 75, Image.SCALE_SMOOTH));
         saleButton.setIcon(saleImage2);
 		gbl_LeftPanel.gridx = 0;
 		gbl_LeftPanel.gridy = 11;
@@ -87,7 +87,7 @@ public class LeftPanel extends JPanel{
 		editButton.setFocusable(false);
 		editButton.setBorderPainted(false);
         Image editImg = new ImageIcon("Images/logoEdit.png").getImage();
-        ImageIcon editImage2 = new ImageIcon(editImg.getScaledInstance(70, 70, Image.SCALE_SMOOTH));
+        ImageIcon editImage2 = new ImageIcon(editImg.getScaledInstance(60, 60, Image.SCALE_SMOOTH));
         editButton.setIcon(editImage2);
 		gbl_LeftPanel.gridy = 12;
 		add(editButton, gbl_LeftPanel);

@@ -1,5 +1,9 @@
 package Controller;
 
+import java.sql.SQLException;
+
+import Models.Inventario;
+import data.Data;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -8,7 +12,7 @@ import Models.User;
 import View.Views;
 import data.Credentials;
 
-public class Controller implements ActionListener {
+public class Controller implements ActionListener{
 
     private Views views;
     private User login;
@@ -17,6 +21,10 @@ public class Controller implements ActionListener {
         views = new Views(this);
         this.login = user;
     }
+
+    /*public void run(){
+        data.loadData(inventario.getProductos(), inventario.getTipos(), inventario.getMarcas(), inventario.getFacturas());
+    }*/
 
     public boolean login(String user, String password) {
         boolean confirm = login.authenticate(user, password);
@@ -60,13 +68,9 @@ public class Controller implements ActionListener {
         }
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
-        Credentials credentials = new Credentials();
-        ArrayList<User> userList = credentials.readUser();
-        User user = null;
-        for (int i = 0; i < userList.size(); i++) {
-            user = new User(userList.get(i).getUsername(), userList.get(i).getPassword());
-        }
+    public static void main(String[] args) {
+        User user = new User("admin", "123");
         new Controller(user);
     }
+    
 }
