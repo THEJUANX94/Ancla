@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "src\\Libraries\\sqlite-jdbc-3.7.2.jar"
+        "src\\Libraries\\sqlite-jdbc-3.7.2.jar",
+        "src\\Libraries\\gson-2.8.2.jar"
     ]
 }

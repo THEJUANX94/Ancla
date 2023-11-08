@@ -8,8 +8,9 @@ import javax.swing.JPanel;
 
 public class CenterPanel extends JPanel{
 
-    private CenterPanel1 centerPanel1;
-    private CenterPanel2 centerPanel2;
+    private BillingPanel centerPanel1;
+    private ManagePanel centerPanel2;
+    private HistoryPanel historyPanel;
     private CardLayout cl;
     
     public CenterPanel(ActionListener listener){
@@ -20,11 +21,13 @@ public class CenterPanel extends JPanel{
         this.setBackground(Color.WHITE);
         this.setLayout(new CardLayout());
         cl = (CardLayout) this.getLayout();
-        centerPanel1 = new CenterPanel1(listener);
-        centerPanel2 = new CenterPanel2(listener);
+        centerPanel1 = new BillingPanel(listener);
+        centerPanel2 = new ManagePanel(listener);
+        historyPanel = new HistoryPanel();
 
-        add(centerPanel1, "Facturacion");
-        add(centerPanel2, "Gestionar");
+        add(centerPanel1, "Boton_Facturacion");
+        add(centerPanel2, "Boton_Gestionar");
+        add(historyPanel, "Pestaña_Historial");
     }
 
     public void show(String a) {

@@ -6,30 +6,29 @@ import Models.Inventario;
 import data.Data;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Models.Login;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import Models.User;
 import View.Views;
+import data.Credentials;
 
 public class Controller implements ActionListener{
 
     private Views views;
-    private Login login;
-    private Inventario inventario;
-    private Data data;
+    private User login;
 
-    public Controller(Login user) throws SQLException {
-        data = new Data();
-        inventario = new Inventario();
+    public Controller(User user) {
         views = new Views(this);
         this.login = user;
     }
 
-    public void run(){
+    /*public void run(){
         data.loadData(inventario.getProductos(), inventario.getTipos(), inventario.getMarcas(), inventario.getFacturas());
-    }
+    }*/
 
     public boolean login(String user, String password) {
         boolean confirm = login.authenticate(user, password);
-        if (confirm== false) {
+        if (confirm == false) {
             views.showMessageLogin("Invalid username or password");
         }
         return confirm;
@@ -47,34 +46,31 @@ public class Controller implements ActionListener{
                     views.dialogSeller.setVisible(confirm);
                 }
                 break;
-            case "Ventas":
-                
+            case "Boton_Facturacion":
+                views.show1("Boton_Facturacion");
                 break;
-            case "Gestionar":
-
-                break;
-            case "a":
-
+            case "Boton_Gestionar":
+                views.show1("Boton_Gestionar");
                 break;
             case "Salir":
                 views.dialogSeller.setVisible(false);
                 System.exit(0);
                 break;
+            case "Pestaña_Facturacion":
+                views.show1("Boton_Facturacion");
+                ;
+                break;
+            case "Pestaña_Historial":
+                views.show1("Pestaña_Historial");
+                break;
             default:
                 break;
         }
     }
-    
+
     public static void main(String[] args) {
-        Controller controller;
-        try {
-            Login user = new Login("admin", "123");
-            controller = new Controller(user);
-            controller.run();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        
+        User user = new User("admin", "123");
+        new Controller(user);
     }
     
 }
