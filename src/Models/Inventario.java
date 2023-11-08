@@ -1,5 +1,6 @@
 package Models;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class Inventario {
@@ -25,14 +26,13 @@ public class Inventario {
 		return facturas;
 	}
 
-	// como manejar el id?
+	// id
 	public void agregarProducto(String nombre, String tipo, String marca, int precio, int cantidad) {
 		productos.add(new Producto(0, nombre, buscarTipo(tipo), buscarMarca(marca), precio, cantidad));
 	}
 
-	// metodo para mostrar los productos en la vista,
-	// devuelve una matriz de strings donde cada fila es un producto y cada columna un atributo de dicho producto
-	// para pasarle la matriz a la tabla
+	// metodo para mostrar los productos en la vista
+	// devuelve una matriz de strings donde cada fila es un producto: [id | nombre | tipo | marca | precio | cantidad]
 	public String[][] obtenerProductos() {
 		String[][] productos = new String[this.productos.size()][6];
 		for (int i = 0; i < this.productos.size(); i++) {
@@ -99,11 +99,12 @@ public class Inventario {
 		return null;
 	}
 
+	// id
 	public void agregarTipo(String nombre) {
 		tipos.add(new Tipo(nombre.toUpperCase(), 0));
 	}
 	
-	// metodo para mostrar tipos, devuelve un arreglo de strings con los nombres de los tipos
+	// metodo para mostrar tipos en la vista, devuelve un arreglo de strings con los nombres de los tipos
 	public String[] obtenerTipos() {
 		String[] tipos = new String[this.tipos.size()];
 		for (int i = 0; i < this.tipos.size(); i++) {
@@ -112,11 +113,12 @@ public class Inventario {
 		return tipos;
 	}
 	
+	// id
 	public void agregarMarca(String nombre) {
 		marcas.add(new Marca(nombre.toUpperCase(), 0));
 	}
 	
-	// metodo para mostrar marcas, devuelve un arreglo de strings con los nombres de las marcas
+	// metodo para mostrar marcas en la vista, devuelve un arreglo de strings con los nombres de las marcas
 	public String[] obtenerMarcas() {
 		String[] marcas = new String[this.marcas.size()];
 		for (int i = 0; i < this.marcas.size(); i++) {
@@ -125,10 +127,30 @@ public class Inventario {
 		return marcas;
 	}
 	
-	public void agregarFactura() {
-		
+	// id
+	public void agregarFactura(String[][] items) {
+		int valor = 0;
+		ArrayList<Item> itemsCreados = new ArrayList<Item>();
+		for (int i = 0; i < items.length; i++) {
+			valor += obtenerProducto(Integer.parseInt(items[i][0])).getPrecio() * Integer.parseInt(items[i][4]);
+			itemsCreados.add(new Item(obtenerProducto(Integer.parseInt(items[i][0])), Integer.parseInt(items[i][4])));
+		}
+		facturas.add(new Factura(0, new Date(System.currentTimeMillis()), valor, itemsCreados));
+	}
+
+	private Producto obtenerProducto(int id) {
+		Producto productoAObtener = null;
+		for (Producto producto : productos) {
+			if(producto.getId() == id) {
+				productoAObtener = producto;
+				break;
+			}
+		}
+		return productoAObtener;
 	}
 	
+	// metodo para mostrar las facturas en la vista
+	// devuelve una matriz de strings donde cada fila es una factura: [id | fecha | valor]
 	public String[][] obtenerFacturas() {
 		String[][] facturas = new String[this.facturas.size()][3];
 		for (int i = 0; i < this.facturas.size(); i++) {
@@ -139,7 +161,8 @@ public class Inventario {
 		return facturas;
 	}
 
-	// devuelve los nombres de los productos y sus cantidades de una factura
+	// metodo para mostrar los items de una factura en la vista
+	// devuelve una matriz de strings donde cada fila es un item: [nombre_producto | cantidad]
 	public String[][] obtenerItems(int id) {
 		String[][] items = new String[0][0];
 		for (Factura factura : facturas) {
