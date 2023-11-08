@@ -6,11 +6,8 @@ import Models.Inventario;
 import data.Data;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import Models.User;
 import View.Views;
-import data.Credentials;
 
 public class Controller implements ActionListener{
 
