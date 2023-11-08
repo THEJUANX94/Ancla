@@ -26,9 +26,19 @@ public class Inventario {
 		return facturas;
 	}
 
-	// id
+	private int idDisponible(ArrayList<Integer> idUsados) {
+		for (int i = 1; i < 10000; i++) {
+			if(!idUsados.contains(i)) {
+				return i;
+			}
+		}
+		return 0;
+	}
+
 	public void agregarProducto(String nombre, String tipo, String marca, int precio, int cantidad) {
-		productos.add(new Producto(0, nombre, buscarTipo(tipo), buscarMarca(marca), precio, cantidad));
+		ArrayList<Integer> idUsados = new ArrayList<Integer>();
+		productos.forEach(x -> idUsados.add(x.getId()));
+		productos.add(new Producto(idDisponible(idUsados), nombre, buscarTipo(tipo), buscarMarca(marca), precio, cantidad));
 	}
 
 	// metodo para mostrar los productos en la vista
@@ -99,9 +109,10 @@ public class Inventario {
 		return null;
 	}
 
-	// id
 	public void agregarTipo(String nombre) {
-		tipos.add(new Tipo(nombre.toUpperCase(), 0));
+		ArrayList<Integer> idUsados = new ArrayList<Integer>();
+		tipos.forEach(x -> idUsados.add(x.getIdTipo()));
+		tipos.add(new Tipo(nombre.toUpperCase(), idDisponible(idUsados)));
 	}
 	
 	// metodo para mostrar tipos en la vista, devuelve un arreglo de strings con los nombres de los tipos
@@ -113,9 +124,10 @@ public class Inventario {
 		return tipos;
 	}
 	
-	// id
 	public void agregarMarca(String nombre) {
-		marcas.add(new Marca(nombre.toUpperCase(), 0));
+		ArrayList<Integer> idUsados = new ArrayList<Integer>();
+		marcas.forEach(x -> idUsados.add(x.getIdMarca()));
+		marcas.add(new Marca(nombre.toUpperCase(), idDisponible(idUsados)));
 	}
 	
 	// metodo para mostrar marcas en la vista, devuelve un arreglo de strings con los nombres de las marcas
@@ -127,15 +139,16 @@ public class Inventario {
 		return marcas;
 	}
 	
-	// id
 	public void agregarFactura(String[][] items) {
 		int valor = 0;
 		ArrayList<Item> itemsCreados = new ArrayList<Item>();
+		ArrayList<Integer> idUsados = new ArrayList<Integer>();
 		for (int i = 0; i < items.length; i++) {
 			valor += obtenerProducto(Integer.parseInt(items[i][0])).getPrecio() * Integer.parseInt(items[i][4]);
 			itemsCreados.add(new Item(obtenerProducto(Integer.parseInt(items[i][0])), Integer.parseInt(items[i][4])));
 		}
-		facturas.add(new Factura(0, new Date(System.currentTimeMillis()), valor, itemsCreados));
+		facturas.forEach(x -> idUsados.add(x.getId()));
+		facturas.add(new Factura(idDisponible(idUsados), new Date(System.currentTimeMillis()), valor, itemsCreados));
 	}
 
 	private Producto obtenerProducto(int id) {
