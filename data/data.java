@@ -23,6 +23,11 @@ public class data {
     private ResultSet dataMarca;
     private ResultSet dataProductos;
     private ResultSet dataTipo;
+    private PreparedStatement stFactura;
+    private PreparedStatement stItem;
+    private PreparedStatement stMarca;
+    private PreparedStatement stProductos;
+    private PreparedStatement stTipo;
 
     public data() throws SQLException {
         try {
@@ -36,15 +41,15 @@ public class data {
     public void loadData(ArrayList<Producto> productos, ArrayList<Tipo> tipos, ArrayList<Marca> marcas,
             ArrayList<Factura> facturas) {
         try {
-            PreparedStatement stFactura = connect.prepareStatement("SELECT * FROM facturas");
+            stFactura = connect.prepareStatement("SELECT * FROM facturas");
             dataFacturas = stFactura.executeQuery();
-            PreparedStatement stItem = connect.prepareStatement("SELECT * FROM facturas_ventas_producto");
+            stItem = connect.prepareStatement("SELECT * FROM facturas_ventas_producto");
             dataItem = stItem.executeQuery();
-            PreparedStatement stMarca = connect.prepareStatement("SELECT * FROM marcas");
+            stMarca = connect.prepareStatement("SELECT * FROM marcas");
             dataMarca = stMarca.executeQuery();
-            PreparedStatement stProductos = connect.prepareStatement("SELECT * FROM productos");
+            stProductos = connect.prepareStatement("SELECT * FROM productos");
             dataProductos = stProductos.executeQuery();
-            PreparedStatement stTipo = connect.prepareStatement("SELECT * FROM tipos_producto");
+            stTipo = connect.prepareStatement("SELECT * FROM tipos_producto");
             dataTipo = stTipo.executeQuery();
 
             loadFacturas(facturas);
@@ -155,7 +160,7 @@ public class data {
         }
     }
 
-    public void updateFactura(ArrayList<Factura> facturas, int id) {
+    public void createFactura(ArrayList<Factura> facturas, int id) {
         try {
             for (int i = 0; i < facturas.size(); i++) {
                 if (facturas.get(i).getId() == id) {
@@ -171,10 +176,10 @@ public class data {
                     for (int j = 0; j < facturas.get(i).getItems().size(); j++) {
                         id_producto = facturas.get(i).getItems().get(j).getProducto().getId();
                         cantidad_factura = facturas.get(i).getItems().get(j).getCantidad();
-                        PreparedStatement stItem = connect
+                        stFactura = connect
                                 .prepareStatement("INSERT INTO facturas_ventas_producto values (" + id_factura + ", "
                                         + id_producto + ", " + cantidad_factura);
-                        stItem.executeUpdate();
+                        stFactura.executeUpdate();
                     }
                 }
             }
@@ -184,14 +189,15 @@ public class data {
         }
     }
 
-    public void updateMarcas(ArrayList<Marca> marcas, int id) {
+    public void createMarcas(ArrayList<Marca> marcas, int id) {
         try {
             for (int i = 0; i < marcas.size(); i++) {
                 if (marcas.get(i).getIdMarca() == id) {
                     int id_marca = marcas.get(i).getIdMarca();
                     String nombre_marca = marcas.get(i).getNombre();
 
-                    PreparedStatement stMarca = connect.prepareStatement("INSERT INTO facturas values (" + id_marca + ", " + nombre_marca + ")");
+                    stMarca = connect
+                            .prepareStatement("INSERT INTO facturas values (" + id_marca + ", " + nombre_marca + ")");
                     stMarca.executeUpdate();
                 }
             }
@@ -200,15 +206,16 @@ public class data {
         }
     }
 
-    public void updateTipos(ArrayList<Tipo> tipos, int id) {
+    public void createTipos(ArrayList<Tipo> tipos, int id) {
         try {
             for (int i = 0; i < tipos.size(); i++) {
                 if (tipos.get(i).getIdTipo() == id) {
                     int id_tipo = tipos.get(i).getIdTipo();
                     String nombre_tipo = tipos.get(i).getNombre();
 
-                    PreparedStatement stMarca = connect.prepareStatement("INSERT INTO facturas values (" + id_tipo + ", " + nombre_tipo + ")");
-                    stMarca.executeUpdate();
+                    stTipo = connect
+                            .prepareStatement("INSERT INTO facturas values (" + id_tipo + ", " + nombre_tipo + ")");
+                    stTipo.executeUpdate();
                 }
             }
         } catch (SQLException e) {
@@ -216,7 +223,7 @@ public class data {
         }
     }
 
-    public void updateProducto(ArrayList<Producto> productos, int id) {
+    public void createProducto(ArrayList<Producto> productos, int id) {
         try {
             for (int i = 0; i < productos.size(); i++) {
                 if (productos.get(i).getId() == id) {
@@ -227,11 +234,51 @@ public class data {
                     int precio = productos.get(i).getPrecio();
                     int cantidad = productos.get(i).getCantidad();
 
-                    PreparedStatement stProductos = connect.prepareStatement("INSERT INTO productos values (" + id_producto + ", " + id_tipo + ", " + id_marca + ", " + nombre_producto + ", " + precio + ", " + cantidad + ")");
+                    stProductos = connect
+                            .prepareStatement("INSERT INTO productos values (" + id_producto + ", " + id_tipo + ", "
+                                    + id_marca + ", " + nombre_producto + ", " + precio + ", " + cantidad + ")");
                     stProductos.executeUpdate();
                 }
             }
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteFactura(int id) {
+        try {
+            stFactura = connect.prepareStatement("DELETE FROM facturas where id = " + id);
+            stFactura.executeUpdate();
+            stFactura = connect.prepareStatement("DELETE FROM facturas_ventas_producto where id = " + id);
+            stFactura.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteMarca(int id) {
+        try {
+            stMarca = connect.prepareStatement("DELETE FROM marca where id = " + id);
+            stMarca.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteProducto(int id) {
+        try {
+            stProductos = connect.prepareStatement("DELETE FROM productos where id = " + id);
+            stProductos.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteTipos(int id) {
+        try {
+            stTipo = connect.prepareStatement("DELETE FROM tipos_productos where id = " + id);
+            stTipo.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
