@@ -283,4 +283,31 @@ public class data {
             e.printStackTrace();
         }
     }
+
+    public void updateMarca(String name, int id) {
+        try {
+            stMarca = connect.prepareStatement("UPDATE marcas SET nombre_marca = " + name + " WHERE id_marca = " + id);
+            stMarca.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateProductos(String name, int precio, int cantidad, int id) {
+        try {
+            stProductos = connect.prepareStatement("UPDATE productos SET nombre_producto = " + name + ", " + "precio = " + precio + ", " + "cantidad = " + cantidad +  " WHERE id_marca = " + id);
+            stProductos.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateTipos(String name, int id) {
+        try {
+            stTipo = connect.prepareStatement("UPDATE tipos_producto SET nombre_tipo = " + name + " WHERE id_marca = " + id);
+            stTipo.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
