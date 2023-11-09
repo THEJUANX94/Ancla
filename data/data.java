@@ -150,4 +150,20 @@ public class data {
             e.printStackTrace();
         }
     }
+
+    public void saveFactura(ArrayList<Factura> facturas, int id) {
+        PreparedStatement stFactura;
+        try {
+            for (int i = 0; i < facturas.size(); i++) {
+                if (facturas.get(i).getId() == id) {
+                    stFactura = connect.prepareStatement("INSERT INTO facturas values (" + facturas.get(i).getId() + ", \"" + facturas.get(i).getFecha() + "\", " + facturas.get(i).getValor() + ")");
+                    stFactura.executeUpdate();
+                }
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+            
+    }
 }

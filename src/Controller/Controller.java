@@ -1,6 +1,7 @@
 package Controller;
 
 import java.sql.SQLException;
+
 import Models.Inventario;
 import data.data;
 import java.awt.event.ActionEvent;
@@ -24,8 +25,6 @@ public class Controller implements ActionListener{
 
     public void run(){
         data.loadData(inventario.getProductos(), inventario.getTipos(), inventario.getMarcas(), inventario.getFacturas());
-        
-        System.out.println(inventario.getTipos().get(0).getNombre());
     }
 
     public boolean login(String user, String password) {
