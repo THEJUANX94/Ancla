@@ -13,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Data {
+public class data {
 
     public String url = "jdbc:sqlite:data/DataBase/AnclaDB.sqlite";
     public Connection connect;
@@ -23,7 +23,7 @@ public class Data {
     private ResultSet dataProductos; 
     private ResultSet dataTipo;
 
-    public Data() throws SQLException {
+    public data() throws SQLException {
         try {
             Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException e) {

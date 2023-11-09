@@ -2,7 +2,7 @@ package Controller;
 
 import java.sql.SQLException;
 import Models.Inventario;
-import data.Data;
+import data.data;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Models.User;
@@ -13,17 +13,19 @@ public class Controller implements ActionListener{
     private Views views;
     private User login;
     private Inventario inventario;
-    private Data data;
+    private data data;
 
     public Controller(User user) throws SQLException {
         views = new Views(this);
         this.login = user;
-        data = new Data();
+        data = new data();
         inventario = new Inventario();
     }
 
     public void run(){
         data.loadData(inventario.getProductos(), inventario.getTipos(), inventario.getMarcas(), inventario.getFacturas());
+        
+        System.out.println(inventario.getTipos().get(0).getNombre());
     }
 
     public boolean login(String user, String password) {
@@ -70,7 +72,8 @@ public class Controller implements ActionListener{
 
     public static void main(String[] args) throws SQLException {
         User user = new User("admin", "123");
-        new Controller(user);
+        Controller controller = new Controller(user);
+        controller.run();
     }
     
 }

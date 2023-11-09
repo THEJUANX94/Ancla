@@ -9,6 +9,13 @@ public class Inventario {
 	private ArrayList<Tipo> tipos;
 	private ArrayList<Marca> marcas;
 	private ArrayList<Factura> facturas;
+
+	public Inventario() {
+		productos = new ArrayList<Producto>();
+		tipos = new ArrayList<Tipo>();
+		marcas = new ArrayList<Marca>();
+		facturas = new ArrayList<Factura>();
+	}
 	
 	public ArrayList<Producto> getProductos() {
 		return productos;
