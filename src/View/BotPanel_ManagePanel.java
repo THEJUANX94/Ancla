@@ -37,6 +37,8 @@ public class BotPanel_ManagePanel extends JPanel {
         acceptButton.setSelected(false);
         acceptButton.setFocusable(false);
         acceptButton.setBorderPainted(false);
+        acceptButton.setActionCommand("Crear_producto");
+        acceptButton.addActionListener(listener);
         add(acceptButton);
     }
 }

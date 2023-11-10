@@ -65,6 +65,9 @@ public class Controller implements ActionListener {
             case "Pestaña_Historial":
                 views.show1("Pestaña_Historial");
                 break;
+            case "Crear_producto":
+                views.dialogForm.setVisible(true);
+                break;
             default:
                 break;
         }

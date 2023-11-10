@@ -5,10 +5,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import View.Form.DialogForm;
+
 public class Views extends JFrame {
 
     public LoginPanel loginPanel;
     public DialogSeller dialogSeller;
+    public DialogForm dialogForm;
 
     public Views(ActionListener listener) {
         super("Ancla");
@@ -24,7 +27,9 @@ public class Views extends JFrame {
         this.setLayout(new BorderLayout());
         loginPanel = new LoginPanel(listener);
         dialogSeller = new DialogSeller(listener);
+        dialogForm = new DialogForm(listener);
         dialogSeller.setVisible(false);
+        dialogForm.setVisible(false);
         this.getContentPane().add(loginPanel, BorderLayout.CENTER);
     }
 
