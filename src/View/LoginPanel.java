@@ -63,7 +63,7 @@ public class LoginPanel extends JPanel {
         button.setBackground(new Color(53, 152, 200));
         button.setFocusable(false);
         button.setBorderPainted(false);
-        button.setPreferredSize(new Dimension(280, 45));
+        button.setPreferredSize(new Dimension(260, 45));
         button.setAlignmentX(JButton.CENTER_ALIGNMENT);
 
         gbc.gridx = 0;

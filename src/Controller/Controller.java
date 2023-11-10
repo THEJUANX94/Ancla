@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import Models.User;
 import View.Views;
 
-public class Controller implements ActionListener{
+public class Controller implements ActionListener {
 
     private Views views;
     private User login;
@@ -23,8 +23,9 @@ public class Controller implements ActionListener{
         inventario = new Inventario();
     }
 
-    public void run(){
-        data.loadData(inventario.getProductos(), inventario.getTipos(), inventario.getMarcas(), inventario.getFacturas());
+    public void run() {
+        data.loadData(inventario.getProductos(), inventario.getTipos(), inventario.getMarcas(),
+                inventario.getFacturas());
     }
 
     public boolean login(String user, String password) {
@@ -45,6 +46,7 @@ public class Controller implements ActionListener{
                 boolean confirm = login(user, password);
                 if (confirm) {
                     views.dialogSeller.setVisible(confirm);
+                    views.loginPanel.setVisible(false);
                 }
                 break;
             case "Boton_Facturacion":
@@ -59,7 +61,6 @@ public class Controller implements ActionListener{
                 break;
             case "Pestaña_Facturacion":
                 views.show1("Boton_Facturacion");
-                ;
                 break;
             case "Pestaña_Historial":
                 views.show1("Pestaña_Historial");
@@ -74,5 +75,5 @@ public class Controller implements ActionListener{
         Controller controller = new Controller(user);
         controller.run();
     }
-    
+
 }

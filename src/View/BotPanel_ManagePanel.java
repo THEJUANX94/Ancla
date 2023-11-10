@@ -7,12 +7,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class BotPanel_BillingPanel extends JPanel {
+public class BotPanel_ManagePanel extends JPanel {
 
     private JButton cleanButton;
     private JButton acceptButton;
 
-    public BotPanel_BillingPanel(ActionListener listener) {
+    public BotPanel_ManagePanel(ActionListener listener) {
         initComponents(listener);
     }
 
@@ -21,7 +21,7 @@ public class BotPanel_BillingPanel extends JPanel {
         Color buttonColor = new Color(53, 152, 200);
         Color letra = Color.WHITE;
 
-        cleanButton = new JButton("Cancelar");
+        cleanButton = new JButton("Modificar Producto");
         cleanButton.setPreferredSize(new Dimension(170, 30));
         cleanButton.setBackground(buttonColor);
         cleanButton.setForeground(letra);
@@ -30,7 +30,7 @@ public class BotPanel_BillingPanel extends JPanel {
         cleanButton.setBorderPainted(false);
         add(cleanButton);
 
-        acceptButton = new JButton("Guardar");
+        acceptButton = new JButton("Crear Nuevo Producto");
         acceptButton.setPreferredSize(new Dimension(170, 30));
         acceptButton.setBackground(buttonColor);
         acceptButton.setForeground(letra);
@@ -38,6 +38,5 @@ public class BotPanel_BillingPanel extends JPanel {
         acceptButton.setFocusable(false);
         acceptButton.setBorderPainted(false);
         add(acceptButton);
-
     }
 }

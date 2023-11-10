@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 public class Views extends JFrame {
 
-    private LoginPanel loginPanel;
+    public LoginPanel loginPanel;
     public DialogSeller dialogSeller;
 
     public Views(ActionListener listener) {

@@ -9,7 +9,7 @@ public class DialogSeller extends JDialog {
   private static final long serialVersionUID = 1L;
   private TopPanel topPanel;
   private LeftPanel leftPanel;
-  private CenterPanel centerPanel;
+  private CardLayout1 centerPanel;
 
   public DialogSeller(ActionListener listener) {
     this.setSize(1280, 720);
@@ -25,7 +25,7 @@ public class DialogSeller extends JDialog {
     getContentPane().add(topPanel, BorderLayout.NORTH);
     leftPanel = new LeftPanel(listener);
     getContentPane().add(leftPanel, BorderLayout.WEST);
-    centerPanel = new CenterPanel(listener);
+    centerPanel = new CardLayout1(listener);
     getContentPane().add(centerPanel, BorderLayout.CENTER);
   }
 
