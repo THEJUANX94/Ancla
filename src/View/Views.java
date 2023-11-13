@@ -10,7 +10,7 @@ import View.Form.DialogForm;
 public class Views extends JFrame {
 
     public LoginPanel loginPanel;
-    public DialogSeller dialogSeller;
+    public SellerPanel dialogSeller;
     public DialogForm dialogForm;
 
     public Views(ActionListener listener) {
@@ -20,17 +20,16 @@ public class Views extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         initComponents(listener);
-        this.setVisible(true);
+        this.setVisible(false);
     }
 
     private void initComponents(ActionListener listener) {
-        this.setLayout(new BorderLayout());
         loginPanel = new LoginPanel(listener);
-        dialogSeller = new DialogSeller(listener);
+        dialogSeller = new SellerPanel(listener);
         dialogForm = new DialogForm(listener);
-        dialogSeller.setVisible(false);
+        loginPanel.setVisible(true);
         dialogForm.setVisible(false);
-        this.getContentPane().add(loginPanel, BorderLayout.CENTER);
+        this.getContentPane().add(dialogSeller);
     }
 
     public String getTxtLoginUser(){

@@ -45,7 +45,7 @@ public class Controller implements ActionListener {
                 String password = views.getTxtLoginPassword();
                 boolean confirm = login(user, password);
                 if (confirm) {
-                    views.dialogSeller.setVisible(confirm);
+                    views.setVisible(confirm);
                     views.loginPanel.setVisible(false);
                 }
                 break;

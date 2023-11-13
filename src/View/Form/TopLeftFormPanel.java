@@ -4,10 +4,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.util.Properties;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;

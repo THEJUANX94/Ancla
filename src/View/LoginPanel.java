@@ -9,12 +9,12 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class LoginPanel extends JPanel {
+public class LoginPanel extends JDialog {
 
     private JTextField textField;
     private JPasswordField passwordField;
@@ -24,6 +24,9 @@ public class LoginPanel extends JPanel {
     private JLabel labelImage;
 
     public LoginPanel(ActionListener listener) {
+        this.setSize(1280, 720);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
         initComponents(listener);
     }
 

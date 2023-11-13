@@ -2,31 +2,28 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
-import javax.swing.JDialog;
+import javax.swing.JPanel;
 
-public class DialogSeller extends JDialog {
+public class SellerPanel extends JPanel {
 
   private static final long serialVersionUID = 1L;
   private TopPanel topPanel;
   private LeftPanel leftPanel;
   private CardLayout1 centerPanel;
 
-  public DialogSeller(ActionListener listener) {
-    this.setSize(1280, 720);
-    this.setLocationRelativeTo(null);
-    this.setResizable(false);
+  public SellerPanel(ActionListener listener) {
     initComponents(listener);
-    this.setVisible(true);
     initComponents(listener);
   }
 
   private void initComponents(ActionListener listener) {
+    setLayout(new BorderLayout());
     topPanel = new TopPanel();
-    getContentPane().add(topPanel, BorderLayout.NORTH);
+    add(topPanel, BorderLayout.NORTH);
     leftPanel = new LeftPanel(listener);
-    getContentPane().add(leftPanel, BorderLayout.WEST);
+    add(leftPanel, BorderLayout.WEST);
     centerPanel = new CardLayout1(listener);
-    getContentPane().add(centerPanel, BorderLayout.CENTER);
+    add(centerPanel, BorderLayout.CENTER);
   }
 
   public void show(String a) {
