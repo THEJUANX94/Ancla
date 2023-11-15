@@ -12,7 +12,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 
 public class CenterPanel_BillingPanel extends JPanel {
 
@@ -49,19 +48,10 @@ public class CenterPanel_BillingPanel extends JPanel {
 
 		centerPanelLeft.setBackground(Color.WHITE);
 		tabla1 = new JTable(new Object[][] {}, cabeceraTabla1);
-		tabla1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tabla1.setBackground(Color.WHITE);
         tabla1.setForeground(Color.BLACK);
 		tabla1.getTableHeader().setResizingAllowed(false);
 		tabla1.getTableHeader().setReorderingAllowed(false);
-
-		TableColumnModel columnModelTable1 = tabla1.getColumnModel();
-		columnModelTable1.getColumn(0).setPreferredWidth(30);
-		columnModelTable1.getColumn(1).setPreferredWidth(140);
-		columnModelTable1.getColumn(2).setPreferredWidth(140);
-		columnModelTable1.getColumn(3).setPreferredWidth(220);
-		columnModelTable1.getColumn(4).setPreferredWidth(80);
-		columnModelTable1.getColumn(5).setPreferredWidth(70);
 
 		centerPanelLeft.add(tabla1);
 
@@ -73,15 +63,8 @@ public class CenterPanel_BillingPanel extends JPanel {
 		tabla2 = new JTable(new Object[][] {}, cabeceraTabla2);
 		tabla2.setBackground(Color.WHITE);
         tabla2.setForeground(Color.BLACK);
-		tabla2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tabla2.getTableHeader().setResizingAllowed(false);
 		tabla2.getTableHeader().setReorderingAllowed(false);
-
-		TableColumnModel columnModelTable2 = tabla2.getColumnModel();
-		columnModelTable2.getColumn(0).setPreferredWidth(30);
-		columnModelTable2.getColumn(1).setPreferredWidth(210);
-		columnModelTable2.getColumn(2).setPreferredWidth(80);
-		columnModelTable2.getColumn(3).setPreferredWidth(70);
 
 		centerPanel.add(tabla2);
 
