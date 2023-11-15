@@ -70,6 +70,9 @@ public class Controller implements ActionListener {
             case "Crear_producto":
                 views.dialogForm.setVisible(true);
                 break;
+            case "AddProductToBill":
+                views.loadDataTable2();
+                break;
             default:
                 break;
         }

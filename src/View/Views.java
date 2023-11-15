@@ -10,7 +10,6 @@ public class Views extends JFrame {
     public LoginPanel loginPanel;
     public SellerPanel dialogSeller;
     public DialogForm dialogForm;
-    public AddProductToBillDialog addProductToBillDialog;
 
     public Views(ActionListener listener) {
         super("Ancla");
@@ -26,11 +25,9 @@ public class Views extends JFrame {
         loginPanel = new LoginPanel(listener);
         dialogSeller = new SellerPanel(listener);
         dialogForm = new DialogForm(listener);
-        addProductToBillDialog = new AddProductToBillDialog(listener);
         loginPanel.setVisible(true);
         dialogForm.setVisible(false);
         this.getContentPane().add(dialogSeller);
-        addProductToBillDialog.setVisible(true);
     }
 
     public String getTxtLoginUser() {
@@ -53,7 +50,7 @@ public class Views extends JFrame {
         dialogSeller.loadDataTable1(data);
     }
 
-    public void loadDataTable2(String[][] data) {
-        dialogSeller.loadDataTable2(data);
+    public void loadDataTable2() {
+        dialogSeller.loadDataTable2();
     }
 }

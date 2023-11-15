@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 public class AddProductToBillDialog extends JDialog{
 
+	private JLabel datos;
     private JTextField deletTextField;
     private JButton cancel;
     private JButton button;
@@ -42,6 +43,9 @@ public class AddProductToBillDialog extends JDialog{
         gbc.gridy = 1;
         add(a, gbc);
 
+		datos = new JLabel();
+		add(datos, gbc);
+
         button = new JButton("Agregar");
         button.addActionListener(listener);
         button.setActionCommand("AddProductToBill");
@@ -67,6 +71,10 @@ public class AddProductToBillDialog extends JDialog{
 		gbc.gridwidth = 2;
 		add(cancel, gbc);
     }
+
+	public void setDatos(String datos) {
+		this.datos.setText(datos);
+	}
 
     public String getWordDelete(){
         return deletTextField.getText();

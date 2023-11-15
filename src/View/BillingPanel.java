@@ -30,7 +30,7 @@ public class BillingPanel extends JPanel {
 		centerPanel_CenterPanel.loadDataTable1(data);
 	}
 
-	public void loadDataTable2(String[][] data) {
-		centerPanel_CenterPanel.loadDataTable2(data);
+	public void loadDataTable2() {
+		centerPanel_CenterPanel.loadDataTable2();
 	}
 }

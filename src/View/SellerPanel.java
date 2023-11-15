@@ -34,7 +34,7 @@ public class SellerPanel extends JPanel {
     centerPanel.loadDataTable1(data);
   }
 
-  public void loadDataTable2(String[][] data) {
-    centerPanel.loadDataTable2(data);
+  public void loadDataTable2() {
+    centerPanel.loadDataTable2();
   }
 }

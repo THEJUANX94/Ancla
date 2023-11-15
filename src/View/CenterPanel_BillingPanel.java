@@ -20,8 +20,14 @@ public class CenterPanel_BillingPanel extends JPanel {
 
 	private JTable tabla1;
 	private JTable tabla2;
-	private String[] cabeceraTabla1 = { "Id", "Marca", "Tipo", "Nombre", "Stock", "Precio" };
+	private DefaultTableModel dtm2;
+	public AddProductToBillDialog addProductToBillDialog;
+	private String[] cabeceraTabla1 = { "Id", "Nombre", "Marca", "Tipo", "Precio", "Stock"};
 	private String[] cabeceraTabla2 = { "Id", "Nombre", "Cantidad", "Precio" };
+
+	private String id;
+	private String nombre;
+	private String precio;
 
 	public CenterPanel_BillingPanel(ActionListener listener) {
 		initComponents(listener);
@@ -33,9 +39,11 @@ public class CenterPanel_BillingPanel extends JPanel {
 		JPanel topPanel = new JPanel();
 		JPanel centerPanelLeft = new JPanel();
 		JPanel centerPanel = new JPanel();
+		addProductToBillDialog = new AddProductToBillDialog(listener);
 		add(centerPanelLeft, BorderLayout.WEST);
 		add(topPanel, BorderLayout.NORTH);
 		add(centerPanel, BorderLayout.CENTER);
+		addProductToBillDialog.setVisible(false);
 
 		topPanel.setBackground(Color.WHITE);
 		Image img = new ImageIcon("Images/logoSearch.png").getImage();
@@ -70,24 +78,32 @@ public class CenterPanel_BillingPanel extends JPanel {
 					int row = target.getSelectedRow();
 
 					// Obtener los datos de la fila seleccionada
-					String id = (String) target.getValueAt(row, 0);
-					String marca = (String) target.getValueAt(row, 1);
-					String tipo = (String) target.getValueAt(row, 2);
-					String nombre = (String) target.getValueAt(row, 3);
-					String cantidad = (String) target.getValueAt(row, 4);
-					String precio = (String) target.getValueAt(row, 5);
+					id = (String) target.getValueAt(row, 0);
+					nombre = (String) target.getValueAt(row, 1);
+					String marca = (String) target.getValueAt(row, 2);
+					String tipo = (String) target.getValueAt(row, 3);
+					precio = (String) target.getValueAt(row, 4);
 
-					System.out.println(id + marca + tipo + nombre + cantidad + precio);
+					addProductToBillDialog.setVisible(true);
+					addProductToBillDialog.setDatos(id + " " + nombre + " " + marca + " " + tipo + " " + precio + " ");
 				}
 			}
 		});
 
 		centerPanel.setBackground(Color.WHITE);
-		tabla2 = new JTable(new Object[][] {}, cabeceraTabla2);
+		tabla2 = new JTable();
 		tabla2.setBackground(Color.WHITE);
 		tabla2.setForeground(Color.BLACK);
 		tabla2.getTableHeader().setResizingAllowed(false);
 		tabla2.getTableHeader().setReorderingAllowed(false);
+
+		dtm2 = new DefaultTableModel(new Object[][] {}, cabeceraTabla2) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		tabla2.setModel(dtm2);
 
 		centerPanel.add(tabla2);
 
@@ -106,13 +122,8 @@ public class CenterPanel_BillingPanel extends JPanel {
 		tabla1.setModel(dtm);
 	}
 
-	public void loadDataTable2(String[][] data) {
-		DefaultTableModel dtm = new DefaultTableModel(data, cabeceraTabla1) {
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-		};
-		tabla2.setModel(dtm);
+	public void loadDataTable2() {
+		Object[] rowData = {id, nombre, "1", precio};
+        dtm2.addRow(rowData);
 	}
 }
