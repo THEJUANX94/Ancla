@@ -29,6 +29,7 @@ public class HistoryPanel extends JPanel{
 		topPanel_CenterPanel = new TopPanel_BillingPanel(listener);
 		JPanel centerpanel = new JPanel();
 		add(topPanel_CenterPanel, BorderLayout.NORTH);
+		add(centerpanel, BorderLayout.CENTER);
 
         centerpanel.setBackground(Color.WHITE);
 		centerpanel.setLayout(new BorderLayout());

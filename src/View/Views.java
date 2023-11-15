@@ -1,10 +1,8 @@
 package View;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import View.Form.DialogForm;
 
 public class Views extends JFrame {
@@ -32,19 +30,27 @@ public class Views extends JFrame {
         this.getContentPane().add(dialogSeller);
     }
 
-    public String getTxtLoginUser(){
+    public String getTxtLoginUser() {
         return loginPanel.getTxtUser();
     }
 
-    public String getTxtLoginPassword(){
+    public String getTxtLoginPassword() {
         return loginPanel.getTxtPassword();
     }
 
-    public void showMessageLogin(String message){
-         JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    public void showMessageLogin(String message) {
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     public void show1(String a) {
         dialogSeller.show(a);
-      }
+    }
+
+    public void loadDataTable1(String[][] data) {
+        dialogSeller.loadDataTable1(data);
+    }
+
+    public void loadDataTable2(String[][] data) {
+        dialogSeller.loadDataTable2(data);
+    }
 }

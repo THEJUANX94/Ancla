@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 public class SellerPanel extends JPanel {
-
+  
   private static final long serialVersionUID = 1L;
   private TopPanel topPanel;
   private LeftPanel leftPanel;
@@ -28,5 +28,13 @@ public class SellerPanel extends JPanel {
 
   public void show(String a) {
     centerPanel.show(a);
+  }
+
+  public void loadDataTable1(String[][] data) {
+    centerPanel.loadDataTable1(data);
+  }
+
+  public void loadDataTable2(String[][] data) {
+    centerPanel.loadDataTable2(data);
   }
 }

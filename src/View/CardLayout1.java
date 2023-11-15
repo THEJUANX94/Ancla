@@ -37,4 +37,12 @@ public class CardLayout1 extends JPanel{
     public void show(String a) {
         cl.show(this, a);
     }
+
+    public void loadDataTable1(String[][] data) {
+		centerPanel1.loadDataTable1(data);
+	}
+
+    public void loadDataTable2(String[][] data) {
+		centerPanel1.loadDataTable2(data);
+	}
 }

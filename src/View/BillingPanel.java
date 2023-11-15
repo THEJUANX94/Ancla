@@ -25,4 +25,12 @@ public class BillingPanel extends JPanel {
 		add(centerPanel_CenterPanel, BorderLayout.CENTER);
 		add(botPanel_CenterPanel, BorderLayout.SOUTH);
 	}
+
+	public void loadDataTable1(String[][] data) {
+		centerPanel_CenterPanel.loadDataTable1(data);
+	}
+
+	public void loadDataTable2(String[][] data) {
+		centerPanel_CenterPanel.loadDataTable2(data);
+	}
 }
