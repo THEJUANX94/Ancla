@@ -85,8 +85,7 @@ public class data {
                         null,
                         dataProductos.getInt("precio"),
                         dataProductos.getInt("cantidad")));
-            }
-            while (dataProductos.next()) {
+
                 for (int i = 0; i < productos.size(); i++) {
                     if (productos.get(i).getId() == dataProductos.getInt("id_producto")) {
                         tipoAsignar = dataProductos.getInt("id_tipo");
@@ -95,13 +94,7 @@ public class data {
                                 productos.get(i).setTipo(tipos.get(j));
                             }
                         }
-                    }
-                }
-            }
 
-            while (dataProductos.next()) {
-                for (int i = 0; i < productos.size(); i++) {
-                    if (productos.get(i).getId() == dataProductos.getInt("id_producto")) {
                         tipoAsignar = dataProductos.getInt("id_marca");
                         for (int j = 0; j < marcas.size(); j++) {
                             if (tipoAsignar == marcas.get(j).getIdMarca()) {
@@ -131,8 +124,8 @@ public class data {
     private void loadMarcas(ArrayList<Marca> marcas) {
         try {
             while (dataMarca.next()) {
-                marcas.add(new Marca(dataTipo.getString("nombre_marca"),
-                        dataTipo.getInt("id_marca")));
+                marcas.add(new Marca(dataMarca.getString("nombre_marca"),
+                        dataMarca.getInt("id_marca")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -51,7 +51,7 @@ public class Controller implements ActionListener {
                 break;
             case "Boton_Facturacion":
                 views.show1("Boton_Facturacion");
-                views.loadDataTable1(inventario.obtenerFacturas());
+                views.loadDataTable1(inventario.obtenerProductos());
                 break;
             case "Boton_Gestionar":
                 views.show1("Boton_Gestionar");
