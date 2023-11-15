@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -49,7 +52,7 @@ public class CenterPanel_BillingPanel extends JPanel {
 		centerPanelLeft.setBackground(Color.WHITE);
 		tabla1 = new JTable(new Object[][] {}, cabeceraTabla1);
 		tabla1.setBackground(Color.WHITE);
-        tabla1.setForeground(Color.BLACK);
+		tabla1.setForeground(Color.BLACK);
 		tabla1.getTableHeader().setResizingAllowed(false);
 		tabla1.getTableHeader().setReorderingAllowed(false);
 
@@ -59,10 +62,30 @@ public class CenterPanel_BillingPanel extends JPanel {
 		scrollPanel1.setPreferredSize(new Dimension(680, 470));
 		centerPanelLeft.add(scrollPanel1);
 
+		tabla1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getClickCount() == 2) {
+					JTable target = (JTable) e.getSource();
+					int row = target.getSelectedRow();
+
+					// Obtener los datos de la fila seleccionada
+					String id = (String) target.getValueAt(row, 0);
+					String marca = (String) target.getValueAt(row, 1);
+					String tipo = (String) target.getValueAt(row, 2);
+					String nombre = (String) target.getValueAt(row, 3);
+					String cantidad = (String) target.getValueAt(row, 4);
+					String precio = (String) target.getValueAt(row, 5);
+
+					System.out.println(id + marca + tipo + nombre + cantidad + precio);
+				}
+			}
+		});
+
 		centerPanel.setBackground(Color.WHITE);
 		tabla2 = new JTable(new Object[][] {}, cabeceraTabla2);
 		tabla2.setBackground(Color.WHITE);
-        tabla2.setForeground(Color.BLACK);
+		tabla2.setForeground(Color.BLACK);
 		tabla2.getTableHeader().setResizingAllowed(false);
 		tabla2.getTableHeader().setReorderingAllowed(false);
 

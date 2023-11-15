@@ -10,13 +10,13 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class DeleteDialog extends JDialog{
+public class AddProductToBillDialog extends JDialog{
 
     private JTextField deletTextField;
     private JButton cancel;
     private JButton button;
     
-    public DeleteDialog(ActionListener listener){
+    public AddProductToBillDialog(ActionListener listener){
         initComponents(listener);
 		setSize(300, 200);
 		setBackground(Color.WHITE);
@@ -28,7 +28,7 @@ public class DeleteDialog extends JDialog{
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		JLabel wordlbl = new JLabel("Palabra: ");
+		JLabel wordlbl = new JLabel("Cantidad: ");
 		wordlbl.setForeground(Color.BLACK);
 		add(wordlbl, gbc);
 		deletTextField = new JTextField();
@@ -42,9 +42,9 @@ public class DeleteDialog extends JDialog{
         gbc.gridy = 1;
         add(a, gbc);
 
-        button = new JButton("Eliminar");
+        button = new JButton("Agregar");
         button.addActionListener(listener);
-        button.setActionCommand("DeleteWord");
+        button.setActionCommand("AddProductToBill");
         button.setBackground(Color.WHITE);
 		button.setForeground(Color.BLACK);
 		button.setPreferredSize(new Dimension(200, 30));
@@ -56,7 +56,6 @@ public class DeleteDialog extends JDialog{
 
         cancel = new JButton("Cancelar");
 		cancel.addActionListener(listener);
-		cancel.setActionCommand("addFrench");
 		cancel.setBackground(Color.WHITE);
 		cancel.setForeground(Color.BLACK);
 		cancel.setPreferredSize(new Dimension(200, 30));
