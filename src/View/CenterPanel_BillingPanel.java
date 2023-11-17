@@ -7,13 +7,14 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
 public class CenterPanel_BillingPanel extends JPanel {
@@ -22,12 +23,15 @@ public class CenterPanel_BillingPanel extends JPanel {
 	private JTable tabla2;
 	private DefaultTableModel dtm2;
 	public AddProductToBillDialog addProductToBillDialog;
-	private String[] cabeceraTabla1 = { "Id", "Nombre", "Marca", "Tipo", "Precio", "Stock"};
+	private String[] cabeceraTabla1 = { "Id", "Nombre", "Tipo", "Marca", "Precio", "Stock" };
 	private String[] cabeceraTabla2 = { "Id", "Nombre", "Cantidad", "Precio" };
-
 	private String id;
 	private String nombre;
 	private String precio;
+	private int stock;
+	private String[][] data;
+	private JTextField search;
+	private int count;
 
 	public CenterPanel_BillingPanel(ActionListener listener) {
 		initComponents(listener);
@@ -53,9 +57,27 @@ public class CenterPanel_BillingPanel extends JPanel {
 		labelImage.setIcon(img2);
 		topPanel.add(labelImage);
 
-		JTextField search = new JTextField();
+		search = new JTextField();
 		search.setPreferredSize(new Dimension(370, 20));
 		topPanel.add(search);
+
+		search.getDocument().addDocumentListener(new DocumentListener() {
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				obtenerDatosEnTiempoReal();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				obtenerDatosEnTiempoReal();
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				obtenerDatosEnTiempoReal();
+			}
+		});
+
 
 		centerPanelLeft.setBackground(Color.WHITE);
 		tabla1 = new JTable(new Object[][] {}, cabeceraTabla1);
@@ -83,6 +105,7 @@ public class CenterPanel_BillingPanel extends JPanel {
 					String marca = (String) target.getValueAt(row, 2);
 					String tipo = (String) target.getValueAt(row, 3);
 					precio = (String) target.getValueAt(row, 4);
+					stock = Integer.parseInt((String) target.getValueAt(row, 5));
 
 					addProductToBillDialog.setVisible(true);
 					addProductToBillDialog.setDatos(id + " " + nombre + " " + marca + " " + tipo + " " + precio + " ");
@@ -113,6 +136,7 @@ public class CenterPanel_BillingPanel extends JPanel {
 	}
 
 	public void loadDataTable1(String[][] data) {
+		this.data = data;
 		DefaultTableModel dtm = new DefaultTableModel(data, cabeceraTabla1) {
 			@Override
 			public boolean isCellEditable(int row, int column) {
@@ -123,7 +147,38 @@ public class CenterPanel_BillingPanel extends JPanel {
 	}
 
 	public void loadDataTable2() {
-		Object[] rowData = {id, nombre, "1", precio};
-        dtm2.addRow(rowData);
+		int quantity = getQuantity();
+		if (quantity != 0) {
+			Object[] rowData = { id, nombre, quantity, Integer.parseInt(precio) * quantity };
+			dtm2.addRow(rowData);
+			addProductToBillDialog.setVisible(false);
+		}
+	}
+
+	public int getQuantity() {
+		return addProductToBillDialog.getQuantity(stock);
+	}
+
+	private void obtenerDatosEnTiempoReal() {
+		String texto = search.getText();
+		if (texto.equals("")) {
+			loadDataTable1(data);
+		} else {
+			count = 0;
+			String[][] data2 = new String[data.length][6];
+			for (int i = 0; i < data.length; i++) {
+				if (data[i][1].contains(texto)) {
+					data2[count] = data[i];
+					count++;
+				}
+			}
+			DefaultTableModel dtm = new DefaultTableModel(data2, cabeceraTabla1) {
+				@Override
+				public boolean isCellEditable(int row, int column) {
+					return false;
+				}
+			};
+			tabla1.setModel(dtm);
+		}
 	}
 }

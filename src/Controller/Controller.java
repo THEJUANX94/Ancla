@@ -55,6 +55,7 @@ public class Controller implements ActionListener {
                 break;
             case "Boton_Gestionar":
                 views.show1("Boton_Gestionar");
+                views.loadDataTableManage(inventario.obtenerProductos());
                 break;
             case "Salir":
                 views.loginPanel.setVisible(false);

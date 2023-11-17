@@ -7,9 +7,9 @@ import javax.swing.JPanel;
 
 public class BillingPanel extends JPanel {
 
-	private TopPanel_BillingPanel topPanel_CenterPanel;
-	private CenterPanel_BillingPanel centerPanel_CenterPanel;
-	private BotPanel_BillingPanel botPanel_CenterPanel;
+	private TopPanel_BillingPanel topPanel_BillingPanel;
+	private CenterPanel_BillingPanel centerPanel_BillingPanel;
+	private BotPanel_BillingPanel botPanel_BillingPanel;
 
 	public BillingPanel(ActionListener listener) {
 		initComponents(listener);
@@ -18,19 +18,23 @@ public class BillingPanel extends JPanel {
 	private void initComponents(ActionListener listener) {
 		setLayout(new BorderLayout());
 		setBackground(Color.WHITE);
-		topPanel_CenterPanel = new TopPanel_BillingPanel(listener);
-		centerPanel_CenterPanel = new CenterPanel_BillingPanel(listener);
-		botPanel_CenterPanel = new BotPanel_BillingPanel(listener);
-		add(topPanel_CenterPanel, BorderLayout.NORTH);
-		add(centerPanel_CenterPanel, BorderLayout.CENTER);
-		add(botPanel_CenterPanel, BorderLayout.SOUTH);
+		topPanel_BillingPanel = new TopPanel_BillingPanel(listener);
+		centerPanel_BillingPanel = new CenterPanel_BillingPanel(listener);
+		botPanel_BillingPanel = new BotPanel_BillingPanel(listener);
+		add(topPanel_BillingPanel, BorderLayout.NORTH);
+		add(centerPanel_BillingPanel, BorderLayout.CENTER);
+		add(botPanel_BillingPanel, BorderLayout.SOUTH);
 	}
 
 	public void loadDataTable1(String[][] data) {
-		centerPanel_CenterPanel.loadDataTable1(data);
+		centerPanel_BillingPanel.loadDataTable1(data);
 	}
 
 	public void loadDataTable2() {
-		centerPanel_CenterPanel.loadDataTable2();
+		centerPanel_BillingPanel.loadDataTable2();
+	}
+
+	public int getQuantity(){
+		return centerPanel_BillingPanel.getQuantity();
 	}
 }

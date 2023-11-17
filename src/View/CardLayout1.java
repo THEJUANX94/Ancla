@@ -45,4 +45,12 @@ public class CardLayout1 extends JPanel{
     public void loadDataTable2() {
 		centerPanel1.loadDataTable2();
 	}
+
+    public void loadDataTableManage(String[][] data) {
+        centerPanel2.loadDataTable(data);
+    }
+
+    public int getQuantity(){
+        return centerPanel1.getQuantity();
+    }
 }

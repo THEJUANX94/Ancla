@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -8,13 +9,14 @@ import View.Form.DialogForm;
 public class Views extends JFrame {
 
     public LoginPanel loginPanel;
-    public SellerPanel dialogSeller;
+    public SellerPanel sellerPanel;
     public DialogForm dialogForm;
 
     public Views(ActionListener listener) {
         super("Ancla");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1280, 720);
+        this.setBackground(Color.WHITE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         initComponents(listener);
@@ -23,11 +25,11 @@ public class Views extends JFrame {
 
     private void initComponents(ActionListener listener) {
         loginPanel = new LoginPanel(listener);
-        dialogSeller = new SellerPanel(listener);
+        sellerPanel = new SellerPanel(listener);
         dialogForm = new DialogForm(listener);
         loginPanel.setVisible(true);
         dialogForm.setVisible(false);
-        this.getContentPane().add(dialogSeller);
+        this.getContentPane().add(sellerPanel);
     }
 
     public String getTxtLoginUser() {
@@ -43,14 +45,22 @@ public class Views extends JFrame {
     }
 
     public void show1(String a) {
-        dialogSeller.show(a);
+        sellerPanel.show(a);
     }
 
     public void loadDataTable1(String[][] data) {
-        dialogSeller.loadDataTable1(data);
+        sellerPanel.loadDataTable1(data);
     }
 
     public void loadDataTable2() {
-        dialogSeller.loadDataTable2();
+        sellerPanel.loadDataTable2();
+    }
+
+    public void loadDataTableManage(String[][] data) {
+        sellerPanel.loadDataTableManage(data);   
+    }
+
+    public int getQuantity(){
+        return sellerPanel.getQuantity();
     }
 }

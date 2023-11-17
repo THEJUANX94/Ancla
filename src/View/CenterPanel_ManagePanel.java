@@ -11,11 +11,17 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.TableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class CenterPanel_ManagePanel extends JPanel {
 
 	private JTable tabla1;
+	private String[] cabeceraTabla1 = { "Id", "Nombre", "Tipo", "Marca", "Precio", "Stock" };
+	private JTextField search;
+	private String[][] data;
+	private int count = 0;
 
 	public CenterPanel_ManagePanel(ActionListener listener) {
 		initComponents(listener);
@@ -39,24 +45,31 @@ public class CenterPanel_ManagePanel extends JPanel {
 		labelImage.setIcon(img2);
 		topPanel.add(labelImage);
 
-		JTextField search = new JTextField();
+		search = new JTextField();
 		search.setPreferredSize(new Dimension(370, 20));
 		topPanel.add(search);
 
+		search.getDocument().addDocumentListener(new DocumentListener() {
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				obtenerDatosEnTiempoReal();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				obtenerDatosEnTiempoReal();
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				obtenerDatosEnTiempoReal();
+			}
+		});
+
 		centerPanelLeft.setBackground(Color.WHITE);
-		String[] cabeceraTabla1 = { "Id", "Marca", "Tipo", "Nombre", "Stock", "Precio" };
 		tabla1 = new JTable(new Object[][] {}, cabeceraTabla1);
-		tabla1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tabla1.getTableHeader().setResizingAllowed(false);
 		tabla1.getTableHeader().setReorderingAllowed(false);
-
-		TableColumnModel columnModelTable1 = tabla1.getColumnModel();
-		columnModelTable1.getColumn(0).setPreferredWidth(70);
-		columnModelTable1.getColumn(1).setPreferredWidth(240);
-		columnModelTable1.getColumn(2).setPreferredWidth(240);
-		columnModelTable1.getColumn(3).setPreferredWidth(340);
-		columnModelTable1.getColumn(4).setPreferredWidth(110);
-		columnModelTable1.getColumn(5).setPreferredWidth(100);
 
 		centerPanelLeft.add(tabla1);
 
@@ -64,6 +77,39 @@ public class CenterPanel_ManagePanel extends JPanel {
 		scrollPanel1.setPreferredSize(new Dimension(1100, 470));
 		centerPanelLeft.add(scrollPanel1);
 	}
+
+	public void loadDataTable(String[][] data) {
+		this.data = data;
+		DefaultTableModel dtm = new DefaultTableModel(data, cabeceraTabla1) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		tabla1.setModel(dtm);
+	}
+
+	private void obtenerDatosEnTiempoReal() {
+		String texto = search.getText();
+		if (texto.equals("")) {
+			loadDataTable(data);
+		} else {
+			count = 0;
+			String[][] data2 = new String[data.length][6];
+			for (int i = 0; i < data.length; i++) {
+				if (data[i][1].contains(texto)) {
+					data2[count] = data[i];
+					count++;
+				}
+			}
+			DefaultTableModel dtm = new DefaultTableModel(data2, cabeceraTabla1) {
+				@Override
+				public boolean isCellEditable(int row, int column) {
+					return false;
+				}
+			};
+			tabla1.setModel(dtm);
+		}
+	}
+	
 }
-
-

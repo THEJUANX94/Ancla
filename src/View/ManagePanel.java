@@ -26,4 +26,8 @@ public class ManagePanel extends JPanel{
 		add(centerPanel_ManagePanel, BorderLayout.CENTER);
 		add(botPanel_ManagePanel, BorderLayout.SOUTH);
     }
+
+    public void loadDataTable(String[][] data) {
+        centerPanel_ManagePanel.loadDataTable(data);
+    }
 }
