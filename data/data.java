@@ -229,7 +229,7 @@ public class data {
 
                     stProductos = connect
                             .prepareStatement("INSERT INTO productos values (" + id_producto + ", " + id_tipo + ", "
-                                    + id_marca + ", " + nombre_producto + ", " + precio + ", " + cantidad + ")");
+                                    + id_marca + ", '" + nombre_producto + "', " + precio + ", " + cantidad + ")");
                     stProductos.executeUpdate();
                 }
             }

@@ -2,8 +2,11 @@ package View;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import View.Form.ChooseImage;
 import View.Form.DialogForm;
 
 public class Views extends JFrame {
@@ -11,6 +14,7 @@ public class Views extends JFrame {
     public LoginPanel loginPanel;
     public SellerPanel sellerPanel;
     public DialogForm dialogForm;
+    public ChooseImage chooseImage;
 
     public Views(ActionListener listener) {
         super("Ancla");
@@ -27,8 +31,11 @@ public class Views extends JFrame {
         loginPanel = new LoginPanel(listener);
         sellerPanel = new SellerPanel(listener);
         dialogForm = new DialogForm(listener);
+        chooseImage = new ChooseImage(listener);
         loginPanel.setVisible(true);
         dialogForm.setVisible(false);
+        this.getContentPane().add(sellerPanel);
+        chooseImage.setVisible(false);
         this.getContentPane().add(sellerPanel);
     }
 
@@ -63,4 +70,32 @@ public class Views extends JFrame {
     public int getQuantity(){
         return sellerPanel.getQuantity();
     }
+
+    public void obtainedTypes(String[] types){
+        dialogForm.obtainedTypes(types);
+    }
+
+    public void obtainedMarks(String[] marks){
+        dialogForm.obtainedMarks(marks);
+    }
+
+    public String newName() {
+        return dialogForm.newName();
+    }
+
+    public String selectedType() {
+        return dialogForm.selectedType();
+    }
+
+    public String selectedMark() {
+        return dialogForm.selectedMark();
+    }
+
+    public int selectedPrice(){
+        return dialogForm.selectedPrice();
+    }
+
+    public void setProductImage(String path){
+        dialogForm.setProductImage(path);
+      }
 }
