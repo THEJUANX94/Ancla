@@ -1,7 +1,9 @@
 package Models;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import data.data;
 
 public class Inventario {
 
@@ -9,12 +11,14 @@ public class Inventario {
 	private ArrayList<Tipo> tipos;
 	private ArrayList<Marca> marcas;
 	private ArrayList<Factura> facturas;
+	private data data;
 
-	public Inventario() {
+	public Inventario() throws SQLException {
 		productos = new ArrayList<Producto>();
 		tipos = new ArrayList<Tipo>();
 		marcas = new ArrayList<Marca>();
 		facturas = new ArrayList<Factura>();
+		data = new data();
 	}
 	
 	public ArrayList<Producto> getProductos() {
@@ -46,6 +50,7 @@ public class Inventario {
 		ArrayList<Integer> idUsados = new ArrayList<Integer>();
 		productos.forEach(x -> idUsados.add(x.getId()));
 		productos.add(new Producto(idDisponible(idUsados), nombre, buscarTipo(tipo), buscarMarca(marca), precio, cantidad));
+		data.createProducto(productos, idDisponible(idUsados));
 	}
 
 	// metodo para mostrar los productos en la vista

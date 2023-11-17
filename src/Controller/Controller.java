@@ -68,11 +68,25 @@ public class Controller implements ActionListener {
                 views.show1("Pestaña_Historial");
                 break;
             case "Crear_producto":
+                views.obtainedTypes(inventario.obtenerTipos());
+                views.obtainedMarks(inventario.obtenerMarcas());
                 views.dialogForm.setVisible(true);
                 break;
             case "AddProductToBill":
                 views.loadDataTable2();
                 break;
+            case "Aceptar creacion Producto":
+                String nombre = views.newName();
+                String tipo = views.selectedType();
+                String marca = views.selectedMark();
+                int precio = views.selectedPrice();
+                inventario.agregarProducto(nombre, tipo, marca, precio, 0);
+                views.dialogForm.setVisible(false);
+                break;
+            case "Cargar Imagen":
+                views.chooseImage.setVisible(true);
+                views.setProductImage(views.chooseImage.selection());
+                views.chooseImage.setVisible(false);
             default:
                 break;
         }
