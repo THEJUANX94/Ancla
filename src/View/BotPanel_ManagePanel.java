@@ -30,15 +30,24 @@ public class BotPanel_ManagePanel extends JPanel {
         cleanButton.setBorderPainted(false);
         add(cleanButton);
 
-        acceptButton = new JButton("Crear Nuevo Producto");
+        acceptButton = new JButton();
         acceptButton.setPreferredSize(new Dimension(170, 30));
         acceptButton.setBackground(buttonColor);
         acceptButton.setForeground(letra);
         acceptButton.setSelected(false);
         acceptButton.setFocusable(false);
         acceptButton.setBorderPainted(false);
-        acceptButton.setActionCommand("Crear_producto");
         acceptButton.addActionListener(listener);
         add(acceptButton);
+    }
+
+    public void setCleanButton(String name, String comand){
+        cleanButton.setText(name);
+        cleanButton.setActionCommand(comand);
+    }
+
+    public void setAcceptButton(String name, String comand){
+        acceptButton.setText(name);
+        acceptButton.setActionCommand(comand);
     }
 }

@@ -6,22 +6,24 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-public class ManagePanel extends JPanel{
+public class ManageProductPanel extends JPanel{
 
     private TopPanel_ManagePanel topPanel_ManagePanel;
-    private CenterPanel_ManagePanel centerPanel_ManagePanel;
+    private CenterPanel_ManageProductPanel centerPanel_ManagePanel;
     private BotPanel_ManagePanel botPanel_ManagePanel;
 
-    public ManagePanel(ActionListener listener){
+    public ManageProductPanel(ActionListener listener){
         initComponents(listener);
     }
     
     public void initComponents(ActionListener listener){
         setBackground(Color.WHITE);
         setLayout(new BorderLayout());
-		topPanel_ManagePanel = new TopPanel_ManagePanel();
-		centerPanel_ManagePanel = new CenterPanel_ManagePanel(listener);
+		topPanel_ManagePanel = new TopPanel_ManagePanel(listener);
+		centerPanel_ManagePanel = new CenterPanel_ManageProductPanel(listener);
 		botPanel_ManagePanel = new BotPanel_ManagePanel(listener);
+        botPanel_ManagePanel.setAcceptButton("Crear Producto", "Crear_producto");
+        botPanel_ManagePanel.setCleanButton("Modificar Producto", "TOOL_TIP_TEXT_KEY");
 		add(topPanel_ManagePanel, BorderLayout.NORTH);
 		add(centerPanel_ManagePanel, BorderLayout.CENTER);
 		add(botPanel_ManagePanel, BorderLayout.SOUTH);

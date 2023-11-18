@@ -136,6 +136,15 @@ public class Inventario {
 		}
 		return tipos;
 	}
+
+	public String[][] obtenerMatrizTipos() {
+		String[][] tipos = new String[this.tipos.size()][2];
+		for (int i = 0; i < this.tipos.size(); i++) {
+			tipos[i][0] = String.valueOf(this.tipos.get(i).getIdTipo());
+			tipos[i][1] = this.tipos.get(i).getNombre();
+		}
+		return tipos;
+	}
 	
 	public void agregarMarca(String nombre) {
 		ArrayList<Integer> idUsados = new ArrayList<Integer>();
@@ -149,6 +158,15 @@ public class Inventario {
 		String[] marcas = new String[this.marcas.size()];
 		for (int i = 0; i < this.marcas.size(); i++) {
 			marcas[i] = this.marcas.get(i).getNombre();
+		}
+		return marcas;
+	}
+
+	public String[][] obtenerMatrizMarcas() {
+		String[][] marcas = new String[this.marcas.size()][2];
+		for (int i = 0; i < this.marcas.size(); i++) {
+			marcas[i][0] = String.valueOf(this.marcas.get(i).getIdMarca());
+			marcas[i][1] = this.marcas.get(i).getNombre();
 		}
 		return marcas;
 	}

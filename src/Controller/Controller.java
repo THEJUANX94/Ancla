@@ -63,10 +63,23 @@ public class Controller implements ActionListener {
                 break;
             case "Pestaña_Facturacion":
                 views.show1("Boton_Facturacion");
-                views.loadDataTable1(inventario.obtenerFacturas());
+                views.loadDataTable1(inventario.obtenerProductos());
                 break;
             case "Pestaña_Historial":
                 views.show1("Pestaña_Historial");
+                views.loadDataHistory(inventario.obtenerFacturas());
+                break;
+            case "Pestaña_Gestionar_Producto":
+                views.show1("Boton_Gestionar");
+                views.loadDataTableManage(inventario.obtenerProductos());
+                break;
+            case "Pestaña_Gestionar_Tipo":
+                views.show1("Pestaña_GestionarTipo");
+                views.loadDataTableType(inventario.obtenerMatrizTipos());
+                break;
+            case "Pestaña_Gestionar_Marca":
+                views.show1("Pestaña_GestionarMarca");
+                views.loadDataTableBrand(inventario.obtenerMatrizMarcas());
                 break;
             case "Crear_producto":
                 views.obtainedTypes(inventario.obtenerTipos());
@@ -97,9 +110,14 @@ public class Controller implements ActionListener {
                 break;
             case "Aceptar creacion Marca":
                 inventario.agregarMarca(views.newMarkName());
+                views.dialogMarkForm.setVisible(false);
                 break;
             case "Aceptar creacion Tipo":
                 inventario.agregarTipo((views.newTypeName()));
+                views.dialogTypeForm.setVisible(false);
+                break;
+            case "Buscar_Fecha":
+                views.getDate();
                 break;
             default:
                 break;

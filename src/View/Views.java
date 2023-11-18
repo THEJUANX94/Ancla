@@ -39,7 +39,6 @@ public class Views extends JFrame {
         dialogMarkForm.setVisible(false);
         dialogTypeForm.setVisible(false);
         this.getContentPane().add(sellerPanel);
-        this.getContentPane().add(sellerPanel);
     }
 
     public String getTxtLoginUser() {
@@ -68,6 +67,22 @@ public class Views extends JFrame {
 
     public void loadDataTableManage(String[][] data) {
         sellerPanel.loadDataTableManage(data);   
+    }
+
+    public void loadDataTableBrand(String[][] data) {
+        sellerPanel.loadDataTableBrand(data);
+    }
+
+    public void loadDataTableType(String[][] data) {
+        sellerPanel.loadDataTableTypes(data);
+    }
+
+    public void loadDataHistory(String[][] data) {
+        sellerPanel.loadDataHistory(data);
+    }
+
+    public void getDate() {
+        sellerPanel.getDate();
     }
 
     public int getQuantity(){

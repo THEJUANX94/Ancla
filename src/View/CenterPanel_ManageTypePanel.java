@@ -15,15 +15,15 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-public class CenterPanel_ManagePanel extends JPanel {
+public class CenterPanel_ManageTypePanel extends JPanel {
 
 	private JTable tabla1;
-	private String[] cabeceraTabla1 = { "Id", "Nombre", "Tipo", "Marca", "Precio", "Stock" };
+	private String[] cabeceraTabla1 = { "Id", "Nombre"};
 	private JTextField search;
 	private String[][] data;
 	private int count = 0;
 
-	public CenterPanel_ManagePanel(ActionListener listener) {
+	public CenterPanel_ManageTypePanel(ActionListener listener) {
 		initComponents(listener);
 	}
 
@@ -74,6 +74,7 @@ public class CenterPanel_ManagePanel extends JPanel {
 		centerPanelLeft.add(tabla1);
 
 		JScrollPane scrollPanel1 = new JScrollPane(tabla1);
+		scrollPanel1.setBackground(Color.WHITE);
 		scrollPanel1.setPreferredSize(new Dimension(1100, 470));
 		centerPanelLeft.add(scrollPanel1);
 	}
@@ -95,7 +96,7 @@ public class CenterPanel_ManagePanel extends JPanel {
 			loadDataTable(data);
 		} else {
 			count = 0;
-			String[][] data2 = new String[data.length][6];
+			String[][] data2 = new String[data.length][cabeceraTabla1.length];
 			for (int i = 0; i < data.length; i++) {
 				if (data[i][1].contains(texto)) {
 					data2[count] = data[i];
@@ -113,3 +114,4 @@ public class CenterPanel_ManagePanel extends JPanel {
 	}
 	
 }
+

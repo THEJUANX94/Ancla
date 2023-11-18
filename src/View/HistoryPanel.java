@@ -3,74 +3,107 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.TableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import com.toedter.calendar.JDateChooser;
 
-public class HistoryPanel extends JPanel{
+public class HistoryPanel extends JPanel {
 
-    private JTable tabla1;
+	private JTable tabla1;
 	private TopPanel_BillingPanel topPanel_CenterPanel;
-    
-    public HistoryPanel(ActionListener listener){
-        initComponents(listener);
-    }
+	private String[] cabeceraTabla1 = { "Id", "Fecha", "Valor" };
+	private int count;
+	private JDateChooser dateChooser;
+	private JButton searchButton;
+	private String[][] data;
 
-    private void initComponents(ActionListener listener) {
-        setBackground(Color.WHITE);
+	public HistoryPanel(ActionListener listener) {
+		initComponents(listener);
+	}
+
+	private void initComponents(ActionListener listener) {
+		setBackground(Color.WHITE);
 		setLayout(new BorderLayout());
 		topPanel_CenterPanel = new TopPanel_BillingPanel(listener);
 		JPanel centerpanel = new JPanel();
 		add(topPanel_CenterPanel, BorderLayout.NORTH);
 		add(centerpanel, BorderLayout.CENTER);
 
-        centerpanel.setBackground(Color.WHITE);
+		centerpanel.setBackground(Color.WHITE);
 		centerpanel.setLayout(new BorderLayout());
 		JPanel topPanel = new JPanel();
-		JPanel centerPanelLeft = new JPanel();
 		JPanel centerPanel = new JPanel();
-		centerpanel.add(centerPanelLeft, BorderLayout.WEST);
+		centerpanel.add(centerPanel, BorderLayout.WEST);
 		centerpanel.add(topPanel, BorderLayout.NORTH);
 		centerpanel.add(centerPanel, BorderLayout.CENTER);
 
+		dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("yyyy/MM/dd");
+		dateChooser.setBackground(Color.WHITE);
+		dateChooser.setForeground(Color.BLACK);
+
+		searchButton = new JButton("Buscar");
+		searchButton.addActionListener(listener);
+		searchButton.setActionCommand("Buscar_Fecha");
+        searchButton.setPreferredSize(new Dimension(170, 30));
+        searchButton.setBackground( new Color(53, 152, 200));
+        searchButton.setForeground(Color.WHITE);
+        searchButton.setSelected(false);
+        searchButton.setFocusable(false);
+        searchButton.setBorderPainted(false);
+
 		topPanel.setBackground(Color.WHITE);
-		Image img = new ImageIcon("Images/logoSearch.png").getImage();
-		ImageIcon img2 = new ImageIcon(img.getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-		JLabel labelImage = new JLabel();
-		labelImage = new JLabel();
-		labelImage.setIcon(img2);
-		topPanel.add(labelImage);
+		topPanel.add(dateChooser);
+		topPanel.add(searchButton);
 
-		JTextField search = new JTextField();
-		search.setPreferredSize(new Dimension(370, 20));
-		topPanel.add(search);
-
-		centerPanelLeft.setBackground(Color.WHITE);
-		String[] cabeceraTabla1 = { "Id", "Marca", "Tipo", "Nombre", "Stock", "Precio" };
+		centerPanel.setBackground(Color.WHITE);
 		tabla1 = new JTable(new Object[][] {}, cabeceraTabla1);
-		tabla1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tabla1.getTableHeader().setResizingAllowed(false);
 		tabla1.getTableHeader().setReorderingAllowed(false);
 
-		TableColumnModel columnModelTable1 = tabla1.getColumnModel();
-		columnModelTable1.getColumn(0).setPreferredWidth(70);
-		columnModelTable1.getColumn(1).setPreferredWidth(240);
-		columnModelTable1.getColumn(2).setPreferredWidth(240);
-		columnModelTable1.getColumn(3).setPreferredWidth(340);
-		columnModelTable1.getColumn(4).setPreferredWidth(110);
-		columnModelTable1.getColumn(5).setPreferredWidth(100);
-
-		centerPanelLeft.add(tabla1);
+		centerPanel.add(tabla1);
 
 		JScrollPane scrollPanel1 = new JScrollPane(tabla1);
+		scrollPanel1.setBackground(Color.WHITE);
 		scrollPanel1.setPreferredSize(new Dimension(1100, 470));
-		centerPanelLeft.add(scrollPanel1);
-    }
+		centerPanel.add(scrollPanel1);
+	}
+
+	public void loadDataHistory(String[][] data) {
+		this.data = data;
+		DefaultTableModel dtm = new DefaultTableModel(data, cabeceraTabla1) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		tabla1.setModel(dtm);
+	}
+
+	public void getDate() {
+		String texto = String.valueOf(dateChooser.getDate());
+		if (texto.equals("")) {
+			loadDataHistory(data);
+		} else {
+			count = 0;
+			String[][] data2 = new String[data.length][cabeceraTabla1.length];
+			for (int i = 0; i < data.length; i++) {
+				if (data[i][1].contains(texto)) {
+					data2[count] = data[i];
+					count++;
+				}
+			}
+			DefaultTableModel dtm = new DefaultTableModel(data2, cabeceraTabla1) {
+				@Override
+				public boolean isCellEditable(int row, int column) {
+					return false;
+				}
+			};
+			tabla1.setModel(dtm);
+		}
+	}
 }

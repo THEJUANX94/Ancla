@@ -9,9 +9,11 @@ import javax.swing.JPanel;
 public class CardLayout1 extends JPanel{
 
     private BillingPanel centerPanel1;
-    private ManagePanel centerPanel2;
+    private ManageProductPanel centerPanel2;
     private HistoryPanel historyPanel;
     private CardEmpty centerPanelVacio;
+    private ManageBrandPanel manageBrandPanel;
+    private ManageTypePanel manageTypePanel;
 
     private CardLayout cl;
     
@@ -24,14 +26,19 @@ public class CardLayout1 extends JPanel{
         this.setLayout(new CardLayout());
         cl = (CardLayout) this.getLayout();
         centerPanel1 = new BillingPanel(listener);
-        centerPanel2 = new ManagePanel(listener);
+        centerPanel2 = new ManageProductPanel(listener);
         historyPanel = new HistoryPanel(listener);
+        manageBrandPanel = new ManageBrandPanel(listener);
+        manageTypePanel = new ManageTypePanel(listener);
         centerPanelVacio = new CardEmpty();
 
         add(centerPanelVacio);
         add(centerPanel1, "Boton_Facturacion");
         add(centerPanel2, "Boton_Gestionar");
         add(historyPanel, "Pestaña_Historial");
+        add(manageBrandPanel, "Pestaña_GestionarMarca");
+        add(manageTypePanel, "Pestaña_GestionarTipo");
+
     }
 
     public void show(String a) {
@@ -48,6 +55,22 @@ public class CardLayout1 extends JPanel{
 
     public void loadDataTableManage(String[][] data) {
         centerPanel2.loadDataTable(data);
+    }
+
+    public void loadDataTableBrand(String[][] data) {
+        manageBrandPanel.loadDataTable(data);
+    }
+
+    public void loadDataTableTypes(String[][] data) {
+        manageTypePanel.loadDataTable(data);
+    }
+
+    public void loadDataHistory(String[][] data) {
+        historyPanel.loadDataHistory(data);
+    }
+
+    public void getDate() {
+        historyPanel.getDate();
     }
 
     public int getQuantity(){

@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 public class SellerPanel extends JPanel {
-  
+
   private static final long serialVersionUID = 1L;
   private TopPanel topPanel;
   private LeftPanel leftPanel;
@@ -39,10 +39,26 @@ public class SellerPanel extends JPanel {
   }
 
   public void loadDataTableManage(String[][] data) {
-        centerPanel.loadDataTableManage(data);
+    centerPanel.loadDataTableManage(data);
   }
 
-  public int getQuantity(){
+  public void loadDataTableBrand(String[][] data) {
+    centerPanel.loadDataTableBrand(data);
+  }
+
+  public void loadDataTableTypes(String[][] data) {
+    centerPanel.loadDataTableTypes(data);
+  }
+
+  public void loadDataHistory(String[][] data) {
+    centerPanel.loadDataHistory(data);
+  }
+
+  public void getDate() {
+    centerPanel.getDate();
+}
+
+  public int getQuantity() {
     return centerPanel.getQuantity();
   }
 }
