@@ -1,4 +1,4 @@
-package View.Form;
+package View.Form.ProductForm;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -6,17 +6,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class RigthBotFormPanel extends JPanel{
+public class BotFormPanel extends JPanel{
 
     private JButton bttCancel;
     private JButton bttAcccept;
 
-    public RigthBotFormPanel(ActionListener listener){
+    public BotFormPanel(ActionListener listener){
         initComponents(listener);
     }
 
     private void initComponents(ActionListener listener) {
         bttCancel = new JButton("Cancelar");
+        bttCancel.setActionCommand("Cancelar");
+        bttCancel.addActionListener(listener);
         bttCancel.setBackground(new Color(53,152,200));
         bttCancel.setForeground(Color.WHITE);
         add(bttCancel);

@@ -1,4 +1,4 @@
-package View.Form;
+package View.Form.MarkForm;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -8,8 +8,9 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
 
-public class LeftFormPanel extends JPanel{
+public class TopMarkFormPanel extends JPanel{
 
     private JLabel lblName;
     private JLabel lblType;
@@ -20,8 +21,9 @@ public class LeftFormPanel extends JPanel{
     private JComboBox<String> cbType;
     private JComboBox<String> cbMark;
 
-    public LeftFormPanel(ActionListener listener){
-        this.setLayout(new GridLayout(8, 1));
+    public TopMarkFormPanel(ActionListener listener){
+        this.setLayout(new GridLayout(4, 2, 45, 45));
+        this.setBorder(new TitledBorder("Info Producto"));
         initComponents(listener);
     }
 

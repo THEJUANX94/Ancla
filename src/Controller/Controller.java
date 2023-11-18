@@ -84,10 +84,6 @@ public class Controller implements ActionListener {
                 inventario.agregarProducto(nombre, tipo, marca, precio, 0);
                 views.dialogForm.setVisible(false);
                 break;
-            case "Cargar Imagen":
-                views.chooseImage.setVisible(true);
-                views.setProductImage(views.chooseImage.selection());
-                views.chooseImage.setVisible(false);
             default:
                 break;
         }
