@@ -5,14 +5,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import View.Form.ProductForm.DialogForm;
+import View.Form.MarkForm.DialogMarkForm;
+import View.Form.TypeForm.DialogTypeForm;
 
 public class Views extends JFrame {
 
     public LoginPanel loginPanel;
     public SellerPanel sellerPanel;
     public DialogForm dialogForm;
+    public DialogMarkForm dialogMarkForm;
+    public DialogTypeForm dialogTypeForm;
 
     public Views(ActionListener listener) {
         super("Ancla");
@@ -29,8 +32,12 @@ public class Views extends JFrame {
         loginPanel = new LoginPanel(listener);
         sellerPanel = new SellerPanel(listener);
         dialogForm = new DialogForm(listener);
+        dialogMarkForm = new DialogMarkForm(listener);
+        dialogTypeForm = new DialogTypeForm(listener);        
         loginPanel.setVisible(true);
         dialogForm.setVisible(false);
+        dialogMarkForm.setVisible(false);
+        dialogTypeForm.setVisible(false);
         this.getContentPane().add(sellerPanel);
         this.getContentPane().add(sellerPanel);
     }
@@ -89,5 +96,13 @@ public class Views extends JFrame {
 
     public int selectedPrice(){
         return dialogForm.selectedPrice();
+    }
+
+    public String newMarkName(){
+        return dialogMarkForm.newMarkName();
+    }
+
+    public String newTypeName(){
+        return dialogTypeForm.newTypeName();
     }
 }

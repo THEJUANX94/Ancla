@@ -26,7 +26,7 @@ public class BotMarkFormPanel extends JPanel{
         bttAcccept = new JButton("Aceptar");
         bttAcccept.setBackground(new Color(53,152,200));
         bttAcccept.setForeground(Color.WHITE);
-        bttAcccept.setActionCommand("Aceptar creacion Producto");
+        bttAcccept.setActionCommand("Aceptar creacion Marca");
         bttAcccept.addActionListener(listener);
         add(bttAcccept);
     }

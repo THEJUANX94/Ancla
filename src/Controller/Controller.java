@@ -73,6 +73,12 @@ public class Controller implements ActionListener {
                 views.obtainedMarks(inventario.obtenerMarcas());
                 views.dialogForm.setVisible(true);
                 break;
+            case "Crear_Tipo":
+                views.dialogTypeForm.setVisible(true);
+                break;
+            case "Crear_Marca":
+                views.dialogMarkForm.setVisible(true);
+                break;
             case "AddProductToBill":
                 views.loadDataTable2();
                 break;
@@ -83,6 +89,17 @@ public class Controller implements ActionListener {
                 int precio = views.selectedPrice();
                 inventario.agregarProducto(nombre, tipo, marca, precio, 0);
                 views.dialogForm.setVisible(false);
+                break;
+            case "Cancelar":
+                views.dialogForm.setVisible(false);
+                views.dialogMarkForm.setVisible(false);
+                views.dialogTypeForm.setVisible(false);
+                break;
+            case "Aceptar creacion Marca":
+                inventario.agregarMarca(views.newMarkName());
+                break;
+            case "Aceptar creacion Tipo":
+                inventario.agregarTipo((views.newTypeName()));
                 break;
             default:
                 break;

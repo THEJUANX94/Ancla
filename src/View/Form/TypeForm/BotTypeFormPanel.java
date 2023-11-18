@@ -26,7 +26,7 @@ public class BotTypeFormPanel extends JPanel{
         bttAcccept = new JButton("Aceptar");
         bttAcccept.setBackground(new Color(53,152,200));
         bttAcccept.setForeground(Color.WHITE);
-        bttAcccept.setActionCommand("Aceptar creacion Producto");
+        bttAcccept.setActionCommand("Aceptar creacion Tipo");
         bttAcccept.addActionListener(listener);
         add(bttAcccept);
     }

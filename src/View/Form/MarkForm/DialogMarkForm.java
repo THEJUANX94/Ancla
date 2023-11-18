@@ -13,7 +13,7 @@ public class DialogMarkForm extends JDialog {
 
   public DialogMarkForm(ActionListener listener) {
     this.setLayout(new BorderLayout());
-    this.setSize(750, 630);
+    this.setSize(650, 430);
     this.setLocationRelativeTo(null);
     this.setResizable(false);
     initComponents(listener);
@@ -27,27 +27,7 @@ public class DialogMarkForm extends JDialog {
     getContentPane().add(botFormPanel, BorderLayout.SOUTH);
   }
 
-  public void obtainedTypes(String[] types){
-    topFormPanel.obtainedTypes(types);
-  }
-
-  public void obtainedMarks(String[] marks){
-    topFormPanel.obtainedmarks(marks);
-  }
-
-  public String newName() {
+  public String newMarkName() {
     return topFormPanel.newName();
-  }
-
-  public String selectedType() {
-    return topFormPanel.selectedType();
-  }
-
-  public String selectedMark() {
-    return topFormPanel.selectedMark();
-  }
-
-  public int selectedPrice(){
-    return topFormPanel.selectedPrice();
   }
 }

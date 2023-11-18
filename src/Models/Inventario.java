@@ -125,6 +125,7 @@ public class Inventario {
 		ArrayList<Integer> idUsados = new ArrayList<Integer>();
 		tipos.forEach(x -> idUsados.add(x.getIdTipo()));
 		tipos.add(new Tipo(nombre.toUpperCase(), idDisponible(idUsados)));
+		data.createTipos(tipos, idDisponible(idUsados));
 	}
 	
 	// metodo para mostrar tipos en la vista, devuelve un arreglo de strings con los nombres de los tipos
@@ -140,6 +141,7 @@ public class Inventario {
 		ArrayList<Integer> idUsados = new ArrayList<Integer>();
 		marcas.forEach(x -> idUsados.add(x.getIdMarca()));
 		marcas.add(new Marca(nombre.toUpperCase(), idDisponible(idUsados)));
+		data.createMarcas(marcas, idDisponible(idUsados));
 	}
 	
 	// metodo para mostrar marcas en la vista, devuelve un arreglo de strings con los nombres de las marcas
