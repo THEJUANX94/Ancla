@@ -211,6 +211,7 @@ public class Inventario {
 		for (Producto producto : productos) {
 			if(producto.getId() == id) {
 				producto.setCantidad(producto.getCantidad() - cantidadVendida);
+				data.updateProductos(producto.getNombre(), producto.getPrecio(), producto.getCantidad() - cantidadVendida, id);
 			}
 		}
 	}
