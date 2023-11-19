@@ -45,4 +45,8 @@ public class BillingPanel extends JPanel {
 	public void setTable2(){
 		centerPanel_BillingPanel.setTable2();
 	}
+
+	public void getConfirm(boolean confirm){
+		centerPanel_BillingPanel.getConfirm(confirm);
+	}
 }

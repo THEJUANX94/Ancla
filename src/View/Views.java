@@ -16,6 +16,7 @@ public class Views extends JFrame {
     public DialogForm dialogForm;
     public DialogMarkForm dialogMarkForm;
     public DialogTypeForm dialogTypeForm;
+    public ItemsDialog itemsDialog;
 
     public Views(ActionListener listener) {
         super("Ancla");
@@ -33,11 +34,13 @@ public class Views extends JFrame {
         sellerPanel = new SellerPanel(listener);
         dialogForm = new DialogForm(listener);
         dialogMarkForm = new DialogMarkForm(listener);
-        dialogTypeForm = new DialogTypeForm(listener);        
+        dialogTypeForm = new DialogTypeForm(listener);  
+        itemsDialog = new ItemsDialog(listener);
         loginPanel.setVisible(true);
         dialogForm.setVisible(false);
         dialogMarkForm.setVisible(false);
         dialogTypeForm.setVisible(false);
+        itemsDialog.setVisible(false);
         this.getContentPane().add(sellerPanel);
     }
 
@@ -127,5 +130,21 @@ public class Views extends JFrame {
 
     public void setTable2(){
 		sellerPanel.setTable2();
+	}
+
+    public void getItemList(String[][] itemlist){
+		itemsDialog.getItemList(itemlist);
+	}
+
+	public int getIdBill(){
+        return sellerPanel.getIdBill();
+    }
+    
+    public void setHistoryTable(){
+        sellerPanel.setHistoryTable();
+    }
+
+    public void getConfirm(boolean confirm){
+		sellerPanel.getConfirm(confirm);
 	}
 }

@@ -66,7 +66,19 @@ public class SellerPanel extends JPanel {
     return centerPanel.getQuantity();
   }
 
-  public void setTable2(){
-		centerPanel.setTable2();
-	}
+  public void setTable2() {
+    centerPanel.setTable2();
+  }
+
+  public int getIdBill() {
+    return centerPanel.getIdBill();
+  }
+
+  public void setHistoryTable() {
+    centerPanel.setHistoryTable();
+  }
+
+  public void getConfirm(boolean confirm) {
+    centerPanel.getConfirm(confirm);
+  }
 }

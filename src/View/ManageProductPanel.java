@@ -23,7 +23,8 @@ public class ManageProductPanel extends JPanel{
 		centerPanel_ManagePanel = new CenterPanel_ManageProductPanel(listener);
 		botPanel_ManagePanel = new BotPanel_ManagePanel(listener);
         botPanel_ManagePanel.setAcceptButton("Crear Producto", "Crear_producto");
-        botPanel_ManagePanel.setCleanButton("Modificar Producto", "TOOL_TIP_TEXT_KEY");
+        botPanel_ManagePanel.setCleanButton("Modificar Producto", "Modificar_producto");
+        botPanel_ManagePanel.setDeleteButtonButton("Eliminar Producto", "Eliminar_producto");
 		add(topPanel_ManagePanel, BorderLayout.NORTH);
 		add(centerPanel_ManagePanel, BorderLayout.CENTER);
 		add(botPanel_ManagePanel, BorderLayout.SOUTH);

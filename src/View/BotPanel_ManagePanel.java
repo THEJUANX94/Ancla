@@ -9,8 +9,9 @@ import javax.swing.JPanel;
 
 public class BotPanel_ManagePanel extends JPanel {
 
-    private JButton cleanButton;
+    private JButton modifyButton;
     private JButton acceptButton;
+    private JButton deleteButton;
 
     public BotPanel_ManagePanel(ActionListener listener) {
         initComponents(listener);
@@ -21,14 +22,24 @@ public class BotPanel_ManagePanel extends JPanel {
         Color buttonColor = new Color(53, 152, 200);
         Color letra = Color.WHITE;
 
-        cleanButton = new JButton("Modificar Producto");
-        cleanButton.setPreferredSize(new Dimension(170, 30));
-        cleanButton.setBackground(buttonColor);
-        cleanButton.setForeground(letra);
-        cleanButton.setSelected(false);
-        cleanButton.setFocusable(false);
-        cleanButton.setBorderPainted(false);
-        add(cleanButton);
+        deleteButton = new JButton();
+        deleteButton.setPreferredSize(new Dimension(170, 30));
+        deleteButton.setBackground(buttonColor);
+        deleteButton.setForeground(letra);
+        deleteButton.setSelected(false);
+        deleteButton.setFocusable(false);
+        deleteButton.setBorderPainted(false);
+        deleteButton.addActionListener(listener);
+        add(deleteButton);
+
+        modifyButton = new JButton();
+        modifyButton.setPreferredSize(new Dimension(170, 30));
+        modifyButton.setBackground(buttonColor);
+        modifyButton.setForeground(letra);
+        modifyButton.setSelected(false);
+        modifyButton.setFocusable(false);
+        modifyButton.setBorderPainted(false);
+        add(modifyButton);
 
         acceptButton = new JButton();
         acceptButton.setPreferredSize(new Dimension(170, 30));
@@ -42,12 +53,17 @@ public class BotPanel_ManagePanel extends JPanel {
     }
 
     public void setCleanButton(String name, String comand){
-        cleanButton.setText(name);
-        cleanButton.setActionCommand(comand);
+        modifyButton.setText(name);
+        modifyButton.setActionCommand(comand);
     }
 
     public void setAcceptButton(String name, String comand){
         acceptButton.setText(name);
         acceptButton.setActionCommand(comand);
+    }
+
+    public void setDeleteButtonButton(String name, String comand){
+        deleteButton.setText(name);
+        deleteButton.setActionCommand(comand);
     }
 }

@@ -21,7 +21,8 @@ public class ManageTypePanel extends JPanel{
 		topPanel_ManagePanel = new TopPanel_ManagePanel(listener);
 		botPanel_ManagePanel = new BotPanel_ManagePanel(listener);
         botPanel_ManagePanel.setAcceptButton("Crear Tipo", "Crear_Tipo");
-        botPanel_ManagePanel.setCleanButton("Modificar Tipo", "TOOL_TIP_TEXT_KEY");
+        botPanel_ManagePanel.setCleanButton("Modificar Tipo", "Modificar_Tipo");
+        botPanel_ManagePanel.setDeleteButtonButton("Eliminar Tipo", "Eliminar_Tipo");
         centerPanel_ManageTypePanel = new CenterPanel_ManageTypePanel(listener);
         add(topPanel_ManagePanel, BorderLayout.NORTH);
 		add(centerPanel_ManageTypePanel, BorderLayout.CENTER);

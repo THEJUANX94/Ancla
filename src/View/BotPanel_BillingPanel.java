@@ -41,6 +41,15 @@ public class BotPanel_BillingPanel extends JPanel {
         acceptButton.setBorderPainted(false);
         acceptButton.addActionListener(listener);
         add(acceptButton);
+    }
 
+    public void setCleanButton(String name, String comand){
+        cleanButton.setText(name);
+        cleanButton.setActionCommand(comand);
+    }
+
+    public void setAcceptButton(String name, String comand){
+        acceptButton.setText(name);
+        acceptButton.setActionCommand(comand);
     }
 }

@@ -71,7 +71,7 @@ public class AddProductToBillDialog extends JDialog {
 		cancelButton.setPreferredSize(new Dimension(200, 30));
 		cancelButton.setFocusPainted(false);
 		cancelButton.addActionListener(listener);
-		cancelButton.setActionCommand("Cancel");
+		cancelButton.setActionCommand("Cancelar");
 		gbc.gridx = 0;
 		gbc.gridy = 4;
 		gbc.gridwidth = 2;

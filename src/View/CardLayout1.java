@@ -84,4 +84,16 @@ public class CardLayout1 extends JPanel{
     public void setTable2(){
 		centerPanel1.setTable2();
 	}
+
+	public int getIdBill(){
+        return historyPanel.getIdBill();
+    }
+
+    public void setHistoryTable(){
+        historyPanel.setHistoryTable();
+    }
+
+    public void getConfirm(boolean confirm){
+		centerPanel1.getConfirm(confirm);
+	}
 }

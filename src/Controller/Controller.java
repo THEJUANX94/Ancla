@@ -108,6 +108,8 @@ public class Controller implements ActionListener {
                 views.dialogForm.setVisible(false);
                 views.dialogMarkForm.setVisible(false);
                 views.dialogTypeForm.setVisible(false);
+                views.itemsDialog.setVisible(false);
+                views.getConfirm(true);
                 break;
             case "Aceptar creacion Marca":
                 inventario.agregarMarca(views.newMarkName());
@@ -128,6 +130,13 @@ public class Controller implements ActionListener {
                 break;
             case "Cancelar_venta":
                 views.setTable2();
+                break;
+            case "CancelarBusqueda":
+                views.setHistoryTable();
+                break;
+            case "VerItemList":
+                views.getItemList(inventario.obtenerItems(views.getIdBill()));
+                views.itemsDialog.setVisible(true);
                 break;
             default:
                 break;

@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -18,11 +19,13 @@ public class HistoryPanel extends JPanel {
 
 	private JTable tabla1;
 	private TopPanel_BillingPanel topPanel_CenterPanel;
+	private BotPanel_BillingPanel botPanel_BillingPanel;
 	private String[] cabeceraTabla1 = { "Id", "Fecha", "Valor" };
 	private int count;
 	private JDateChooser dateChooser;
 	private JButton searchButton;
 	private String[][] data;
+	private String id;
 
 	public HistoryPanel(ActionListener listener) {
 		initComponents(listener);
@@ -32,9 +35,13 @@ public class HistoryPanel extends JPanel {
 		setBackground(Color.WHITE);
 		setLayout(new BorderLayout());
 		topPanel_CenterPanel = new TopPanel_BillingPanel(listener);
+		botPanel_BillingPanel = new BotPanel_BillingPanel(listener);
+		botPanel_BillingPanel.setAcceptButton("Ver mas", "VerItemList");
+		botPanel_BillingPanel.setCleanButton("Aceptar", "CancelarBusqueda");
 		JPanel centerpanel = new JPanel();
 		add(topPanel_CenterPanel, BorderLayout.NORTH);
 		add(centerpanel, BorderLayout.CENTER);
+		add(botPanel_BillingPanel, BorderLayout.SOUTH);
 
 		centerpanel.setBackground(Color.WHITE);
 		centerpanel.setLayout(new BorderLayout());
@@ -45,7 +52,7 @@ public class HistoryPanel extends JPanel {
 		centerpanel.add(centerPanel, BorderLayout.CENTER);
 
 		dateChooser = new JDateChooser();
-		dateChooser.setDateFormatString( "yyyy-MM-dd");
+		dateChooser.setDateFormatString("yyyy-MM-dd");
 		dateChooser.getJCalendar().setMaxSelectableDate(new Date());
 		dateChooser.setBackground(Color.WHITE);
 		dateChooser.setForeground(Color.BLACK);
@@ -110,5 +117,19 @@ public class HistoryPanel extends JPanel {
 			};
 			tabla1.setModel(dtm);
 		}
+	}
+
+	public int getIdBill() {
+		try {
+			id = data[tabla1.getSelectedRow()][0];
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Seleccione una factura", "Seleccione una fila",
+					JOptionPane.ERROR_MESSAGE);
+		}
+		return Integer.parseInt(id);
+	}
+
+	public void setHistoryTable() {
+		loadDataHistory(data);
 	}
 }

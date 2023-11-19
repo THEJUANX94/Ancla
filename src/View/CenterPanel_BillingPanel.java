@@ -107,7 +107,7 @@ public class CenterPanel_BillingPanel extends JPanel {
 					stock = Integer.parseInt((String) target.getValueAt(row, 5));
 
 					addProductToBillDialog.setVisible(true);
-					addProductToBillDialog.setDatos(id + " " + nombre + " " + marca + " " + tipo + " " + precio + " ");
+					addProductToBillDialog.setDatos(id + "\n " + nombre + " " + marca + " " + tipo + " " + precio + " ");
 				}
 			}
 		});
@@ -194,6 +194,12 @@ public class CenterPanel_BillingPanel extends JPanel {
 		for (int i = 0; i < tabla2.getRowCount(); i++) {
 			dtm2.removeRow(i);
 			i-=1;
+		}
+	}
+
+	public void getConfirm(boolean confirm){
+		if(confirm = true){
+			addProductToBillDialog.setVisible(false);
 		}
 	}
 }
