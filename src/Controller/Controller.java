@@ -101,6 +101,7 @@ public class Controller implements ActionListener {
                 String marca = views.selectedMark();
                 int precio = views.selectedPrice();
                 inventario.agregarProducto(nombre, tipo, marca, precio, 0);
+                views.loadDataTableManage(inventario.obtenerProductos());
                 views.dialogForm.setVisible(false);
                 break;
             case "Cancelar":
@@ -110,10 +111,12 @@ public class Controller implements ActionListener {
                 break;
             case "Aceptar creacion Marca":
                 inventario.agregarMarca(views.newMarkName());
+                views.loadDataTableBrand(inventario.obtenerMatrizMarcas());
                 views.dialogMarkForm.setVisible(false);
                 break;
             case "Aceptar creacion Tipo":
                 inventario.agregarTipo((views.newTypeName()));
+                views.loadDataTableType(inventario.obtenerMatrizTipos());
                 views.dialogTypeForm.setVisible(false);
                 break;
             case "Buscar_Fecha":
