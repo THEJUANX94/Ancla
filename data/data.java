@@ -190,7 +190,7 @@ public class data {
                     String nombre_marca = marcas.get(i).getNombre();
 
                     stMarca = connect
-                            .prepareStatement("INSERT INTO facturas values (" + id_marca + ", " + nombre_marca + ")");
+                            .prepareStatement("INSERT INTO marcas values (" + id_marca + ", '" + nombre_marca + "')");
                     stMarca.executeUpdate();
                 }
             }
@@ -207,7 +207,7 @@ public class data {
                     String nombre_tipo = tipos.get(i).getNombre();
 
                     stTipo = connect
-                            .prepareStatement("INSERT INTO facturas values (" + id_tipo + ", " + nombre_tipo + ")");
+                            .prepareStatement("INSERT INTO tipos_producto values (" + id_tipo + ", '"+ nombre_tipo + "')");
                     stTipo.executeUpdate();
                 }
             }
