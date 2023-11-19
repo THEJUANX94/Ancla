@@ -79,15 +79,7 @@ public class Inventario {
 				producto.setCantidad(cantidad);
 			}
 		}
-	}
- 
-	// para las ventas
-	public void modificarCantidadProducto(int id, int cantidad) {
-		for (Producto producto : productos) {
-			if(producto.getId() == id) {
-				producto.setCantidad(cantidad);
-			}
-		}
+		data.updateProductos(nombre, precio, cantidad, id);
 	}
 
 	public void eliminarProducto(int id) {
@@ -100,6 +92,7 @@ public class Inventario {
 		}
 		if (productoAEliminar != null) {
 			productos.remove(productoAEliminar);
+			data.deleteProducto(id);
 		}
 	}	
 
@@ -145,6 +138,20 @@ public class Inventario {
 		}
 		return tipos;
 	}
+
+	public void eliminarTipo(String nombre) {
+		Tipo tipoAEliminar = null;
+		for (Tipo tipo : tipos) {
+			if (tipo.getNombre().equals(nombre)) {
+				tipoAEliminar = tipo;
+				break;
+			}
+		}
+		if (tipoAEliminar != null) {
+			tipos.remove(tipoAEliminar);
+			data.deleteTipos(tipoAEliminar.getIdTipo());
+		}
+	}
 	
 	public void agregarMarca(String nombre) {
 		ArrayList<Integer> idUsados = new ArrayList<Integer>();
@@ -170,6 +177,20 @@ public class Inventario {
 		}
 		return marcas;
 	}
+
+	public void eliminarMarca(String nombre) {
+		Marca marcaAEliminar = null;
+		for (Marca marca : marcas) {
+			if (marca.getNombre().equals(nombre)) {
+				marcaAEliminar = marca;
+				break;
+			}
+		}
+		if (marcaAEliminar != null) {
+			marcas.remove(marcaAEliminar);
+			data.deleteMarca(marcaAEliminar.getIdMarca());
+		}
+	}
 	
 	public void agregarFactura(String[][] items) {
 		int valor = 0;
@@ -178,9 +199,20 @@ public class Inventario {
 		for (int i = 0; i < items.length; i++) {
 			valor += obtenerProducto(Integer.parseInt(items[i][0])).getPrecio() * Integer.parseInt(items[i][1]);
 			itemsCreados.add(new Item(obtenerProducto(Integer.parseInt(items[i][0])), Integer.parseInt(items[i][1])));
+			modificarCantidadProducto(Integer.parseInt(items[i][0]), Integer.parseInt(items[i][1]));
 		}
 		facturas.forEach(x -> idUsados.add(x.getId()));
 		facturas.add(new Factura(idDisponible(idUsados), new Date(System.currentTimeMillis()), valor, itemsCreados));
+		data.createFactura(facturas, idDisponible(idUsados));
+	}
+
+	// para las ventas
+	private void modificarCantidadProducto(int id, int cantidadVendida) {
+		for (Producto producto : productos) {
+			if(producto.getId() == id) {
+				producto.setCantidad(producto.getCantidad() - cantidadVendida);
+			}
+		}
 	}
 
 	private Producto obtenerProducto(int id) {
