@@ -78,7 +78,6 @@ public class CenterPanel_BillingPanel extends JPanel {
 			}
 		});
 
-
 		centerPanelLeft.setBackground(Color.WHITE);
 		tabla1 = new JTable(new Object[][] {}, cabeceraTabla1);
 		tabla1.setBackground(Color.WHITE);
@@ -179,6 +178,22 @@ public class CenterPanel_BillingPanel extends JPanel {
 				}
 			};
 			tabla1.setModel(dtm);
+		}
+	}
+
+	public String[][] getItems() {
+		String[][] itemList = new String[tabla2.getModel().getRowCount()][2];
+		for (int i = 0; i < tabla2.getModel().getRowCount(); i++) {
+			itemList[i][0] = String.valueOf(tabla2.getModel().getValueAt(i, 0));
+			itemList[i][1] = String.valueOf(tabla2.getModel().getValueAt(i, 2));
+		}
+		return itemList;
+	}
+
+	public void setTable2(){
+		for (int i = 0; i < tabla2.getRowCount(); i++) {
+			dtm2.removeRow(i);
+			i-=1;
 		}
 	}
 }

@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -42,19 +45,20 @@ public class HistoryPanel extends JPanel {
 		centerpanel.add(centerPanel, BorderLayout.CENTER);
 
 		dateChooser = new JDateChooser();
-		dateChooser.setDateFormatString("yyyy/MM/dd");
+		dateChooser.setDateFormatString( "yyyy-MM-dd");
+		dateChooser.getJCalendar().setMaxSelectableDate(new Date());
 		dateChooser.setBackground(Color.WHITE);
 		dateChooser.setForeground(Color.BLACK);
 
 		searchButton = new JButton("Buscar");
 		searchButton.addActionListener(listener);
 		searchButton.setActionCommand("Buscar_Fecha");
-        searchButton.setPreferredSize(new Dimension(170, 30));
-        searchButton.setBackground( new Color(53, 152, 200));
-        searchButton.setForeground(Color.WHITE);
-        searchButton.setSelected(false);
-        searchButton.setFocusable(false);
-        searchButton.setBorderPainted(false);
+		searchButton.setPreferredSize(new Dimension(170, 30));
+		searchButton.setBackground(new Color(53, 152, 200));
+		searchButton.setForeground(Color.WHITE);
+		searchButton.setSelected(false);
+		searchButton.setFocusable(false);
+		searchButton.setBorderPainted(false);
 
 		topPanel.setBackground(Color.WHITE);
 		topPanel.add(dateChooser);
@@ -85,7 +89,8 @@ public class HistoryPanel extends JPanel {
 	}
 
 	public void getDate() {
-		String texto = String.valueOf(dateChooser.getDate());
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		String texto = String.valueOf(formatter.format(dateChooser.getDate()));
 		if (texto.equals("")) {
 			loadDataHistory(data);
 		} else {

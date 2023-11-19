@@ -176,8 +176,8 @@ public class Inventario {
 		ArrayList<Item> itemsCreados = new ArrayList<Item>();
 		ArrayList<Integer> idUsados = new ArrayList<Integer>();
 		for (int i = 0; i < items.length; i++) {
-			valor += obtenerProducto(Integer.parseInt(items[i][0])).getPrecio() * Integer.parseInt(items[i][4]);
-			itemsCreados.add(new Item(obtenerProducto(Integer.parseInt(items[i][0])), Integer.parseInt(items[i][4])));
+			valor += obtenerProducto(Integer.parseInt(items[i][0])).getPrecio() * Integer.parseInt(items[i][1]);
+			itemsCreados.add(new Item(obtenerProducto(Integer.parseInt(items[i][0])), Integer.parseInt(items[i][1])));
 		}
 		facturas.forEach(x -> idUsados.add(x.getId()));
 		facturas.add(new Factura(idDisponible(idUsados), new Date(System.currentTimeMillis()), valor, itemsCreados));

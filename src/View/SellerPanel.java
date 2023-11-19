@@ -56,9 +56,17 @@ public class SellerPanel extends JPanel {
 
   public void getDate() {
     centerPanel.getDate();
-}
+  }
+
+  public String[][] getItems() {
+    return centerPanel.getItems();
+  }
 
   public int getQuantity() {
     return centerPanel.getQuantity();
   }
+
+  public void setTable2(){
+		centerPanel.setTable2();
+	}
 }

@@ -81,6 +81,10 @@ public class Views extends JFrame {
         sellerPanel.loadDataHistory(data);
     }
 
+    public String[][] getItems() {
+		return sellerPanel.getItems();
+	}
+
     public void getDate() {
         sellerPanel.getDate();
     }
@@ -120,4 +124,8 @@ public class Views extends JFrame {
     public String newTypeName(){
         return dialogTypeForm.newTypeName();
     }
+
+    public void setTable2(){
+		sellerPanel.setTable2();
+	}
 }

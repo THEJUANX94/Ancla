@@ -34,7 +34,15 @@ public class BillingPanel extends JPanel {
 		centerPanel_BillingPanel.loadDataTable2();
 	}
 
+	public String[][] getItems() {
+		return centerPanel_BillingPanel.getItems();
+	}
+
 	public int getQuantity(){
 		return centerPanel_BillingPanel.getQuantity();
+	}
+
+	public void setTable2(){
+		centerPanel_BillingPanel.setTable2();
 	}
 }

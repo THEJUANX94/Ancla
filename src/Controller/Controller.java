@@ -119,6 +119,13 @@ public class Controller implements ActionListener {
             case "Buscar_Fecha":
                 views.getDate();
                 break;
+            case "Aceptar_venta":
+                inventario.agregarFactura(views.getItems());
+                views.setTable2();
+                break;
+            case "Cancelar_venta":
+                views.setTable2();
+                break;
             default:
                 break;
         }

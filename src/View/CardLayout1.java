@@ -73,7 +73,15 @@ public class CardLayout1 extends JPanel{
         historyPanel.getDate();
     }
 
+    public String[][] getItems() {
+		return centerPanel1.getItems();
+	}
+
     public int getQuantity(){
         return centerPanel1.getQuantity();
     }
+
+    public void setTable2(){
+		centerPanel1.setTable2();
+	}
 }

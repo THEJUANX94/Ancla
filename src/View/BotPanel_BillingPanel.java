@@ -21,21 +21,25 @@ public class BotPanel_BillingPanel extends JPanel {
         Color letra = Color.WHITE;
 
         cleanButton = new JButton("Cancelar");
+        cleanButton.setActionCommand("Cancelar_venta");
         cleanButton.setPreferredSize(new Dimension(170, 30));
         cleanButton.setBackground(buttonColor);
         cleanButton.setForeground(letra);
         cleanButton.setSelected(false);
         cleanButton.setFocusable(false);
         cleanButton.setBorderPainted(false);
+        cleanButton.addActionListener(listener);
         add(cleanButton);
 
-        acceptButton = new JButton("Guardar");
+        acceptButton = new JButton("Aceptar");
+        acceptButton.setActionCommand("Aceptar_venta");
         acceptButton.setPreferredSize(new Dimension(170, 30));
         acceptButton.setBackground(buttonColor);
         acceptButton.setForeground(letra);
         acceptButton.setSelected(false);
         acceptButton.setFocusable(false);
         acceptButton.setBorderPainted(false);
+        acceptButton.addActionListener(listener);
         add(acceptButton);
 
     }
