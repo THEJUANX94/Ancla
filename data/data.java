@@ -67,8 +67,9 @@ public class data {
         try {
             while (dataFacturas.next()) {
                 facturas.add(new Factura(dataFacturas.getInt("id_facturas"),
-                        dataFacturas.getDate("fecha_factura"),
+                        Date.valueOf(dataFacturas.getString("fecha_factura")),
                         dataFacturas.getInt("valor_factura")));
+                        
             }
         } catch (SQLException e) {
             e.printStackTrace();
