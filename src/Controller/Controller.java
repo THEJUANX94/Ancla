@@ -106,7 +106,8 @@ public class Controller implements ActionListener {
                 views.loadDataTable2();
                 break;
             case "Aceptar creacion Producto":
-                if (views.selectedPrice() != 0 && !views.newName().equals("")) {
+                if (views.selectedPrice() != 0 && !views.newName().equals("")
+                        && views.dialogForm.selectedQuantity() != 0) {
                     String nombre = views.newName();
                     String tipo = views.selectedType();
                     String marca = views.selectedMark();

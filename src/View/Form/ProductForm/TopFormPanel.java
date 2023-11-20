@@ -115,7 +115,7 @@ public class TopFormPanel extends JPanel {
     public boolean comprobatePrice() {
         boolean confirm = true;
         if (txtPrice.getText().matches("[0-9]+") != true) {
-            JOptionPane.showMessageDialog(null, "Ingrese solo numeros en el precio", "Error",
+            JOptionPane.showMessageDialog(null, "Ingrese un precio valido: Ej. 20000", "Error",
                     JOptionPane.ERROR_MESSAGE);
             confirm = false;
         }
@@ -133,7 +133,7 @@ public class TopFormPanel extends JPanel {
     public boolean comprobateQuantity() {
         boolean confirm = true;
         if (txtQuantity.getText().matches("[0-9]+") != true) {
-            JOptionPane.showMessageDialog(null, "Ingrese solo numeros en la cantidad", "Error",
+            JOptionPane.showMessageDialog(null, "Ingrese una cantidad valida: Ej. 5 ", "Error",
                     JOptionPane.ERROR_MESSAGE);
             confirm = false;
         }
