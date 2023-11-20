@@ -11,7 +11,6 @@ public class BotPanel_ManagePanel extends JPanel {
 
     private JButton modifyButton;
     private JButton acceptButton;
-    private JButton deleteButton;
 
     public BotPanel_ManagePanel(ActionListener listener) {
         initComponents(listener);
@@ -21,16 +20,6 @@ public class BotPanel_ManagePanel extends JPanel {
         setBackground(Color.WHITE);
         Color buttonColor = new Color(53, 152, 200);
         Color letra = Color.WHITE;
-
-        deleteButton = new JButton();
-        deleteButton.setPreferredSize(new Dimension(170, 30));
-        deleteButton.setBackground(buttonColor);
-        deleteButton.setForeground(letra);
-        deleteButton.setSelected(false);
-        deleteButton.setFocusable(false);
-        deleteButton.setBorderPainted(false);
-        deleteButton.addActionListener(listener);
-        add(deleteButton);
 
         modifyButton = new JButton();
         modifyButton.setPreferredSize(new Dimension(170, 30));
@@ -62,8 +51,17 @@ public class BotPanel_ManagePanel extends JPanel {
         acceptButton.setActionCommand(comand);
     }
 
-    public void setDeleteButtonButton(String name, String comand){
+    public void setDeleteButtonButton(String name, String comand, ActionListener listener){
+        JButton deleteButton = new JButton();
         deleteButton.setText(name);
         deleteButton.setActionCommand(comand);
+        deleteButton.setPreferredSize(new Dimension(170, 30));
+        deleteButton.setBackground(new Color(53, 152, 200));
+        deleteButton.setForeground(Color.WHITE);
+        deleteButton.setSelected(false);
+        deleteButton.setFocusable(false);
+        deleteButton.setBorderPainted(false);
+        deleteButton.addActionListener(listener);
+        add(deleteButton);
     }
 }

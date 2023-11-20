@@ -23,7 +23,6 @@ public class ManageBrandPanel extends JPanel{
         botPanel_ManagePanel = new BotPanel_ManagePanel(listener);
         botPanel_ManagePanel.setAcceptButton("Crear Marca", "Crear_Marca");
         botPanel_ManagePanel.setCleanButton("Modificar Marca", "Modificar_Marca");
-        botPanel_ManagePanel.setDeleteButtonButton("Eliminar Marca", "Eliminar_Marca");
         centerPanel_ManageBrandPanel = new CenterPanel_ManageBrandPanel(listener);
         add(topPanel_ManagePanel, BorderLayout.NORTH);
 		add(centerPanel_ManageBrandPanel, BorderLayout.CENTER);
