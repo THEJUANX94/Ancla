@@ -69,12 +69,10 @@ public class Inventario {
 	}
 	
 	// nota: llegan los nombres de tipo y marca y con buscarTipo() y buscarMarca() se asignan los objetos correspodientes
-	public void modificarProducto(int id, String nombre, String tipo, String marca, int precio, int cantidad) {
+	public void modificarProducto(int id, String nombre, int precio, int cantidad) {
 		for (Producto producto : productos) {
 			if(producto.getId() == id) {
 				producto.setNombre(nombre);
-				producto.setTipo(buscarTipo(tipo));
-				producto.setMarca(buscarMarca(marca));
 				producto.setPrecio(precio);
 				producto.setCantidad(cantidad);
 			}
