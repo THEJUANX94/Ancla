@@ -144,6 +144,7 @@ public class data {
                                 foundedProduct = productos.get(j);
                                 facturas.get(i).getItems()
                                         .add(new Item(foundedProduct, dataItem.getInt("cantidad_factura_producto")));
+                                System.out.println(foundedProduct.getNombre());
                             }
                         }
                     }
@@ -172,7 +173,7 @@ public class data {
                         cantidad_factura = facturas.get(i).getItems().get(j).getCantidad();
                         stFactura = connect
                                 .prepareStatement("INSERT INTO facturas_ventas_producto values (" + id_factura + ", "
-                                        + id_producto + ", " + cantidad_factura);
+                                        + id_producto + ", " + cantidad_factura + ")");
                         stFactura.executeUpdate();
                     }
                 }
@@ -280,7 +281,7 @@ public class data {
 
     public void updateMarca(String name, int id) {
         try {
-            stMarca = connect.prepareStatement("UPDATE marcas SET nombre_marca = " + name + " WHERE id_marca = " + id);
+            stMarca = connect.prepareStatement("UPDATE marcas SET nombre_marca = '" + name + "' WHERE id_marca = " + id);
             stMarca.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -289,7 +290,8 @@ public class data {
 
     public void updateProductos(String name, int precio, int cantidad, int id) {
         try {
-            stProductos = connect.prepareStatement("UPDATE productos SET nombre_producto = " + name + ", " + "precio = " + precio + ", " + "cantidad = " + cantidad +  " WHERE id_producto = " + id);
+            stProductos = connect.prepareStatement("UPDATE productos SET nombre_producto ='" + name + "', precio = " + precio + ", cantidad =" + cantidad +  
+            " WHERE id_producto = " + id);
             stProductos.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -298,7 +300,7 @@ public class data {
 
     public void updateTipos(String name, int id) {
         try {
-            stTipo = connect.prepareStatement("UPDATE tipos_producto SET nombre_tipo = " + name + " WHERE id_tipo = " + id);
+            stTipo = connect.prepareStatement("UPDATE tipos_producto SET nombre_tipo = '" + name + "' WHERE id_tipo = " + id);
             stTipo.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
