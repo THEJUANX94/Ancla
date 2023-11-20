@@ -140,7 +140,7 @@ public class data {
                 for (int i = 0; i < facturas.size(); i++) {
                     if (facturas.get(i).getId() == dataItem.getInt("id_factura")) {
                         for (int j = 0; j < productos.size(); j++) {
-                            if (dataItem.getInt("id_product") == productos.get(j).getId()) {
+                            if (dataItem.getInt("id_producto") == productos.get(j).getId()) {
                                 foundedProduct = productos.get(j);
                                 facturas.get(i).getItems()
                                         .add(new Item(foundedProduct, dataItem.getInt("cantidad_factura_producto")));
