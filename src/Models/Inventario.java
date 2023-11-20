@@ -139,17 +139,13 @@ public class Inventario {
 		return tipos;
 	}
 
-	public void eliminarTipo(String nombre) {
-		Tipo tipoAEliminar = null;
+	public void modificarTipo(int id, String nombre) {
 		for (Tipo tipo : tipos) {
-			if (tipo.getNombre().equals(nombre)) {
-				tipoAEliminar = tipo;
+			if (tipo.getIdTipo() == id) {
+				tipo.setNombre(nombre.toUpperCase());
+				data.updateTipos(nombre.toUpperCase(), id);
 				break;
 			}
-		}
-		if (tipoAEliminar != null) {
-			tipos.remove(tipoAEliminar);
-			data.deleteTipos(tipoAEliminar.getIdTipo());
 		}
 	}
 	
@@ -178,17 +174,13 @@ public class Inventario {
 		return marcas;
 	}
 
-	public void eliminarMarca(String nombre) {
-		Marca marcaAEliminar = null;
+	public void modificarMarca(int id, String nombre) {
 		for (Marca marca : marcas) {
-			if (marca.getNombre().equals(nombre)) {
-				marcaAEliminar = marca;
+			if (marca.getIdMarca() == id) {
+				marca.setNombre(nombre.toUpperCase());
+				data.updateMarca(nombre.toUpperCase(), id);
 				break;
 			}
-		}
-		if (marcaAEliminar != null) {
-			marcas.remove(marcaAEliminar);
-			data.deleteMarca(marcaAEliminar.getIdMarca());
 		}
 	}
 	
