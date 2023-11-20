@@ -242,7 +242,7 @@ public class data {
 
     public void deleteFactura(int id) {
         try {
-            stFactura = connect.prepareStatement("DELETE FROM facturas where id = " + id);
+            stFactura = connect.prepareStatement("DELETE FROM facturas where id_facturas = " + id);
             stFactura.executeUpdate();
             stFactura = connect.prepareStatement("DELETE FROM facturas_ventas_producto where id_factura = " + id);
             stFactura.executeUpdate();
@@ -253,7 +253,7 @@ public class data {
 
     public void deleteMarca(int id) {
         try {
-            stMarca = connect.prepareStatement("DELETE FROM marca where id = " + id);
+            stMarca = connect.prepareStatement("DELETE FROM marca where id_marca = " + id);
             stMarca.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -262,7 +262,7 @@ public class data {
 
     public void deleteProducto(int id) {
         try {
-            stProductos = connect.prepareStatement("DELETE FROM productos where id = " + id);
+            stProductos = connect.prepareStatement("DELETE FROM productos where id_producto = " + id);
             stProductos.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -271,7 +271,7 @@ public class data {
 
     public void deleteTipos(int id) {
         try {
-            stTipo = connect.prepareStatement("DELETE FROM tipos_productos where id = " + id);
+            stTipo = connect.prepareStatement("DELETE FROM tipos_productos where id_tipo = " + id);
             stTipo.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
