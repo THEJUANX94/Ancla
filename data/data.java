@@ -144,7 +144,6 @@ public class data {
                                 foundedProduct = productos.get(j);
                                 facturas.get(i).getItems()
                                         .add(new Item(foundedProduct, dataItem.getInt("cantidad_factura_producto")));
-                                System.out.println(foundedProduct.getNombre());
                             }
                         }
                     }

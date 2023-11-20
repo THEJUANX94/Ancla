@@ -23,7 +23,7 @@ public class TopFormPanel extends JPanel {
     private JComboBox<String> cbMark;
 
     public TopFormPanel(ActionListener listener) {
-        this.setLayout(new GridLayout(4, 2, 45, 45));
+        this.setLayout(new GridLayout(4, 2, 45, 20));
         this.setBorder(new TitledBorder("Info Producto"));
         initComponents(listener);
     }

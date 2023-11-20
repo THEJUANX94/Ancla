@@ -2,7 +2,6 @@ package View;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import View.Form.ProductForm.DialogForm;
