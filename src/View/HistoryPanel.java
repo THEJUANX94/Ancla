@@ -99,9 +99,6 @@ public class HistoryPanel extends JPanel {
 		try {
 			DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			String texto = String.valueOf(formatter.format(dateChooser.getDate()));
-			if (texto.equals("")) {
-				loadDataHistory(data);
-			} else {
 				count = 0;
 				String[][] data2 = new String[data.length][cabeceraTabla1.length];
 				for (int i = 0; i < data.length; i++) {
@@ -117,7 +114,6 @@ public class HistoryPanel extends JPanel {
 					}
 				};
 				tabla1.setModel(dtm);
-			}
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Agregue una fecha", "Error fecha", JOptionPane.ERROR_MESSAGE);
 		}
@@ -125,7 +121,7 @@ public class HistoryPanel extends JPanel {
 
 	public int getIdBill() {
 		try {
-			id = data[tabla1.getSelectedRow()][0];
+			id = String.valueOf(tabla1.getValueAt(tabla1.getSelectedRow(), 0));
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Seleccione una factura", "Seleccione una fila",
 					JOptionPane.ERROR_MESSAGE);

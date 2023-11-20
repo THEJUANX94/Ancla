@@ -20,7 +20,7 @@ public class ItemsDialog extends JDialog{
 
     public ItemsDialog(ActionListener listener){
         initComponents(listener);
-        setSize(500, 600);
+        setSize(500, 550);
         setBackground(Color.WHITE);
         this.setLocationRelativeTo(null);
     }
