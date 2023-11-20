@@ -8,13 +8,13 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
-public class DeleteDialog extends JDialog{
+public class DeleteDialog extends JDialog {
 
     private JLabel confirmLabel;
     private JButton acceptButton;
     private JButton cancelButton;
-    
-    public DeleteDialog(ActionListener listener){
+
+    public DeleteDialog(ActionListener listener) {
         setSize(290, 180);
         this.setResizable(false);
         setLocationRelativeTo(null);

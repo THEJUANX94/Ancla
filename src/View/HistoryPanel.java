@@ -96,26 +96,30 @@ public class HistoryPanel extends JPanel {
 	}
 
 	public void getDate() {
-		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		String texto = String.valueOf(formatter.format(dateChooser.getDate()));
-		if (texto.equals("")) {
-			loadDataHistory(data);
-		} else {
-			count = 0;
-			String[][] data2 = new String[data.length][cabeceraTabla1.length];
-			for (int i = 0; i < data.length; i++) {
-				if (data[i][1].contains(texto)) {
-					data2[count] = data[i];
-					count++;
+		try {
+			DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			String texto = String.valueOf(formatter.format(dateChooser.getDate()));
+			if (texto.equals("")) {
+				loadDataHistory(data);
+			} else {
+				count = 0;
+				String[][] data2 = new String[data.length][cabeceraTabla1.length];
+				for (int i = 0; i < data.length; i++) {
+					if (data[i][1].contains(texto)) {
+						data2[count] = data[i];
+						count++;
+					}
 				}
+				DefaultTableModel dtm = new DefaultTableModel(data2, cabeceraTabla1) {
+					@Override
+					public boolean isCellEditable(int row, int column) {
+						return false;
+					}
+				};
+				tabla1.setModel(dtm);
 			}
-			DefaultTableModel dtm = new DefaultTableModel(data2, cabeceraTabla1) {
-				@Override
-				public boolean isCellEditable(int row, int column) {
-					return false;
-				}
-			};
-			tabla1.setModel(dtm);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Agregue una fecha", "Error fecha", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

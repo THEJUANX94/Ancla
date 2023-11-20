@@ -96,13 +96,15 @@ public class Controller implements ActionListener {
                 views.loadDataTable2();
                 break;
             case "Aceptar creacion Producto":
-                String nombre = views.newName();
-                String tipo = views.selectedType();
-                String marca = views.selectedMark();
-                int precio = views.selectedPrice();
-                inventario.agregarProducto(nombre, tipo, marca, precio, 0);
-                views.loadDataTableManage(inventario.obtenerProductos());
-                views.dialogForm.setVisible(false);
+                if (views.selectedPrice() != 0 && !views.newName().equals("")) {
+                    String nombre = views.newName();
+                    String tipo = views.selectedType();
+                    String marca = views.selectedMark();
+                    int precio = views.selectedPrice();
+                    inventario.agregarProducto(nombre, tipo, marca, precio, 0);
+                    views.loadDataTableManage(inventario.obtenerProductos());
+                    views.dialogForm.setVisible(false);
+                }
                 break;
             case "Cancelar":
                 views.dialogForm.setVisible(false);
@@ -113,14 +115,18 @@ public class Controller implements ActionListener {
                 views.deleteDialog.setVisible(false);
                 break;
             case "Aceptar creacion Marca":
-                inventario.agregarMarca(views.newMarkName());
-                views.loadDataTableBrand(inventario.obtenerMatrizMarcas());
-                views.dialogMarkForm.setVisible(false);
+                if (!views.newMarkName().equals("")) {
+                    inventario.agregarMarca(views.newMarkName());
+                    views.loadDataTableBrand(inventario.obtenerMatrizMarcas());
+                    views.dialogMarkForm.setVisible(false);
+                }
                 break;
             case "Aceptar creacion Tipo":
-                inventario.agregarTipo((views.newTypeName()));
-                views.loadDataTableType(inventario.obtenerMatrizTipos());
-                views.dialogTypeForm.setVisible(false);
+                if (!views.newTypeName().equals("")) {
+                    inventario.agregarTipo((views.newTypeName()));
+                    views.loadDataTableType(inventario.obtenerMatrizTipos());
+                    views.dialogTypeForm.setVisible(false);
+                }
                 break;
             case "Buscar_Fecha":
                 views.getDate();

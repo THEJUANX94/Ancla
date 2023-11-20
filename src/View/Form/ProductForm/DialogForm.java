@@ -13,7 +13,7 @@ public class DialogForm extends JDialog {
 
   public DialogForm(ActionListener listener) {
     this.setLayout(new BorderLayout());
-    this.setSize(750, 630);
+    this.setSize(450, 310);
     this.setLocationRelativeTo(null);
     this.setResizable(false);
     initComponents(listener);

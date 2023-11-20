@@ -1,6 +1,7 @@
 package View.Form.TypeForm;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
@@ -13,8 +14,8 @@ public class DialogTypeForm extends JDialog {
 
   public DialogTypeForm(ActionListener listener) {
     this.setLayout(new BorderLayout());
-    this.setSize(650, 430);
-    this.setLocationRelativeTo(null);
+    this.setBackground(Color.WHITE);
+    this.setSize(450, 150);    this.setLocationRelativeTo(null);
     this.setResizable(false);
     initComponents(listener);
     this.setVisible(true);

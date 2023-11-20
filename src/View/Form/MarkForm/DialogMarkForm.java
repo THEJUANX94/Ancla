@@ -1,6 +1,7 @@
 package View.Form.MarkForm;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
@@ -13,7 +14,8 @@ public class DialogMarkForm extends JDialog {
 
   public DialogMarkForm(ActionListener listener) {
     this.setLayout(new BorderLayout());
-    this.setSize(650, 430);
+    this.setBackground(Color.WHITE);
+    this.setSize(450, 150);
     this.setLocationRelativeTo(null);
     this.setResizable(false);
     initComponents(listener);
