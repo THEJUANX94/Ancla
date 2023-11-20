@@ -37,4 +37,24 @@ public class ManageProductPanel extends JPanel{
     public int getIdProduct() {
         return centerPanel_ManagePanel.getIdProduct();
     }
+
+    public String getNameProduct() {
+        return centerPanel_ManagePanel.getNameProduct();
+    }
+
+	public String getPriceProduct() {
+		return centerPanel_ManagePanel.getPriceProduct();
+	}
+
+	public String getQuantityProduct() {
+		return centerPanel_ManagePanel.getQuantityProduct();
+	}
+
+    public String getTypeProduct(){
+		return centerPanel_ManagePanel.getTypeProduct();
+	}
+
+	public String getMarkProduct(){
+		return centerPanel_ManagePanel.getMarkProduct();
+	}
 }

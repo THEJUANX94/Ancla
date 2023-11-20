@@ -100,9 +100,29 @@ public class SellerPanel extends JPanel {
 
   public String getNameType() {
     return centerPanel.getNameType();
-}
+  }
 
-public int getIdType(){
+  public int getIdType() {
     return centerPanel.getIdType();
-}
+  }
+
+  public String getNameProduct() {
+    return centerPanel.getNameProduct();
+  }
+
+  public String getPriceProduct() {
+    return centerPanel.getPriceProduct();
+  }
+
+  public String getQuantityProduct() {
+    return centerPanel.getQuantityProduct();
+  }
+
+  public String getTypeProduct(){
+		return centerPanel.getTypeProduct();
+	}
+
+	public String getMarkProduct(){
+		return centerPanel.getMarkProduct();
+	}
 }

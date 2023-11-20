@@ -84,13 +84,21 @@ public class Controller implements ActionListener {
             case "Crear_producto":
                 views.obtainedTypes(inventario.obtenerTipos());
                 views.obtainedMarks(inventario.obtenerMarcas());
+                views.dialogForm.setName("");
+                views.dialogForm.setType(true);
+                views.dialogForm.setMark(true);
+                views.dialogForm.setPrice("");
+                views.dialogForm.setQuantity("");
                 views.dialogForm.setVisible(true);
+                views.dialogForm.setComand("Aceptar creacion Producto");
                 break;
             case "Crear_Tipo":
+                views.dialogTypeForm.setNameType("");
                 views.dialogTypeForm.setVisible(true);
                 views.dialogTypeForm.setComandType("Aceptar creacion Tipo");
                 break;
             case "Crear_Marca":
+                views.dialogMarkForm.setNameMark("");
                 views.dialogMarkForm.setVisible(true);
                 views.dialogMarkForm.setComandMark("Aceptar creacion Marca");
                 break;
@@ -103,7 +111,7 @@ public class Controller implements ActionListener {
                     String tipo = views.selectedType();
                     String marca = views.selectedMark();
                     int precio = views.selectedPrice();
-                    inventario.agregarProducto(nombre, tipo, marca, precio, 0);
+                    inventario.agregarProducto(nombre, tipo, marca, precio, views.dialogForm.selectedQuantity());
                     views.loadDataTableManage(inventario.obtenerProductos());
                     views.dialogForm.setVisible(false);
                 }
@@ -188,6 +196,29 @@ public class Controller implements ActionListener {
                     inventario.modificarTipo(views.getIdType(), views.newTypeName());
                     views.loadDataTableType(inventario.obtenerMatrizTipos());
                     views.dialogTypeForm.setVisible(false);
+                }
+                break;
+            case "Modificar_producto":
+                if (views.getIdProduct() != 0) {
+                    views.dialogForm.setName(views.getNameProduct());
+                    views.dialogForm.setType(false, views.getTypeProduct());
+                    views.dialogForm.setMark(false, views.getMarkProduct());
+                    views.dialogForm.setPrice(views.getPriceProduct());
+                    views.dialogForm.setQuantity(views.getQuantityProduct());
+                    views.dialogForm.setVisible(true);
+                    views.dialogForm.setComand("Aceptar_modificar_producto");
+                }
+                break;
+            case "Aceptar_modificar_producto":
+                if (views.selectedPrice() != 0 && !views.newName().equals("")
+                        && views.dialogForm.selectedQuantity() != 0) {
+                    int id = views.getIdProduct();
+                    String nombre = views.newName();
+                    int precio = views.selectedPrice();
+                    int quantity = views.dialogForm.selectedQuantity();
+                    inventario.modificarProducto(id, nombre, precio, quantity);
+                    views.loadDataTableManage(inventario.obtenerProductos());
+                    views.dialogForm.setVisible(false);
                 }
                 break;
             default:

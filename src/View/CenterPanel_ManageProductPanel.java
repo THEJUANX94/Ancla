@@ -125,4 +125,24 @@ public class CenterPanel_ManageProductPanel extends JPanel {
 		}
 		return Integer.valueOf(id);
 	}
+
+	public String getNameProduct() {
+		return data[tabla1.getSelectedRow()][1];
+	}
+
+	public String getPriceProduct() {
+		return data[tabla1.getSelectedRow()][4];
+	}
+
+	public String getQuantityProduct() {
+		return data[tabla1.getSelectedRow()][5];
+	}
+
+	public String getTypeProduct(){
+		return data[tabla1.getSelectedRow()][2];
+	}
+
+	public String getMarkProduct(){
+		return data[tabla1.getSelectedRow()][3];
+	}
 }

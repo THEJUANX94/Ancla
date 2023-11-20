@@ -173,4 +173,24 @@ public class Views extends JFrame {
     public int getIdType() {
         return sellerPanel.getIdType();
     }
+
+    public String getNameProduct() {
+        return sellerPanel.getNameProduct();
+    }
+
+	public String getPriceProduct() {
+		return sellerPanel.getPriceProduct();
+	}
+
+	public String getQuantityProduct() {
+		return sellerPanel.getQuantityProduct();
+	}
+
+    public String getTypeProduct(){
+		return sellerPanel.getTypeProduct();
+	}
+
+	public String getMarkProduct(){
+		return sellerPanel.getMarkProduct();
+	}
 }

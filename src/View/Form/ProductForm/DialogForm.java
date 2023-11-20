@@ -13,7 +13,7 @@ public class DialogForm extends JDialog {
 
   public DialogForm(ActionListener listener) {
     this.setLayout(new BorderLayout());
-    this.setSize(450, 260);
+    this.setSize(450, 300);
     this.setLocationRelativeTo(null);
     this.setResizable(false);
     initComponents(listener);
@@ -27,11 +27,11 @@ public class DialogForm extends JDialog {
     getContentPane().add(botFormPanel, BorderLayout.SOUTH);
   }
 
-  public void obtainedTypes(String[] types){
+  public void obtainedTypes(String[] types) {
     topFormPanel.obtainedTypes(types);
   }
 
-  public void obtainedMarks(String[] marks){
+  public void obtainedMarks(String[] marks) {
     topFormPanel.obtainedmarks(marks);
   }
 
@@ -47,7 +47,43 @@ public class DialogForm extends JDialog {
     return topFormPanel.selectedMark();
   }
 
-  public int selectedPrice(){
+  public int selectedPrice() {
     return topFormPanel.selectedPrice();
+  }
+
+  public int selectedQuantity() {
+    return topFormPanel.selectedQuantity();
+  }
+
+  public void setName(String name) {
+    topFormPanel.setName(name);
+  }
+
+  public void setPrice(String price) {
+    topFormPanel.setPrice(price);
+  }
+
+  public void setComand(String comand) {
+    botFormPanel.setComand(comand);
+  }
+
+  public void setType(boolean confirm, String type) {
+    topFormPanel.setType(confirm, type);
+  }
+
+  public void setType(boolean confirm) {
+    topFormPanel.setType(confirm);
+  }
+
+  public void setMark(boolean confirm, String mark) {
+    topFormPanel.setMark(confirm, mark);
+  }
+
+  public void setMark(boolean confirm) {
+    topFormPanel.setMark(confirm);
+  }
+
+  public void setQuantity(String quantity) {
+    topFormPanel.setQuantity(quantity);
   }
 }

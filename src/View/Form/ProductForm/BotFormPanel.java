@@ -7,12 +7,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class BotFormPanel extends JPanel{
+public class BotFormPanel extends JPanel {
 
     private JButton bttCancel;
     private JButton bttAcccept;
 
-    public BotFormPanel(ActionListener listener){
+    public BotFormPanel(ActionListener listener) {
         initComponents(listener);
     }
 
@@ -39,5 +39,8 @@ public class BotFormPanel extends JPanel{
         bttAcccept.addActionListener(listener);
         add(bttAcccept);
     }
-    
+
+    public void setComand(String comand) {
+        bttAcccept.setActionCommand(comand);
+    }
 }

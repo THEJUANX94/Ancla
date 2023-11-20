@@ -120,4 +120,24 @@ public class CardLayout1 extends JPanel{
     public int getIdType(){
         return manageTypePanel.getIdType();
     }
+
+    public String getNameProduct() {
+        return centerPanel2.getNameProduct();
+    }
+
+	public String getPriceProduct() {
+		return centerPanel2.getPriceProduct();
+	}
+
+	public String getQuantityProduct() {
+		return centerPanel2.getQuantityProduct();
+	}
+
+    public String getTypeProduct(){
+		return centerPanel2.getTypeProduct();
+	}
+
+	public String getMarkProduct(){
+		return centerPanel2.getMarkProduct();
+	}
 }
