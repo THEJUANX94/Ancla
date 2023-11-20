@@ -112,6 +112,5 @@ public class CenterPanel_ManageTypePanel extends JPanel {
 			tabla1.setModel(dtm);
 		}
 	}
-	
 }
 

@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -22,6 +23,7 @@ public class CenterPanel_ManageProductPanel extends JPanel {
 	private JTextField search;
 	private String[][] data;
 	private int count = 0;
+	private String id;
 
 	public CenterPanel_ManageProductPanel(ActionListener listener) {
 		initComponents(listener);
@@ -112,5 +114,14 @@ public class CenterPanel_ManageProductPanel extends JPanel {
 			tabla1.setModel(dtm);
 		}
 	}
-	
+
+	public int getIdProduct() {
+		try {
+			id = data[tabla1.getSelectedRow()][0];
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Seleccione un producto", "Seleccione una fila",
+					JOptionPane.ERROR_MESSAGE);
+		}
+		return Integer.valueOf(id);
+	}
 }

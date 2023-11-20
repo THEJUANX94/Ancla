@@ -72,17 +72,14 @@ public class Controller implements ActionListener {
             case "Pestaña_Gestionar_Producto":
                 views.show1("Boton_Gestionar");
                 views.loadDataTableManage(inventario.obtenerProductos());
-                views.deleteDialog.setComand("Aceptar_Eliminar_Producto");
                 break;
             case "Pestaña_Gestionar_Tipo":
                 views.show1("Pestaña_GestionarTipo");
                 views.loadDataTableType(inventario.obtenerMatrizTipos());
-                views.deleteDialog.setComand("Aceptar_Eliminar_Tipo");
                 break;
             case "Pestaña_Gestionar_Marca":
                 views.show1("Pestaña_GestionarMarca");
                 views.loadDataTableBrand(inventario.obtenerMatrizMarcas());
-                views.deleteDialog.setComand("Aceptar_Eliminar_Marca");
                 break;
             case "Crear_producto":
                 views.obtainedTypes(inventario.obtenerTipos());
@@ -129,8 +126,10 @@ public class Controller implements ActionListener {
                 views.getDate();
                 break;
             case "Aceptar_venta":
-                inventario.agregarFactura(views.getItems());
-                views.setTable2();
+                if(views.confirmTabla2() == true){
+                    inventario.agregarFactura(views.getItems());
+                    views.setTable2();
+                }
                 break;
             case "Cancelar_venta":
                 views.setTable2();
@@ -142,14 +141,13 @@ public class Controller implements ActionListener {
                 views.getItemList(inventario.obtenerItems(views.getIdBill()));
                 views.itemsDialog.setVisible(true);
                 break;
-            case "Aceptar_Eliminar_Marca":
-
-                break;
-            case "Aceptar_Eliminar_Tipo":
-
+            case "Eliminar_producto":
+                views.getIdProduct();
+                views.deleteDialog.setVisible(true);
                 break;
             case "Aceptar_Eliminar_Producto":
-
+                inventario.eliminarProducto(views.getIdProduct());
+                views.deleteDialog.setVisible(false);
                 break;
             default:
                 break;

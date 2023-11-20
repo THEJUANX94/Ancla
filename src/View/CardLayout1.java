@@ -96,4 +96,12 @@ public class CardLayout1 extends JPanel{
     public void getConfirm(boolean confirm){
 		centerPanel1.getConfirm(confirm);
 	}
+
+    public boolean confirmTabla2(){
+		return centerPanel1.confirmTabla2();
+	}
+
+    public int getIdProduct() {
+        return centerPanel2.getIdProduct();
+    }
 }

@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -201,5 +202,14 @@ public class CenterPanel_BillingPanel extends JPanel {
 		if(confirm = true){
 			addProductToBillDialog.setVisible(false);
 		}
+	}
+
+	public boolean confirmTabla2(){
+		boolean confirm = true;
+		if(tabla2.getRowCount() == 0){
+			confirm = false;
+			JOptionPane.showMessageDialog(null, "Agregue un producto", "Error de agregacion", JOptionPane.ERROR_MESSAGE);
+		}
+		return confirm;
 	}
 }

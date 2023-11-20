@@ -150,4 +150,12 @@ public class Views extends JFrame {
     public void getConfirm(boolean confirm){
 		sellerPanel.getConfirm(confirm);
 	}
+
+    public boolean confirmTabla2(){
+		return sellerPanel.confirmTabla2();
+	}
+
+    public int getIdProduct() {
+        return sellerPanel.getIdProduct();
+    }
 }

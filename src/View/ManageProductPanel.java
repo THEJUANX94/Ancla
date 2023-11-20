@@ -33,4 +33,8 @@ public class ManageProductPanel extends JPanel{
     public void loadDataTable(String[][] data) {
         centerPanel_ManagePanel.loadDataTable(data);
     }
+
+    public int getIdProduct() {
+        return centerPanel_ManagePanel.getIdProduct();
+    }
 }

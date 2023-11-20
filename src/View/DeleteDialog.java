@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -16,7 +15,9 @@ public class DeleteDialog extends JDialog{
     private JButton cancelButton;
     
     public DeleteDialog(ActionListener listener){
-        setSize(300, 200);
+        setSize(290, 180);
+        this.setResizable(false);
+        setLocationRelativeTo(null);
         initComponents(listener);
     }
 
@@ -31,6 +32,7 @@ public class DeleteDialog extends JDialog{
         add(confirmLabel);
 
         acceptButton = new JButton("Aceptar");
+        acceptButton.setActionCommand("Aceptar_Eliminar_Producto");
         acceptButton.setPreferredSize(new Dimension(170, 30));
         acceptButton.setBackground(buttonColor);
         acceptButton.setForeground(letra);
@@ -50,9 +52,5 @@ public class DeleteDialog extends JDialog{
         cancelButton.setBorderPainted(false);
         cancelButton.addActionListener(listener);
         add(cancelButton);
-    }
-
-    public void setComand(String comand){
-        acceptButton.setActionCommand(comand);
     }
 }

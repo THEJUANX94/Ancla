@@ -112,5 +112,4 @@ public class CenterPanel_ManageBrandPanel extends JPanel {
 			tabla1.setModel(dtm);
 		}
 	}
-	
 }

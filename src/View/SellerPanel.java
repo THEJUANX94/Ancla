@@ -81,4 +81,12 @@ public class SellerPanel extends JPanel {
   public void getConfirm(boolean confirm) {
     centerPanel.getConfirm(confirm);
   }
+
+  public boolean confirmTabla2() {
+    return centerPanel.confirmTabla2();
+  }
+
+  public int getIdProduct() {
+    return centerPanel.getIdProduct();
+  }
 }
