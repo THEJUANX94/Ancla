@@ -121,6 +121,7 @@ public class CenterPanel_ManageProductPanel extends JPanel {
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Seleccione un producto", "Seleccione una fila",
 					JOptionPane.ERROR_MESSAGE);
+			return 0;
 		}
 		return Integer.valueOf(id);
 	}

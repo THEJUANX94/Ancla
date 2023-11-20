@@ -139,12 +139,15 @@ public class Controller implements ActionListener {
                 views.setHistoryTable();
                 break;
             case "VerItemList":
-                views.getItemList(inventario.obtenerItems(views.getIdBill()));
-                views.itemsDialog.setVisible(true);
+                if (views.getIdBill() != 0) {
+                    views.getItemList(inventario.obtenerItems(views.getIdBill()));
+                    views.itemsDialog.setVisible(true);
+                }
                 break;
             case "Eliminar_producto":
-                views.getIdProduct();
-                views.deleteDialog.setVisible(true);
+                if (views.getIdProduct() != 0) {
+                    views.deleteDialog.setVisible(true);
+                }
                 break;
             case "Aceptar_Eliminar_Producto":
                 inventario.eliminarProducto(views.getIdProduct());

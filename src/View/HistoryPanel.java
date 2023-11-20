@@ -125,6 +125,7 @@ public class HistoryPanel extends JPanel {
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Seleccione una factura", "Seleccione una fila",
 					JOptionPane.ERROR_MESSAGE);
+			return 0;
 		}
 		return Integer.parseInt(id);
 	}
