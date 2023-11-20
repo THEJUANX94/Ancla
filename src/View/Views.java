@@ -34,7 +34,7 @@ public class Views extends JFrame {
         sellerPanel = new SellerPanel(listener);
         dialogForm = new DialogForm(listener);
         dialogMarkForm = new DialogMarkForm(listener);
-        dialogTypeForm = new DialogTypeForm(listener);  
+        dialogTypeForm = new DialogTypeForm(listener);
         itemsDialog = new ItemsDialog(listener);
         deleteDialog = new DeleteDialog(listener);
         loginPanel.setVisible(true);
@@ -71,7 +71,7 @@ public class Views extends JFrame {
     }
 
     public void loadDataTableManage(String[][] data) {
-        sellerPanel.loadDataTableManage(data);   
+        sellerPanel.loadDataTableManage(data);
     }
 
     public void loadDataTableBrand(String[][] data) {
@@ -87,22 +87,22 @@ public class Views extends JFrame {
     }
 
     public String[][] getItems() {
-		return sellerPanel.getItems();
-	}
+        return sellerPanel.getItems();
+    }
 
     public void getDate() {
         sellerPanel.getDate();
     }
 
-    public int getQuantity(){
+    public int getQuantity() {
         return sellerPanel.getQuantity();
     }
 
-    public void obtainedTypes(String[] types){
+    public void obtainedTypes(String[] types) {
         dialogForm.obtainedTypes(types);
     }
 
-    public void obtainedMarks(String[] marks){
+    public void obtainedMarks(String[] marks) {
         dialogForm.obtainedMarks(marks);
     }
 
@@ -118,43 +118,59 @@ public class Views extends JFrame {
         return dialogForm.selectedMark();
     }
 
-    public int selectedPrice(){
+    public int selectedPrice() {
         return dialogForm.selectedPrice();
     }
 
-    public String newMarkName(){
+    public String newMarkName() {
         return dialogMarkForm.newMarkName();
     }
 
-    public String newTypeName(){
+    public String newTypeName() {
         return dialogTypeForm.newTypeName();
     }
 
-    public void setTable2(){
-		sellerPanel.setTable2();
-	}
+    public void setTable2() {
+        sellerPanel.setTable2();
+    }
 
-    public void getItemList(String[][] itemlist){
-		itemsDialog.getItemList(itemlist);
-	}
+    public void getItemList(String[][] itemlist) {
+        itemsDialog.getItemList(itemlist);
+    }
 
-	public int getIdBill(){
+    public int getIdBill() {
         return sellerPanel.getIdBill();
     }
-    
-    public void setHistoryTable(){
+
+    public void setHistoryTable() {
         sellerPanel.setHistoryTable();
     }
 
-    public void getConfirm(boolean confirm){
-		sellerPanel.getConfirm(confirm);
-	}
+    public void getConfirm(boolean confirm) {
+        sellerPanel.getConfirm(confirm);
+    }
 
-    public boolean confirmTabla2(){
-		return sellerPanel.confirmTabla2();
-	}
+    public boolean confirmTabla2() {
+        return sellerPanel.confirmTabla2();
+    }
 
     public int getIdProduct() {
         return sellerPanel.getIdProduct();
+    }
+
+    public String getNameMark() {
+        return sellerPanel.getNameMark();
+    }
+
+    public int getIdmark() {
+        return sellerPanel.getIdmark();
+    }
+
+    public String getNameType() {
+        return sellerPanel.getNameType();
+    }
+
+    public int getIdType() {
+        return sellerPanel.getIdType();
     }
 }

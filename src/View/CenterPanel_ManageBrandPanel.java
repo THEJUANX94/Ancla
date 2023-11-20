@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -18,7 +19,7 @@ import javax.swing.event.DocumentListener;
 public class CenterPanel_ManageBrandPanel extends JPanel {
 
 	private JTable tabla1;
-	private String[] cabeceraTabla1 = { "Id", "Nombre"};
+	private String[] cabeceraTabla1 = { "Id", "Nombre" };
 	private JTextField search;
 	private String[][] data;
 	private int count = 0;
@@ -111,5 +112,20 @@ public class CenterPanel_ManageBrandPanel extends JPanel {
 			};
 			tabla1.setModel(dtm);
 		}
+	}
+
+	public String getNameMark() {
+		String name = "";
+		try {
+			name = data[tabla1.getSelectedRow()][1];
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Seleccione una marca", "Error", JOptionPane.ERROR_MESSAGE);
+			return name;
+		}
+		return name;
+	}
+
+	public int getIdmark(){
+		return Integer.parseInt(data[tabla1.getSelectedRow()][0]);
 	}
 }

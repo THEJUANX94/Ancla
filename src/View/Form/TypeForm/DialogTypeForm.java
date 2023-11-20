@@ -31,4 +31,12 @@ public class DialogTypeForm extends JDialog {
   public String newTypeName() {
     return topFormPanel.newName();
   }
+
+  public void setComandType(String comand) {
+    botFormPanel.setComand(comand);
+  }
+
+  public void setNameType(String name) {
+    topFormPanel.setName(name);
+  }
 }

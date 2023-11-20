@@ -88,9 +88,11 @@ public class Controller implements ActionListener {
                 break;
             case "Crear_Tipo":
                 views.dialogTypeForm.setVisible(true);
+                views.dialogTypeForm.setComandType("Aceptar creacion Tipo");
                 break;
             case "Crear_Marca":
                 views.dialogMarkForm.setVisible(true);
+                views.dialogMarkForm.setComandMark("Aceptar creacion Marca");
                 break;
             case "AddProductToBill":
                 views.loadDataTable2();
@@ -159,6 +161,34 @@ public class Controller implements ActionListener {
                 inventario.eliminarProducto(views.getIdProduct());
                 views.loadDataTableManage(inventario.obtenerProductos());
                 views.deleteDialog.setVisible(false);
+                break;
+            case "Modificar_Marca":
+                if (!views.getNameMark().equals("")) {
+                    views.dialogMarkForm.setNameMark(views.getNameMark());
+                    views.dialogMarkForm.setVisible(true);
+                    views.dialogMarkForm.setComandMark("Aceptar_modificar_Marca");
+                }
+                break;
+            case "Aceptar_modificar_Marca":
+                if (!views.newMarkName().equals("")) {
+                    inventario.modificarMarca(views.getIdmark(), views.newMarkName());
+                    views.loadDataTableBrand(inventario.obtenerMatrizMarcas());
+                    views.dialogMarkForm.setVisible(false);
+                }
+                break;
+            case "Modificar_Tipo":
+                if (!views.getNameType().equals("")) {
+                    views.dialogTypeForm.setNameType(views.getNameType());
+                    views.dialogTypeForm.setVisible(true);
+                    views.dialogTypeForm.setComandType("Aceptar_modificar_Tipo");
+                }
+                break;
+            case "Aceptar_modificar_Tipo":
+                if (!views.newTypeName().equals("")) {
+                    inventario.modificarTipo(views.getIdType(), views.newTypeName());
+                    views.loadDataTableType(inventario.obtenerMatrizTipos());
+                    views.dialogTypeForm.setVisible(false);
+                }
                 break;
             default:
                 break;

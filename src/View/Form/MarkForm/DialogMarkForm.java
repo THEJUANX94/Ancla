@@ -32,4 +32,12 @@ public class DialogMarkForm extends JDialog {
   public String newMarkName() {
     return topFormPanel.newName();
   }
+
+  public void setComandMark(String comand) {
+    botFormPanel.setComand(comand);
+  }
+
+  public void setNameMark(String name) {
+    topFormPanel.setName(name);
+  }
 }

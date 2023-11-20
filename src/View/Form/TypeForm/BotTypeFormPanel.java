@@ -40,4 +40,7 @@ public class BotTypeFormPanel extends JPanel{
         add(bttAcccept);
     }
     
+    public void setComand(String comand){
+        bttAcccept.setActionCommand(comand);
+    }
 }

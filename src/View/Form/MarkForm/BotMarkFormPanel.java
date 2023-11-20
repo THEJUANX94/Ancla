@@ -39,5 +39,8 @@ public class BotMarkFormPanel extends JPanel{
         bttAcccept.addActionListener(listener);        
         add(bttAcccept);
     }
-    
+
+    public void setComand(String comand){
+        bttAcccept.setActionCommand(comand);
+    }
 }

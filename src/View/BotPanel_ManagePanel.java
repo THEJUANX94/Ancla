@@ -28,6 +28,7 @@ public class BotPanel_ManagePanel extends JPanel {
         modifyButton.setSelected(false);
         modifyButton.setFocusable(false);
         modifyButton.setBorderPainted(false);
+        modifyButton.addActionListener(listener);
         add(modifyButton);
 
         acceptButton = new JButton();

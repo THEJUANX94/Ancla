@@ -44,4 +44,8 @@ public class TopTypeFormPanel extends JPanel{
         }        
         return confirm;
     }
+
+    public void setName(String name){
+        txtName.setText(name);
+    }
 }

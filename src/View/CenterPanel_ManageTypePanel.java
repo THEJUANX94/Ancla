@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -111,6 +112,21 @@ public class CenterPanel_ManageTypePanel extends JPanel {
 			};
 			tabla1.setModel(dtm);
 		}
+	}
+
+	public String getNameType() {
+		String name = "";
+		try {
+			name = data[tabla1.getSelectedRow()][1];
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Seleccione un tipo", "Error", JOptionPane.ERROR_MESSAGE);
+			return name;
+		}
+		return name;
+	}
+
+	public int getIdType(){
+		return Integer.parseInt(data[tabla1.getSelectedRow()][0]);
 	}
 }
 

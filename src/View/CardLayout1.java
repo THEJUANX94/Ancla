@@ -104,4 +104,20 @@ public class CardLayout1 extends JPanel{
     public int getIdProduct() {
         return centerPanel2.getIdProduct();
     }
+
+    public String getNameMark() {
+        return manageBrandPanel.getNameMark();
+    }
+
+    public int getIdmark(){
+        return manageBrandPanel.getIdmark();
+    }
+
+    public String getNameType() {
+        return manageTypePanel.getNameType();
+    }
+
+    public int getIdType(){
+        return manageTypePanel.getIdType();
+    }
 }

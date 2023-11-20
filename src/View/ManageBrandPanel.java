@@ -32,4 +32,12 @@ public class ManageBrandPanel extends JPanel{
     public void loadDataTable(String[][] data) {
         centerPanel_ManageBrandPanel.loadDataTable(data);
     }
+
+    public String getNameMark() {
+        return centerPanel_ManageBrandPanel.getNameMark();
+    }
+
+    public int getIdmark(){
+        return centerPanel_ManageBrandPanel.getIdmark();
+    }
 }

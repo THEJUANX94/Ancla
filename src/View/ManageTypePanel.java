@@ -32,4 +32,12 @@ public class ManageTypePanel extends JPanel{
     public void loadDataTable(String[][] data) {
         centerPanel_ManageTypePanel.loadDataTable(data);
     }
+
+    public String getNameType() {
+        return centerPanel_ManageTypePanel.getNameType();
+    }
+
+    public int getIdType(){
+        return centerPanel_ManageTypePanel.getIdType();
+    }
 }
