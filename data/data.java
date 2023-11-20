@@ -172,8 +172,8 @@ public class data {
                         id_producto = facturas.get(i).getItems().get(j).getProducto().getId();
                         cantidad_factura = facturas.get(i).getItems().get(j).getCantidad();
                         stFactura = connect
-                                .prepareStatement("INSERT INTO facturas_ventas_producto values (" + id_factura + ", "
-                                        + id_producto + ", " + cantidad_factura + ")");
+                                .prepareStatement("INSERT INTO facturas_ventas_producto values (" + id_producto + ", "
+                                        + id_factura + ", " + cantidad_factura + ")");
                         stFactura.executeUpdate();
                     }
                 }
