@@ -166,7 +166,7 @@ public class CenterPanel_BillingPanel extends JPanel {
 			count = 0;
 			String[][] data2 = new String[data.length][6];
 			for (int i = 0; i < data.length; i++) {
-				if (data[i][1].contains(texto)) {
+				if (data[i][1].toUpperCase().contains(texto.toUpperCase())) {
 					data2[count] = data[i];
 					count++;
 				}

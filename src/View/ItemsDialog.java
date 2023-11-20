@@ -64,9 +64,6 @@ public class ItemsDialog extends JDialog{
     }
 
     public void getItemList(String[][] data) {
-        for (int i = 0; i < data.length; i++) {
-            System.out.println(data[i]);
-        }
         DefaultTableModel dtm = new DefaultTableModel(data, cabeceratable) {
             @Override
             public boolean isCellEditable(int row, int column) {
