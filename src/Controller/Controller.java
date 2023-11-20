@@ -126,9 +126,10 @@ public class Controller implements ActionListener {
                 views.getDate();
                 break;
             case "Aceptar_venta":
-                if(views.confirmTabla2() == true){
+                if (views.confirmTabla2() == true) {
                     inventario.agregarFactura(views.getItems());
                     views.setTable2();
+                    views.loadDataTable1(inventario.obtenerProductos());
                 }
                 break;
             case "Cancelar_venta":
@@ -147,6 +148,7 @@ public class Controller implements ActionListener {
                 break;
             case "Aceptar_Eliminar_Producto":
                 inventario.eliminarProducto(views.getIdProduct());
+                views.loadDataTableManage(inventario.obtenerProductos());
                 views.deleteDialog.setVisible(false);
                 break;
             default:
@@ -159,5 +161,4 @@ public class Controller implements ActionListener {
         Controller controller = new Controller(user);
         controller.run();
     }
-
 }
