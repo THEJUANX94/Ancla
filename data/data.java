@@ -245,7 +245,7 @@ public class data {
         try {
             stFactura = connect.prepareStatement("DELETE FROM facturas where id = " + id);
             stFactura.executeUpdate();
-            stFactura = connect.prepareStatement("DELETE FROM facturas_ventas_producto where id = " + id);
+            stFactura = connect.prepareStatement("DELETE FROM facturas_ventas_producto where id_factura = " + id);
             stFactura.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
