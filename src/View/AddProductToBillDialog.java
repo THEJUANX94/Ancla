@@ -13,7 +13,10 @@ import javax.swing.JTextField;
 
 public class AddProductToBillDialog extends JDialog {
 
-	private JLabel datos;
+	private JLabel nombre;
+	private JLabel tipo;
+	private JLabel marca;
+	private JLabel precio;
 	private JTextField quantityTextField;
 	private JButton cancelButton;
 	private JButton addButton;
@@ -23,34 +26,61 @@ public class AddProductToBillDialog extends JDialog {
 		setSize(300, 200);
 		setBackground(Color.WHITE);
 		this.setLocationRelativeTo(null);
+		setTitle("Agregar producto a la factura");
 	}
 
 	private void initComponents(ActionListener listener) {
 		setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
-		gbc.gridy = 0;
+		gbc.gridy = 5;
 		JLabel wordlbl = new JLabel("Cantidad: ");
 		wordlbl.setForeground(Color.BLACK);
 		add(wordlbl, gbc);
 		quantityTextField = new JTextField();
 		quantityTextField.setText("1");
 		gbc.gridx = 1;
-		gbc.gridy = 0;
+		gbc.gridy = 5;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		add(quantityTextField, gbc);
 
 		gbc.gridx = 0;
+		gbc.gridy = 0;
+		gbc.gridwidth = 2;
+		nombre = new JLabel();
+		nombre.setForeground(Color.BLACK);
+		add(nombre, gbc);
+
+		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.gridwidth = 2;
-		datos = new JLabel();
-		datos.setForeground(Color.BLACK);
-		add(datos, gbc);
+		tipo = new JLabel();
+		tipo.setForeground(Color.BLACK);
+		add(tipo, gbc);
+
+		gbc.gridx = 0;
+		gbc.gridy = 2;
+		gbc.gridwidth = 2;
+		marca = new JLabel();
+		marca.setForeground(Color.BLACK);
+		add(marca, gbc);
+
+		gbc.gridx = 0;
+		gbc.gridy = 3;
+		gbc.gridwidth = 2;
+		precio = new JLabel();
+		precio.setForeground(Color.BLACK);
+		add(precio, gbc);
 
 		JLabel a = new JLabel("             ");
 		gbc.gridx = 1;
-		gbc.gridy = 2;
+		gbc.gridy = 4;
 		add(a, gbc);
+
+		JLabel b = new JLabel("             ");
+		gbc.gridx = 1;
+		gbc.gridy = 6;
+		add(b, gbc);
 
 		addButton = new JButton("Agregar");
 		addButton.addActionListener(listener);
@@ -59,7 +89,7 @@ public class AddProductToBillDialog extends JDialog {
 		addButton.setForeground(Color.BLACK);
 		addButton.setPreferredSize(new Dimension(200, 30));
 		addButton.setFocusPainted(false);
-		gbc.gridy = 3;
+		gbc.gridy = 7;
 		gbc.gridx = 0;
 		gbc.gridwidth = 2;
 		add(addButton, gbc);
@@ -73,13 +103,17 @@ public class AddProductToBillDialog extends JDialog {
 		cancelButton.addActionListener(listener);
 		cancelButton.setActionCommand("Cancelar");
 		gbc.gridx = 0;
-		gbc.gridy = 4;
+		gbc.gridy = 8;
 		gbc.gridwidth = 2;
 		add(cancelButton, gbc);
 	}
 
 	public void setDatos(String datos) {
-		this.datos.setText(datos);
+		String[] datosArray = datos.split(",");
+		this.nombre.setText("Nombre: " + datosArray[0]);
+		this.tipo.setText("Tipo: " + datosArray[1]);
+		this.marca.setText("Marca: " + datosArray[2]);
+		this.precio.setText("Precio: " + datosArray[3]);
 	}
 
 	public int getQuantity(int stock) {

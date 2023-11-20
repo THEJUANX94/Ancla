@@ -108,7 +108,7 @@ public class CenterPanel_BillingPanel extends JPanel {
 					stock = Integer.parseInt((String) target.getValueAt(row, 5));
 
 					addProductToBillDialog.setVisible(true);
-					addProductToBillDialog.setDatos(id + "\n " + nombre + " " + marca + " " + tipo + " " + precio + " ");
+					addProductToBillDialog.setDatos(nombre + "," + marca + "," + tipo + "," + precio);
 				}
 			}
 		});
