@@ -289,7 +289,7 @@ public class data {
 
     public void updateProductos(String name, int precio, int cantidad, int id) {
         try {
-            stProductos = connect.prepareStatement("UPDATE productos SET nombre_producto = " + name + ", " + "precio = " + precio + ", " + "cantidad = " + cantidad +  " WHERE id_marca = " + id);
+            stProductos = connect.prepareStatement("UPDATE productos SET nombre_producto = " + name + ", " + "precio = " + precio + ", " + "cantidad = " + cantidad +  " WHERE id_producto = " + id);
             stProductos.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -298,7 +298,7 @@ public class data {
 
     public void updateTipos(String name, int id) {
         try {
-            stTipo = connect.prepareStatement("UPDATE tipos_producto SET nombre_tipo = " + name + " WHERE id_marca = " + id);
+            stTipo = connect.prepareStatement("UPDATE tipos_producto SET nombre_tipo = " + name + " WHERE id_tipo = " + id);
             stTipo.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
