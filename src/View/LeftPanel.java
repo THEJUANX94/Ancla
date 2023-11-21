@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -63,7 +64,7 @@ public class LeftPanel extends JPanel{
 		label17 = new JLabel("       \n    	");
 		label18 = new JLabel("       \n    	");
 		label19 = new JLabel("       \n    	");
-		label20 = new JLabel("       \n    	");
+		label20 = new JLabel("          	");
 		setLayout(new GridBagLayout());
 		GridBagConstraints gbl_LeftPanel = new GridBagConstraints();
 		
@@ -133,6 +134,8 @@ public class LeftPanel extends JPanel{
 		gbl_LeftPanel.gridy = 20;
 		add(label19, gbl_LeftPanel);
 		gbl_LeftPanel.gridy = 21;
+		label20.setPreferredSize(new Dimension(10, 100));
+		label20.setForeground(new Color(68, 147, 185));
 		add(label20, gbl_LeftPanel);
 		
 		exitButton = new JButton();

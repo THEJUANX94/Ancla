@@ -89,7 +89,7 @@ public class CenterPanel_BillingPanel extends JPanel {
 		centerPanelLeft.add(tabla1);
 
 		JScrollPane scrollPanel1 = new JScrollPane(tabla1);
-		scrollPanel1.setPreferredSize(new Dimension(680, 470));
+		scrollPanel1.setPreferredSize(new Dimension(680, 560));
 		centerPanelLeft.add(scrollPanel1);
 
 		tabla1.addMouseListener(new MouseAdapter() {
@@ -131,7 +131,7 @@ public class CenterPanel_BillingPanel extends JPanel {
 		centerPanel.add(tabla2);
 
 		JScrollPane scrollPanel2 = new JScrollPane(tabla2);
-		scrollPanel2.setPreferredSize(new Dimension(390, 470));
+		scrollPanel2.setPreferredSize(new Dimension(390, 560));
 		centerPanel.add(scrollPanel2);
 	}
 

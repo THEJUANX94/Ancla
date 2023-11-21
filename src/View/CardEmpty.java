@@ -30,7 +30,7 @@ public class CardEmpty extends JPanel {
         botPanel.setBackground(Color.WHITE);
 
         JLabel label = new JLabel("                        ");
-        label.setPreferredSize(new Dimension(500, 100));
+        label.setPreferredSize(new Dimension(500, 200));
         toPanel.add(label);
 
         Image img = new ImageIcon("Images/logo.png").getImage();

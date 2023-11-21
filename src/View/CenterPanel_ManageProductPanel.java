@@ -75,7 +75,7 @@ public class CenterPanel_ManageProductPanel extends JPanel {
 
 		JScrollPane scrollPanel1 = new JScrollPane(tabla1);
 		scrollPanel1.setBackground(Color.WHITE);
-		scrollPanel1.setPreferredSize(new Dimension(1100, 470));
+		scrollPanel1.setPreferredSize(new Dimension(1100, 560));
 		centerPanel.add(scrollPanel1);
 	}
 
