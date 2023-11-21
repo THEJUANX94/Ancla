@@ -17,6 +17,7 @@ public class Views extends JFrame {
     public DialogTypeForm dialogTypeForm;
     public ItemsDialog itemsDialog;
     public DeleteDialog deleteDialog;
+    public AdverstingDialog adverstingDialog;
 
     public Views(ActionListener listener) {
         super("Ancla");
@@ -38,12 +39,14 @@ public class Views extends JFrame {
         dialogTypeForm = new DialogTypeForm(listener);
         itemsDialog = new ItemsDialog(listener);
         deleteDialog = new DeleteDialog(listener);
+        adverstingDialog = new AdverstingDialog(listener);
         loginPanel.setVisible(true);
         dialogForm.setVisible(false);
         dialogMarkForm.setVisible(false);
         dialogTypeForm.setVisible(false);
         itemsDialog.setVisible(false);
         deleteDialog.setVisible(false);
+        adverstingDialog.setVisible(false);
         this.getContentPane().add(sellerPanel);
     }
 
@@ -194,4 +197,8 @@ public class Views extends JFrame {
 	public String getMarkProduct(){
 		return sellerPanel.getMarkProduct();
 	}
+
+    public void lowQuantity(String product){
+        adverstingDialog.lowQuantity(product);
+    }
 }

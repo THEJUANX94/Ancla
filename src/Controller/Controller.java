@@ -133,6 +133,7 @@ public class Controller implements ActionListener {
                 views.itemsDialog.setVisible(false);
                 views.getConfirm(true);
                 views.deleteDialog.setVisible(false);
+                views.adverstingDialog.setVisible(false);
                 break;
             case "Aceptar creacion Marca":
                 if (!views.newMarkName().equals("")) {
