@@ -35,6 +35,9 @@ public class Controller implements ActionListener {
         boolean confirm = false;
         for (int i = 0; i < login.size(); i++) {
             confirm =  login.get(i).authenticate(user, password);
+            if(confirm == true){
+                return confirm;
+            }
         }
         if (confirm == false) {
             views.showMessageLogin("Usuario o contraseña invalidos");
