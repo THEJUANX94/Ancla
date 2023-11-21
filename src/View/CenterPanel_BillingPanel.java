@@ -131,7 +131,7 @@ public class CenterPanel_BillingPanel extends JPanel {
 		centerPanel.add(tabla2);
 
 		JScrollPane scrollPanel2 = new JScrollPane(tabla2);
-		scrollPanel2.setPreferredSize(new Dimension(390, 560));
+		scrollPanel2.setPreferredSize(new Dimension(450, 560));
 		centerPanel.add(scrollPanel2);
 	}
 
