@@ -1,6 +1,6 @@
 {
     "java.project.referencedLibraries": [
-        "src\\Libraries\\sqlite-jdbc-3.7.2.jar",
-        "src\\Libraries\\jcalendar-1.4.jar"
+        "Libraries\\sqlite-jdbc-3.7.2.jar",
+        "Libraries\\jcalendar-1.4.jar"
     ]
 }

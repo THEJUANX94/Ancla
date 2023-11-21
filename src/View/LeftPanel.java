@@ -73,7 +73,7 @@ public class LeftPanel extends JPanel{
         saleButton.setSelected(false);
 		saleButton.setFocusable(false);
 		saleButton.setBorderPainted(false);
-        Image saleImg = new ImageIcon("Images/logoSale.png").getImage();
+        Image saleImg = new ImageIcon("data/Images/logoSale.png").getImage();
         ImageIcon saleImage2 = new ImageIcon(saleImg.getScaledInstance(75, 75, Image.SCALE_SMOOTH));
         saleButton.setIcon(saleImage2);
 		gbl_LeftPanel.gridx = 0;
@@ -87,7 +87,7 @@ public class LeftPanel extends JPanel{
         editButton.setSelected(false);
 		editButton.setFocusable(false);
 		editButton.setBorderPainted(false);
-        Image editImg = new ImageIcon("Images/logoEdit.png").getImage();
+        Image editImg = new ImageIcon("data/Images/logoEdit.png").getImage();
         ImageIcon editImage2 = new ImageIcon(editImg.getScaledInstance(60, 60, Image.SCALE_SMOOTH));
         editButton.setIcon(editImage2);
 		gbl_LeftPanel.gridy = 12;
@@ -143,7 +143,7 @@ public class LeftPanel extends JPanel{
         exitButton.setSelected(false);
 		exitButton.setFocusable(false);
 		exitButton.setBorderPainted(false);
-        Image exitImg = new ImageIcon("Images/logoSalir.png").getImage();
+        Image exitImg = new ImageIcon("data\\Images\\logoSalir.png").getImage();
         ImageIcon exitImage2 = new ImageIcon(exitImg.getScaledInstance(70, 70, Image.SCALE_SMOOTH));
         exitButton.setIcon(exitImage2);
 		gbl_LeftPanel.gridy = 22;

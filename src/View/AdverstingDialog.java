@@ -30,7 +30,7 @@ public class AdverstingDialog extends JDialog{
         txtLowQuantity.setHorizontalAlignment(JLabel.CENTER);
         add(txtLowQuantity, BorderLayout.CENTER);
 
-        adverstingIcon = new JLabel(new ImageIcon("Images\\pngwing.com.png"));
+        adverstingIcon = new JLabel(new ImageIcon("data\\Images\\pngwing.com.png"));
         adverstingIcon.setHorizontalAlignment(JLabel.CENTER);
         add(adverstingIcon, BorderLayout.NORTH);
 

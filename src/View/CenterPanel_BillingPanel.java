@@ -51,7 +51,7 @@ public class CenterPanel_BillingPanel extends JPanel {
 		addProductToBillDialog.setVisible(false);
 
 		topPanel.setBackground(Color.WHITE);
-		Image img = new ImageIcon("Images/logoSearch.png").getImage();
+		Image img = new ImageIcon("data\\Images\\logoSearch.png").getImage();
 		ImageIcon img2 = new ImageIcon(img.getScaledInstance(20, 20, Image.SCALE_SMOOTH));
 		JLabel labelImage = new JLabel();
 		labelImage = new JLabel();
