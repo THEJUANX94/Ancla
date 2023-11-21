@@ -22,11 +22,12 @@ public class Views extends JFrame {
     public Views(ActionListener listener) {
         super("Ancla");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1280, 720);
+        //this.setSize(1280, 720);
         this.setBackground(Color.WHITE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         initComponents(listener);
+        this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(false);
     }
 

@@ -1,22 +1,25 @@
 package Controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import Models.Inventario;
+import data.Credentials;
 import data.data;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import Models.User;
 import View.Views;
 
 public class Controller implements ActionListener {
 
     private Views views;
-    private User login;
+    private ArrayList<User> login;
     private Inventario inventario;
     private data data;
 
-    public Controller(User user) throws SQLException {
+    public Controller(ArrayList<User> user) throws SQLException {
         views = new Views(this);
         this.login = user;
         data = new data();
@@ -29,9 +32,15 @@ public class Controller implements ActionListener {
     }
 
     public boolean login(String user, String password) {
-        boolean confirm = login.authenticate(user, password);
+        boolean confirm = false;
+        for (int i = 0; i < login.size(); i++) {
+            confirm =  login.get(i).authenticate(user, password);
+            if(confirm == true){
+                return confirm;
+            }
+        }
         if (confirm == false) {
-            views.showMessageLogin("Invalid username or password");
+            views.showMessageLogin("Usuario o contraseña invalidos");
         }
         return confirm;
     }
@@ -229,8 +238,13 @@ public class Controller implements ActionListener {
     }
 
     public static void main(String[] args) throws SQLException {
-        User user = new User("admin", "123");
-        Controller controller = new Controller(user);
-        controller.run();
+        try {
+            Credentials credentials = new Credentials();
+            ArrayList<User> userList = credentials.readUser();
+            Controller controller = new Controller(userList);
+            controller.run();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

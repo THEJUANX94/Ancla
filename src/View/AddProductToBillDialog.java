@@ -128,6 +128,9 @@ public class AddProductToBillDialog extends JDialog {
 				JOptionPane.showMessageDialog(null, "La cantidad excede al stock", "Caracteres invalidos:",
 						JOptionPane.ERROR_MESSAGE);
 				quantity = 0;
+			}else if (stock - quantity <= 3) {
+				JOptionPane.showMessageDialog(null, "Alerta, la cantidad del producto es escasa", "Stock bajo:",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		} catch (NumberFormatException excepcion) {
 			JOptionPane.showMessageDialog(null, "Ingrese solo numeros", "Caracteres invalidos:",

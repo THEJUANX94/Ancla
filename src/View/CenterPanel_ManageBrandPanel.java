@@ -32,9 +32,7 @@ public class CenterPanel_ManageBrandPanel extends JPanel {
 		setBackground(Color.WHITE);
 		setLayout(new BorderLayout());
 		JPanel topPanel = new JPanel();
-		JPanel centerPanelLeft = new JPanel();
 		JPanel centerPanel = new JPanel();
-		add(centerPanelLeft, BorderLayout.WEST);
 		add(topPanel, BorderLayout.NORTH);
 		add(centerPanel, BorderLayout.CENTER);
 
@@ -67,17 +65,17 @@ public class CenterPanel_ManageBrandPanel extends JPanel {
 			}
 		});
 
-		centerPanelLeft.setBackground(Color.WHITE);
+		centerPanel.setBackground(Color.WHITE);
 		tabla1 = new JTable(new Object[][] {}, cabeceraTabla1);
 		tabla1.getTableHeader().setResizingAllowed(false);
 		tabla1.getTableHeader().setReorderingAllowed(false);
 
-		centerPanelLeft.add(tabla1);
+		centerPanel.add(tabla1);
 
 		JScrollPane scrollPanel1 = new JScrollPane(tabla1);
 		scrollPanel1.setBackground(Color.WHITE);
 		scrollPanel1.setPreferredSize(new Dimension(1100, 470));
-		centerPanelLeft.add(scrollPanel1);
+		centerPanel.add(scrollPanel1);
 	}
 
 	public void loadDataTable(String[][] data) {
