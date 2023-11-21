@@ -45,9 +45,9 @@ public class CenterPanel_BillingPanel extends JPanel {
 		JPanel centerPanelLeft = new JPanel();
 		JPanel centerPanel = new JPanel();
 		addProductToBillDialog = new AddProductToBillDialog(listener);
-		add(centerPanelLeft, BorderLayout.WEST);
+		add(centerPanelLeft, BorderLayout.CENTER);
 		add(topPanel, BorderLayout.NORTH);
-		add(centerPanel, BorderLayout.CENTER);
+		add(centerPanel, BorderLayout.EAST);
 		addProductToBillDialog.setVisible(false);
 
 		topPanel.setBackground(Color.WHITE);
