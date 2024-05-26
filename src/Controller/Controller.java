@@ -6,7 +6,8 @@ import Models.Inventario;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import Models.User;
 import View.Views;
 import data.data;
@@ -18,8 +19,8 @@ public class Controller implements ActionListener, KeyListener {
     private Inventario inventario;
     private data data;
 
-    public Controller(ArrayList<User> user) throws SQLException {
-        views = new Views(this);
+    public Controller(User user) throws SQLException {
+        views = new Views(this, null, this);
         this.login = user;
         data = new data();
         inventario = new Inventario();
@@ -251,4 +252,6 @@ public class Controller implements ActionListener, KeyListener {
         views.txtpriceKeyReleased();
         views.txtquantityKeyReleased();
     }
+
+
 }
