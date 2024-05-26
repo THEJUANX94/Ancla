@@ -149,7 +149,7 @@ public class CenterPanel_BillingPanel extends JPanel {
 	public void loadDataTable2() {
 		int quantity = getQuantity();
 		if (quantity != 0) {
-			Object[] rowData = { id, nombre, quantity, Integer.parseInt(precio) * quantity };
+			Object[] rowData = { id, nombre, quantity, String.format("%,d", Integer.parseInt(precio) * quantity)};
 			dtm2.addRow(rowData);
 			addProductToBillDialog.setVisible(false);
 		}

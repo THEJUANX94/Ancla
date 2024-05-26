@@ -2,6 +2,9 @@ package View;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import View.Form.ProductForm.DialogForm;
@@ -19,22 +22,22 @@ public class Views extends JFrame {
     public DeleteDialog deleteDialog;
     public AdverstingDialog adverstingDialog;
 
-    public Views(ActionListener listener) {
+    public Views(ActionListener listener, KeyEvent evt, KeyListener keyListener) {
         super("Ancla");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(Color.WHITE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        initComponents(listener);
+        initComponents(listener, evt, keyListener);
         this.setUndecorated(true);
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(false);
     }
 
-    private void initComponents(ActionListener listener) {
+    private void initComponents(ActionListener listener, KeyEvent evt, KeyListener keyListener) {
         loginPanel = new LoginPanel(listener);
         sellerPanel = new SellerPanel(listener);
-        dialogForm = new DialogForm(listener);
+        dialogForm = new DialogForm(listener, evt, keyListener);
         dialogMarkForm = new DialogMarkForm(listener);
         dialogTypeForm = new DialogTypeForm(listener);
         itemsDialog = new ItemsDialog(listener);
@@ -200,5 +203,21 @@ public class Views extends JFrame {
 
     public void lowQuantity(String product){
         adverstingDialog.lowQuantity(product);
+    }
+
+    public void txtpriceKeyReleased(){
+        dialogForm.txtpriceKeyReleased();
+    }
+
+    public void txtquantityKeyReleased(){
+        dialogForm.txtpriceKeyReleased();
+    }
+
+    public void txtpriceKeyTyped(java.awt.event.KeyEvent evt){
+        dialogForm.txtpriceKeyTyped(evt);
+    }
+
+    public void txtquantityKeyTyped(java.awt.event.KeyEvent evt){
+        dialogForm.txtquantityKeyTyped(evt);
     }
 }

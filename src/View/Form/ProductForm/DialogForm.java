@@ -2,6 +2,8 @@ package View.Form.ProductForm;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JDialog;
 
@@ -11,17 +13,17 @@ public class DialogForm extends JDialog {
   private TopFormPanel topFormPanel;
   private BotFormPanel botFormPanel;
 
-  public DialogForm(ActionListener listener) {
+  public DialogForm(ActionListener listener, KeyEvent evt, KeyListener keyListener) {
     this.setLayout(new BorderLayout());
     this.setSize(450, 300);
     this.setLocationRelativeTo(null);
     this.setResizable(false);
-    initComponents(listener);
+    initComponents(listener, evt, keyListener);
     this.setVisible(true);
   }
 
-  private void initComponents(ActionListener listener) {
-    topFormPanel = new TopFormPanel(listener);
+  private void initComponents(ActionListener listener, KeyEvent evt, KeyListener keyListener) {
+    topFormPanel = new TopFormPanel(listener, evt, keyListener);
     getContentPane().add(topFormPanel, BorderLayout.CENTER);
     botFormPanel = new BotFormPanel(listener);
     getContentPane().add(botFormPanel, BorderLayout.SOUTH);
@@ -85,5 +87,21 @@ public class DialogForm extends JDialog {
 
   public void setQuantity(String quantity) {
     topFormPanel.setQuantity(quantity);
+  }
+
+  public void txtpriceKeyReleased(){
+    topFormPanel.txtpriceKeyReleased();
+  }
+
+  public void txtquantityKeyReleased(){
+    topFormPanel.txtpriceKeyReleased();
+  }
+
+  public void txtpriceKeyTyped(java.awt.event.KeyEvent evt){
+    topFormPanel.txtpriceKeyTyped(evt);
+  }
+
+  public void txtquantityKeyTyped(java.awt.event.KeyEvent evt){
+    topFormPanel.txtquantityKeyTyped(evt);
   }
 }

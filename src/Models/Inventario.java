@@ -2,6 +2,7 @@ package Models;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import data.data;
 
@@ -12,6 +13,7 @@ public class Inventario {
 	private ArrayList<Marca> marcas;
 	private ArrayList<Factura> facturas;
 	private data data;
+	private DecimalFormat df = new DecimalFormat("###,###");
 
 	public Inventario() throws SQLException {
 		productos = new ArrayList<Producto>();
@@ -19,6 +21,7 @@ public class Inventario {
 		marcas = new ArrayList<Marca>();
 		facturas = new ArrayList<Factura>();
 		data = new data();
+		
 	}
 	
 	public ArrayList<Producto> getProductos() {
@@ -62,8 +65,8 @@ public class Inventario {
 			productos[i][1] = this.productos.get(i).getNombre();
 			productos[i][2] = this.productos.get(i).getTipo().getNombre();
 			productos[i][3] = this.productos.get(i).getMarca().getNombre();
-			productos[i][4] = String.valueOf(this.productos.get(i).getPrecio());
-			productos[i][5] = String.valueOf(this.productos.get(i).getCantidad());
+			productos[i][4] = String.valueOf(df.format((this.productos.get(i).getPrecio())));
+			productos[i][5] = String.valueOf(df.format(this.productos.get(i).getCantidad()));
 		}
 		return productos;
 	}

@@ -8,11 +8,13 @@ import data.Credentials;
 import data.data;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.FileNotFoundException;
 import Models.User;
 import View.Views;
 
-public class Controller implements ActionListener {
+public class Controller implements ActionListener, KeyListener {
 
     private Views views;
     private ArrayList<User> login;
@@ -20,7 +22,7 @@ public class Controller implements ActionListener {
     private data data;
 
     public Controller(ArrayList<User> user) throws SQLException {
-        views = new Views(this);
+        views = new Views(this, null, this);
         this.login = user;
         data = new data();
         inventario = new Inventario();
@@ -246,5 +248,21 @@ public class Controller implements ActionListener {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        views.txtpriceKeyTyped(e);
+        views.txtquantityKeyTyped(e);
+        }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        views.txtpriceKeyReleased();
+        views.txtquantityKeyReleased();
     }
 }

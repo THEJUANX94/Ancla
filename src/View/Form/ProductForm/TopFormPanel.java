@@ -3,6 +3,9 @@ package View.Form.ProductForm;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.text.DecimalFormat;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -24,13 +27,13 @@ public class TopFormPanel extends JPanel {
     private JComboBox<String> cbType;
     private JComboBox<String> cbMark;
 
-    public TopFormPanel(ActionListener listener) {
+    public TopFormPanel(ActionListener listener, KeyEvent evt, KeyListener keyListener) {
         this.setLayout(new GridLayout(5, 2, 45, 20));
         this.setBorder(new TitledBorder("Info Producto"));
-        initComponents(listener);
+        initComponents(listener, evt, keyListener);
     }
 
-    private void initComponents(ActionListener listener) {
+    private void initComponents(ActionListener listener, KeyEvent evt, KeyListener keyListener) {
         lblName = new JLabel("Nombre Producto:");
         lblName.setForeground(Color.BLACK);
         add(lblName);
@@ -57,6 +60,7 @@ public class TopFormPanel extends JPanel {
         add(lblPrice);
 
         txtPrice = new JTextField();
+        txtPrice.addKeyListener(keyListener);
         add(txtPrice);
 
         lblQuantity = new JLabel("Cantidad:");
@@ -64,6 +68,7 @@ public class TopFormPanel extends JPanel {
         add(lblQuantity);
 
         txtQuantity = new JTextField();
+        txtQuantity.addKeyListener(keyListener);
         add(txtQuantity);
     }
 
@@ -100,7 +105,7 @@ public class TopFormPanel extends JPanel {
         if (comprobatePrice() == false) {
             return 0;
         } else {
-            return Integer.parseInt(txtPrice.getText());
+            return Integer.parseInt(txtPrice.getText().replaceAll("\\D", ""));
         }
     }
 
@@ -108,13 +113,13 @@ public class TopFormPanel extends JPanel {
         if (comprobateQuantity() == false) {
             return 0;
         } else {
-            return Integer.parseInt(txtQuantity.getText());
+            return Integer.parseInt(txtQuantity.getText().replaceAll("\\D", ""));
         }
     }
 
     public boolean comprobatePrice() {
         boolean confirm = true;
-        if (txtPrice.getText().matches("[0-9]+") != true) {
+        if ((txtPrice.getText().replaceAll("\\D", "")).matches("[0-9]+") != true) {
             JOptionPane.showMessageDialog(null, "Ingrese un precio valido: Ej. 20000", "Error",
                     JOptionPane.ERROR_MESSAGE);
             confirm = false;
@@ -132,7 +137,7 @@ public class TopFormPanel extends JPanel {
 
     public boolean comprobateQuantity() {
         boolean confirm = true;
-        if (txtQuantity.getText().matches("[0-9]+") != true) {
+        if ((txtQuantity.getText().replaceAll("\\D", "")).matches("[0-9]+") != true) {
             JOptionPane.showMessageDialog(null, "Ingrese una cantidad valida: Ej. 5 ", "Error",
                     JOptionPane.ERROR_MESSAGE);
             confirm = false;
@@ -171,4 +176,30 @@ public class TopFormPanel extends JPanel {
     public void setQuantity(String quantity) {
         txtQuantity.setText(quantity);
     }
+
+    public void txtpriceKeyReleased() {
+        DecimalFormat df = new DecimalFormat("#,###");
+        if (txtPrice.getText().length() >= 1) {
+            txtPrice.setText( df.format(Integer.valueOf(txtPrice.getText().replace(".", "").replace(",", ""))) );
+        }
+    }
+
+    public void txtquantityKeyReleased() {
+        DecimalFormat df = new DecimalFormat("#,###");
+        if (txtQuantity.getText().length() >= 1) {
+            txtQuantity.setText( df.format(Integer.valueOf(txtQuantity.getText().replace(".", "").replace(",", ""))) );
+        }
+    }
+
+    public void txtpriceKeyTyped(java.awt.event.KeyEvent evt){
+        if(txtPrice.getText().length() >= 10){
+            evt.consume();
+        }
+    }
+    
+    public void txtquantityKeyTyped(java.awt.event.KeyEvent evt){
+        if(txtQuantity.getText().length() >= 10){
+            evt.consume();
+        }
+    } 
 }
