@@ -33,7 +33,7 @@ public class CardEmpty extends JPanel {
         label.setPreferredSize(new Dimension(500, 200));
         toPanel.add(label);
 
-        Image img = new ImageIcon("Images/logo.png").getImage();
+        Image img = new ImageIcon("data\\Images\\logo.png").getImage();
         ImageIcon img2 = new ImageIcon(img.getScaledInstance(290, 290, Image.SCALE_SMOOTH));
         JLabel labelImage = new JLabel();
         labelImage.setIcon(img2);

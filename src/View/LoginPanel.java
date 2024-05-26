@@ -34,7 +34,7 @@ public class LoginPanel extends JDialog {
         this.setBackground(Color.WHITE);
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        Image img = new ImageIcon("Images/logo.png").getImage();
+        Image img = new ImageIcon("data\\Images\\logo.png").getImage();
         ImageIcon img2 = new ImageIcon(img.getScaledInstance(290, 290, Image.SCALE_SMOOTH));
         labelImage = new JLabel();
         labelImage.setIcon(img2);

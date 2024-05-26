@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 public class data {
 
-    public String url = "jdbc:sqlite:data/DataBase/AnclaDB.sqlite";
+    public String url = "jdbc:sqlite:data\\DataBase\\AnclaDB.sqlite";
     public Connection connect;
     private ResultSet dataFacturas;
     private ResultSet dataItem;

@@ -14,7 +14,7 @@ public class TopPanel extends JPanel{
     public TopPanel(){
         setLayout(new BorderLayout());
         setBackground(new Color(68, 147, 185));
-		Image img = new ImageIcon("Images/LogoCabecera.png").getImage();
+		Image img = new ImageIcon("data\\Images\\LogoCabecera.png").getImage();
         ImageIcon img2 = new ImageIcon(img.getScaledInstance(240, 97, Image.SCALE_SMOOTH));
         labelImage = new JLabel();
         labelImage.setIcon(img2);
