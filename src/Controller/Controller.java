@@ -241,6 +241,7 @@ public class Controller implements ActionListener, KeyListener {
     public void keyTyped(KeyEvent e) {
         views.txtpriceKeyTyped(e);
         views.txtquantityKeyTyped(e);
+
         }
 
     @Override
@@ -251,6 +252,7 @@ public class Controller implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent e) {
         views.txtpriceKeyReleased();
         views.txtquantityKeyReleased();
+        views.quantityKeyReleased();
     }
 
 

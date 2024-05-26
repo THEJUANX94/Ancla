@@ -3,6 +3,7 @@ package View;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
 
@@ -17,15 +18,15 @@ public class CardLayout1 extends JPanel{
 
     private CardLayout cl;
     
-    public CardLayout1(ActionListener listener){
-        initComponents(listener);
+    public CardLayout1(ActionListener listener, KeyListener keyListener){
+        initComponents(listener, keyListener);
     }
 
-    public void initComponents(ActionListener listener){
+    public void initComponents(ActionListener listener, KeyListener keyListener){
         this.setBackground(Color.WHITE);
         this.setLayout(new CardLayout());
         cl = (CardLayout) this.getLayout();
-        centerPanel1 = new BillingPanel(listener);
+        centerPanel1 = new BillingPanel(listener, keyListener);
         centerPanel2 = new ManageProductPanel(listener);
         historyPanel = new HistoryPanel(listener);
         manageBrandPanel = new ManageBrandPanel(listener);
@@ -139,5 +140,9 @@ public class CardLayout1 extends JPanel{
 
 	public String getMarkProduct(){
 		return centerPanel2.getMarkProduct();
+	}
+
+    public void quantityKeyReleased() {
+		centerPanel1.quantityKeyReleased();
 	}
 }

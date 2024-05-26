@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
@@ -34,17 +35,17 @@ public class CenterPanel_BillingPanel extends JPanel {
 	private JTextField search;
 	private int count;
 
-	public CenterPanel_BillingPanel(ActionListener listener) {
-		initComponents(listener);
+	public CenterPanel_BillingPanel(ActionListener listener, KeyListener keyListener) {
+		initComponents(listener, keyListener);
 	}
 
-	private void initComponents(ActionListener listener) {
+	private void initComponents(ActionListener listener, KeyListener keyListener) {
 		setBackground(Color.WHITE);
 		setLayout(new BorderLayout());
 		JPanel topPanel = new JPanel();
 		JPanel centerPanelLeft = new JPanel();
 		JPanel centerPanel = new JPanel();
-		addProductToBillDialog = new AddProductToBillDialog(listener);
+		addProductToBillDialog = new AddProductToBillDialog(listener, keyListener);
 		add(centerPanelLeft, BorderLayout.CENTER);
 		add(topPanel, BorderLayout.NORTH);
 		add(centerPanel, BorderLayout.EAST);
@@ -211,5 +212,9 @@ public class CenterPanel_BillingPanel extends JPanel {
 			JOptionPane.showMessageDialog(null, "Agregue un producto", "Error de agregacion", JOptionPane.ERROR_MESSAGE);
 		}
 		return confirm;
+	}
+
+	public void quantityKeyReleased() {
+		addProductToBillDialog.quantityKeyReleased();
 	}
 }

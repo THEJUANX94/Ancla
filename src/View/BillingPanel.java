@@ -3,6 +3,8 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+
 import javax.swing.JPanel;
 
 public class BillingPanel extends JPanel {
@@ -11,15 +13,15 @@ public class BillingPanel extends JPanel {
 	private CenterPanel_BillingPanel centerPanel_BillingPanel;
 	private BotPanel_BillingPanel botPanel_BillingPanel;
 
-	public BillingPanel(ActionListener listener) {
-		initComponents(listener);
+	public BillingPanel(ActionListener listener, KeyListener keyListener) {
+		initComponents(listener, keyListener);
 	}
 
-	private void initComponents(ActionListener listener) {
+	private void initComponents(ActionListener listener, KeyListener keyListener) {
 		setLayout(new BorderLayout());
 		setBackground(Color.WHITE);
 		topPanel_BillingPanel = new TopPanel_BillingPanel(listener);
-		centerPanel_BillingPanel = new CenterPanel_BillingPanel(listener);
+		centerPanel_BillingPanel = new CenterPanel_BillingPanel(listener, keyListener);
 		botPanel_BillingPanel = new BotPanel_BillingPanel(listener);
 		add(topPanel_BillingPanel, BorderLayout.NORTH);
 		add(centerPanel_BillingPanel, BorderLayout.CENTER);
@@ -52,5 +54,9 @@ public class BillingPanel extends JPanel {
 
 	public boolean confirmTabla2(){
 		return centerPanel_BillingPanel.confirmTabla2();
+	}
+
+	public void quantityKeyReleased() {
+		centerPanel_BillingPanel.quantityKeyReleased();
 	}
 }

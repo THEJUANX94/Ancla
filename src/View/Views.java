@@ -36,7 +36,7 @@ public class Views extends JFrame {
 
     private void initComponents(ActionListener listener, KeyEvent evt, KeyListener keyListener) {
         loginPanel = new LoginPanel(listener);
-        sellerPanel = new SellerPanel(listener);
+        sellerPanel = new SellerPanel(listener, keyListener);
         dialogForm = new DialogForm(listener, evt, keyListener);
         dialogMarkForm = new DialogMarkForm(listener);
         dialogTypeForm = new DialogTypeForm(listener);
@@ -220,4 +220,8 @@ public class Views extends JFrame {
     public void txtquantityKeyTyped(java.awt.event.KeyEvent evt){
         dialogForm.txtquantityKeyTyped(evt);
     }
+
+    public void quantityKeyReleased() {
+		sellerPanel.quantityKeyReleased();
+	}
 }

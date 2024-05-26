@@ -2,6 +2,8 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+
 import javax.swing.JPanel;
 
 public class SellerPanel extends JPanel {
@@ -11,18 +13,17 @@ public class SellerPanel extends JPanel {
   private LeftPanel leftPanel;
   private CardLayout1 centerPanel;
 
-  public SellerPanel(ActionListener listener) {
-    initComponents(listener);
-    initComponents(listener);
+  public SellerPanel(ActionListener listener, KeyListener keyListener) {
+    initComponents(listener, keyListener);
   }
 
-  private void initComponents(ActionListener listener) {
+  private void initComponents(ActionListener listener, KeyListener keyListener) {
     setLayout(new BorderLayout());
     topPanel = new TopPanel();
     add(topPanel, BorderLayout.NORTH);
     leftPanel = new LeftPanel(listener);
     add(leftPanel, BorderLayout.WEST);
-    centerPanel = new CardLayout1(listener);
+    centerPanel = new CardLayout1(listener, keyListener);
     add(centerPanel, BorderLayout.CENTER);
   }
 
@@ -124,5 +125,9 @@ public class SellerPanel extends JPanel {
 
 	public String getMarkProduct(){
 		return centerPanel.getMarkProduct();
+	}
+
+  public void quantityKeyReleased() {
+		centerPanel.quantityKeyReleased();
 	}
 }

@@ -5,6 +5,9 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.text.DecimalFormat;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -21,15 +24,15 @@ public class AddProductToBillDialog extends JDialog {
 	private JButton cancelButton;
 	private JButton addButton;
 
-	public AddProductToBillDialog(ActionListener listener) {
-		initComponents(listener);
+	public AddProductToBillDialog(ActionListener listener, KeyListener keyListener) {
+		initComponents(listener, keyListener);
 		setSize(300, 200);
 		setBackground(Color.WHITE);
 		this.setLocationRelativeTo(null);
 		setTitle("Agregar producto a la factura");
 	}
 
-	private void initComponents(ActionListener listener) {
+	private void initComponents(ActionListener listener, KeyListener keyListener) {
 		setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
@@ -38,6 +41,7 @@ public class AddProductToBillDialog extends JDialog {
 		wordlbl.setForeground(Color.BLACK);
 		add(wordlbl, gbc);
 		quantityTextField = new JTextField();
+		quantityTextField.addKeyListener(keyListener);
 		quantityTextField.setText("1");
 		gbc.gridx = 1;
 		gbc.gridy = 5;
@@ -119,7 +123,7 @@ public class AddProductToBillDialog extends JDialog {
 	public int getQuantity(int stock) {
 		int quantity = 0;
 		try {
-			quantity = Integer.parseInt(quantityTextField.getText());
+			quantity =  Integer.parseInt(quantityTextField.getText().replaceAll("\\D", ""));
 			if (quantity < 0) {
 				JOptionPane.showMessageDialog(null, "Ingrese una cantidad valida", "Caracteres invalidos:",
 						JOptionPane.ERROR_MESSAGE);
@@ -139,4 +143,11 @@ public class AddProductToBillDialog extends JDialog {
 		}
 		return quantity;
 	}
+
+	public void quantityKeyReleased() {
+        DecimalFormat df = new DecimalFormat("#,###");
+        if (quantityTextField.getText().length() >= 1) {
+            quantityTextField.setText( df.format(Integer.valueOf(quantityTextField.getText().replace(".", "").replace(",", ""))) );
+        }
+    }
 }
