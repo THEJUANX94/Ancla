@@ -2,5 +2,9 @@
     "java.project.referencedLibraries": [
         "Libraries\\sqlite-jdbc-3.7.2.jar",
         "Libraries\\jcalendar-1.4.jar"
+    ],
+    "java.project.sourcePaths": [
+        ".",
+        "src"
     ]
 }
